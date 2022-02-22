@@ -43,7 +43,7 @@ public class StatsScoreFrm extends JInternalFrame {
         setBounds(100, 100, 765, 730);
 
         JLabel label = new JLabel("\u8BFE\u7A0B\u540D\u79F0\uFF1A");
-        label.setIcon(new ImageIcon(StatsScoreFrm.class.getResource("/images/\u8BFE\u7A0B.png")));
+        label.setIcon(new ImageIcon(StatsScoreFrm.class.getResource("/images/课程.png")));
         label.setFont(new Font("微软雅黑", Font.PLAIN, 14));
 
         courseComboBox = new JComboBox();
@@ -54,7 +54,7 @@ public class StatsScoreFrm extends JInternalFrame {
                 searchStatsAct(ae);
             }
         });
-        searchButton.setIcon(new ImageIcon(StatsScoreFrm.class.getResource("/images/\u641C\u7D22.png")));
+        searchButton.setIcon(new ImageIcon(StatsScoreFrm.class.getResource("/images/搜索.png")));
         searchButton.setFont(new Font("微软雅黑", Font.PLAIN, 14));
 
         viewPanel = new JPanel();
@@ -102,7 +102,7 @@ public class StatsScoreFrm extends JInternalFrame {
                 defaultViewAct(ae);
             }
         });
-        defaultViewButton.setIcon(new ImageIcon(StatsScoreFrm.class.getResource("/images/\u9ED8\u8BA4.png")));
+        defaultViewButton.setIcon(new ImageIcon(StatsScoreFrm.class.getResource("/images/默认.png")));
         defaultViewButton.setFont(new Font("微软雅黑", Font.PLAIN, 14));
 
         JButton barViewButton = new JButton("\u67F1\u72B6\u56FE\u663E\u793A");
@@ -111,7 +111,7 @@ public class StatsScoreFrm extends JInternalFrame {
                 barViewAct(ae);
             }
         });
-        barViewButton.setIcon(new ImageIcon(StatsScoreFrm.class.getResource("/images/\u67F1\u72B6\u56FE.png")));
+        barViewButton.setIcon(new ImageIcon(StatsScoreFrm.class.getResource("/images/柱状图.png")));
         barViewButton.setFont(new Font("微软雅黑", Font.PLAIN, 14));
 
         JButton pieViewButton = new JButton("\u997C\u72B6\u56FE\u663E\u793A");
@@ -120,7 +120,7 @@ public class StatsScoreFrm extends JInternalFrame {
                 peiViewAct(ae);
             }
         });
-        pieViewButton.setIcon(new ImageIcon(StatsScoreFrm.class.getResource("/images/\u997C\u72B6\u56FE.png")));
+        pieViewButton.setIcon(new ImageIcon(StatsScoreFrm.class.getResource("/images/饼状图.png")));
         pieViewButton.setFont(new Font("微软雅黑", Font.PLAIN, 14));
         GroupLayout gl_panel_1 = new GroupLayout(panel_1);
         gl_panel_1.setHorizontalGroup(
@@ -163,7 +163,7 @@ public class StatsScoreFrm extends JInternalFrame {
         );
 
         JLabel label_1 = new JLabel("\u6700\u9AD8\u5206\uFF1A");
-        label_1.setIcon(new ImageIcon(StatsScoreFrm.class.getResource("/images/\u6700\u9AD8\u5206.png")));
+        label_1.setIcon(new ImageIcon(StatsScoreFrm.class.getResource("/images/最高分.png")));
         label_1.setFont(new Font("微软雅黑", Font.PLAIN, 14));
 
         maxScoreTextField = new JTextField();
@@ -172,7 +172,7 @@ public class StatsScoreFrm extends JInternalFrame {
         maxScoreTextField.setColumns(10);
 
         JLabel lblNewLabel = new JLabel("\u6700\u4F4E\u5206\uFF1A");
-        lblNewLabel.setIcon(new ImageIcon(StatsScoreFrm.class.getResource("/images/\u6700\u4F4E\u5206.png")));
+        lblNewLabel.setIcon(new ImageIcon(StatsScoreFrm.class.getResource("/images/最低分.png")));
         lblNewLabel.setFont(new Font("微软雅黑", Font.PLAIN, 14));
 
         minScoreTextField = new JTextField();
@@ -181,7 +181,7 @@ public class StatsScoreFrm extends JInternalFrame {
         minScoreTextField.setColumns(10);
 
         JLabel label_2 = new JLabel("\u5E73\u5747\u5206\uFF1A");
-        label_2.setIcon(new ImageIcon(StatsScoreFrm.class.getResource("/images/\u5E73\u5747.png")));
+        label_2.setIcon(new ImageIcon(StatsScoreFrm.class.getResource("/images/平均.png")));
         label_2.setFont(new Font("微软雅黑", Font.PLAIN, 14));
 
         middScoreTextField = new JTextField();
@@ -190,7 +190,7 @@ public class StatsScoreFrm extends JInternalFrame {
         middScoreTextField.setColumns(10);
 
         JLabel label_3 = new JLabel("\u603B\u4EBA\u6570\uFF1A");
-        label_3.setIcon(new ImageIcon(StatsScoreFrm.class.getResource("/images/\u4EBA\u6570\u7EDF\u8BA1.png")));
+        label_3.setIcon(new ImageIcon(StatsScoreFrm.class.getResource("/images/人数统计.png")));
         label_3.setFont(new Font("微软雅黑", Font.PLAIN, 14));
 
         studentNumTextField = new JTextField();

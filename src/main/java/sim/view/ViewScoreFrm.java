@@ -35,14 +35,14 @@ public class ViewScoreFrm extends JInternalFrame {
         setBounds(100, 100, 698, 518);
 
         JLabel label = new JLabel("\u5B66\u751F\u59D3\u540D\uFF1A");
-        label.setIcon(new ImageIcon(ViewScoreFrm.class.getResource("/images/\u5B66\u751F\u7BA1\u7406.png")));
+        label.setIcon(new ImageIcon(ViewScoreFrm.class.getResource("/images/学生管理.png")));
         label.setFont(new Font("΢���ź�", Font.PLAIN, 14));
 
         studentNameLabel = new JLabel("");
         studentNameLabel.setFont(new Font("΢���ź�", Font.PLAIN, 14));
 
         JLabel label_1 = new JLabel("\u6240\u9009\u8BFE\u7A0B\uFF1A");
-        label_1.setIcon(new ImageIcon(ViewScoreFrm.class.getResource("/images/\u8BFE\u7A0B.png")));
+        label_1.setIcon(new ImageIcon(ViewScoreFrm.class.getResource("/images/课程.png")));
         label_1.setFont(new Font("΢���ź�", Font.PLAIN, 14));
 
         courseComboBox = new JComboBox();

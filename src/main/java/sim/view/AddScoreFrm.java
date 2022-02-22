@@ -36,13 +36,13 @@ public class AddScoreFrm extends JInternalFrame {
         setBounds(100, 100, 641, 474);
 
         JLabel label = new JLabel("\u5B66\u751F\u59D3\u540D\uFF1A");
-        label.setIcon(new ImageIcon(AddScoreFrm.class.getResource("/images/\u5B66\u751F\u7BA1\u7406.png")));
+        label.setIcon(new ImageIcon(AddScoreFrm.class.getResource("/images/学生管理.png")));
         label.setFont(new Font("微软雅黑", Font.PLAIN, 14));
 
         studentComboBox = new JComboBox();
 
         JLabel label_1 = new JLabel("\u8BFE\u7A0B\u4FE1\u606F\uFF1A");
-        label_1.setIcon(new ImageIcon(AddScoreFrm.class.getResource("/images/\u8BFE\u7A0B.png")));
+        label_1.setIcon(new ImageIcon(AddScoreFrm.class.getResource("/images/课程.png")));
         label_1.setFont(new Font("微软雅黑", Font.PLAIN, 14));
 
         courseComboBox = new JComboBox();
@@ -58,7 +58,7 @@ public class AddScoreFrm extends JInternalFrame {
         });
 
         JLabel label_2 = new JLabel("\u6240\u5F97\u6210\u7EE9\uFF1A");
-        label_2.setIcon(new ImageIcon(AddScoreFrm.class.getResource("/images/\u6210\u7EE9.png")));
+        label_2.setIcon(new ImageIcon(AddScoreFrm.class.getResource("/images/成绩.png")));
         label_2.setFont(new Font("微软雅黑", Font.PLAIN, 14));
 
         scoreTextField = new JTextField();
@@ -70,7 +70,7 @@ public class AddScoreFrm extends JInternalFrame {
                 submitAct(ae);
             }
         });
-        submitButton.setIcon(new ImageIcon(AddScoreFrm.class.getResource("/images/\u786E\u8BA4.png")));
+        submitButton.setIcon(new ImageIcon(AddScoreFrm.class.getResource("/images/确认.png")));
         submitButton.setFont(new Font("微软雅黑", Font.PLAIN, 14));
         GroupLayout groupLayout = new GroupLayout(getContentPane());
         groupLayout.setHorizontalGroup(

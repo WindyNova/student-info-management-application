@@ -36,7 +36,7 @@ public class LoginFrm extends JFrame {
         setContentPane(contentPane);
         setLocationRelativeTo(null);
         JLabel label = new JLabel("\u5B66\u751F\u4FE1\u606F\u7CFB\u7EDF\u767B\u9646\u754C\u9762");
-        label.setIcon(new ImageIcon(LoginFrm.class.getResource("/images/logo.png")));
+        label.setIcon(new ImageIcon(LoginFrm.class.getResource("../../images/logo.png")));
         label.setFont(new Font("微软雅黑", Font.BOLD, 18));
 
         JLabel label_1 = new JLabel("\u7528\u6237\u540D\uFF1A");

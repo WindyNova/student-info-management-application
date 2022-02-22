@@ -40,7 +40,7 @@ public class AttendanceStudentFrm extends JInternalFrame {
         setBounds(100, 100, 650, 515);
 
         JLabel label = new JLabel("\u8BFE\u7A0B\uFF1A");
-        label.setIcon(new ImageIcon(AttendanceStudentFrm.class.getResource("/images/\u8BFE\u7A0B.png")));
+        label.setIcon(new ImageIcon(AttendanceStudentFrm.class.getResource("/images/课程.png")));
         label.setFont(new Font("微软雅黑", Font.PLAIN, 14));
 
         addSelectedCourseComboBox = new JComboBox();
@@ -51,7 +51,7 @@ public class AttendanceStudentFrm extends JInternalFrame {
                 addAttendanceAct(ae);
             }
         });
-        addAttendanceButton.setIcon(new ImageIcon(AttendanceStudentFrm.class.getResource("/images/\u786E\u8BA4.png")));
+        addAttendanceButton.setIcon(new ImageIcon(AttendanceStudentFrm.class.getResource("/images/确认.png")));
         addAttendanceButton.setFont(new Font("微软雅黑", Font.PLAIN, 14));
 
         JPanel panel = new JPanel();
@@ -86,13 +86,13 @@ public class AttendanceStudentFrm extends JInternalFrame {
         );
 
         JLabel label_1 = new JLabel("\u8BFE\u7A0B\uFF1A");
-        label_1.setIcon(new ImageIcon(AttendanceStudentFrm.class.getResource("/images/\u8BFE\u7A0B.png")));
+        label_1.setIcon(new ImageIcon(AttendanceStudentFrm.class.getResource("/images/课程.png")));
         label_1.setFont(new Font("微软雅黑", Font.PLAIN, 14));
 
         searchSelectedComboBox = new JComboBox();
 
         JLabel label_2 = new JLabel("\u65E5\u671F\uFF1A");
-        label_2.setIcon(new ImageIcon(AttendanceStudentFrm.class.getResource("/images/\u65E5\u671F.png")));
+        label_2.setIcon(new ImageIcon(AttendanceStudentFrm.class.getResource("/images/日期.png")));
         label_2.setFont(new Font("微软雅黑", Font.PLAIN, 14));
 
         searchAttendanceDateTextField = new JTextField();
@@ -104,7 +104,7 @@ public class AttendanceStudentFrm extends JInternalFrame {
                 searchAct(ae);
             }
         });
-        searchAttendanceButton.setIcon(new ImageIcon(AttendanceStudentFrm.class.getResource("/images/\u641C\u7D22.png")));
+        searchAttendanceButton.setIcon(new ImageIcon(AttendanceStudentFrm.class.getResource("/images/搜索.png")));
         searchAttendanceButton.setFont(new Font("微软雅黑", Font.PLAIN, 14));
 
         JScrollPane scrollPane = new JScrollPane();

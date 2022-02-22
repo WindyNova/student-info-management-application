@@ -44,14 +44,14 @@ public class ManageStudentFrm extends JInternalFrame {
         JScrollPane scrollPane = new JScrollPane();
 
         JLabel label = new JLabel("\u5B66\u751F\u59D3\u540D\uFF1A");
-        label.setIcon(new ImageIcon(ManageStudentFrm.class.getResource("/images/\u5B66\u751F\u7BA1\u7406.png")));
+        label.setIcon(new ImageIcon(ManageStudentFrm.class.getResource("/images/学生管理.png")));
         label.setFont(new Font("微软雅黑", Font.PLAIN, 14));
 
         serachStudentNameTextField = new JTextField();
         serachStudentNameTextField.setColumns(10);
 
         JLabel label_1 = new JLabel("\u6240\u5C5E\u73ED\u7EA7\uFF1A");
-        label_1.setIcon(new ImageIcon(ManageStudentFrm.class.getResource("/images/\u73ED\u7EA7\u540D\u79F0.png")));
+        label_1.setIcon(new ImageIcon(ManageStudentFrm.class.getResource("/images/班级名称.png")));
         label_1.setFont(new Font("微软雅黑", Font.PLAIN, 14));
 
         searchStudentComboBox = new JComboBox();
@@ -62,24 +62,24 @@ public class ManageStudentFrm extends JInternalFrame {
                 searchStudent(ae);
             }
         });
-        searchButton.setIcon(new ImageIcon(ManageStudentFrm.class.getResource("/images/\u641C\u7D22.png")));
+        searchButton.setIcon(new ImageIcon(ManageStudentFrm.class.getResource("/images/搜索.png")));
         searchButton.setFont(new Font("微软雅黑", Font.PLAIN, 14));
 
         JLabel label_2 = new JLabel("\u5B66\u751F\u59D3\u540D\uFF1A");
-        label_2.setIcon(new ImageIcon(ManageStudentFrm.class.getResource("/images/\u5B66\u751F\u7BA1\u7406.png")));
+        label_2.setIcon(new ImageIcon(ManageStudentFrm.class.getResource("/images/学生管理.png")));
         label_2.setFont(new Font("微软雅黑", Font.PLAIN, 14));
 
         editStudentNameTextField = new JTextField();
         editStudentNameTextField.setColumns(10);
 
         JLabel label_3 = new JLabel("\u6240\u5C5E\u73ED\u7EA7\uFF1A");
-        label_3.setIcon(new ImageIcon(ManageStudentFrm.class.getResource("/images/\u73ED\u7EA7\u540D\u79F0.png")));
+        label_3.setIcon(new ImageIcon(ManageStudentFrm.class.getResource("/images/班级名称.png")));
         label_3.setFont(new Font("微软雅黑", Font.PLAIN, 14));
 
         editStudentClassComboBox = new JComboBox();
 
         JLabel label_4 = new JLabel("\u5B66\u751F\u6027\u522B\uFF1A");
-        label_4.setIcon(new ImageIcon(ManageStudentFrm.class.getResource("/images/\u6027\u522B.png")));
+        label_4.setIcon(new ImageIcon(ManageStudentFrm.class.getResource("/images/性别.png")));
         label_4.setFont(new Font("微软雅黑", Font.PLAIN, 14));
 
         editSexButtonGroup = new ButtonGroup();
@@ -105,7 +105,7 @@ public class ManageStudentFrm extends JInternalFrame {
                 submitEditAct(ae);
             }
         });
-        submitEditButton.setIcon(new ImageIcon(ManageStudentFrm.class.getResource("/images/\u786E\u8BA4.png")));
+        submitEditButton.setIcon(new ImageIcon(ManageStudentFrm.class.getResource("/images/确认.png")));
         submitEditButton.setFont(new Font("微软雅黑", Font.PLAIN, 14));
 
         deleteStudentButton = new JButton("\u5220\u9664\u5B66\u751F");
@@ -114,7 +114,7 @@ public class ManageStudentFrm extends JInternalFrame {
                 deleteStudent(ae);
             }
         });
-        deleteStudentButton.setIcon(new ImageIcon(ManageStudentFrm.class.getResource("/images/\u5220\u9664.png")));
+        deleteStudentButton.setIcon(new ImageIcon(ManageStudentFrm.class.getResource("/images/删除.png")));
         deleteStudentButton.setFont(new Font("微软雅黑", Font.PLAIN, 14));
         GroupLayout groupLayout = new GroupLayout(getContentPane());
         groupLayout.setHorizontalGroup(

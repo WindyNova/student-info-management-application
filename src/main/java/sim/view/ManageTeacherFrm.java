@@ -40,7 +40,7 @@ public class ManageTeacherFrm extends JInternalFrame {
         JScrollPane scrollPane = new JScrollPane();
 
         JLabel label = new JLabel("\u6559\u5E08\u59D3\u540D\uFF1A");
-        label.setIcon(new ImageIcon(ManageTeacherFrm.class.getResource("/images/\u8001\u5E08.png")));
+        label.setIcon(new ImageIcon(ManageTeacherFrm.class.getResource("/images/老师.png")));
         label.setFont(new Font("微软雅黑", Font.PLAIN, 14));
 
         searchTeacherNameTextField = new JTextField();
@@ -52,7 +52,7 @@ public class ManageTeacherFrm extends JInternalFrame {
                 searchTeacher(e);
             }
         });
-        searchTeacherButton.setIcon(new ImageIcon(ManageTeacherFrm.class.getResource("/images/\u641C\u7D22.png")));
+        searchTeacherButton.setIcon(new ImageIcon(ManageTeacherFrm.class.getResource("/images/搜索.png")));
         searchTeacherButton.setFont(new Font("微软雅黑", Font.PLAIN, 14));
 
         JPanel panel = new JPanel();
@@ -92,14 +92,14 @@ public class ManageTeacherFrm extends JInternalFrame {
         );
 
         JLabel label_1 = new JLabel("\u6559\u5E08\u59D3\u540D\uFF1A");
-        label_1.setIcon(new ImageIcon(ManageTeacherFrm.class.getResource("/images/\u8001\u5E08.png")));
+        label_1.setIcon(new ImageIcon(ManageTeacherFrm.class.getResource("/images/老师.png")));
         label_1.setFont(new Font("微软雅黑", Font.PLAIN, 14));
 
         editTeacherNameTextField = new JTextField();
         editTeacherNameTextField.setColumns(10);
 
         JLabel label_2 = new JLabel("\u6559\u5E08\u6027\u522B\uFF1A");
-        label_2.setIcon(new ImageIcon(ManageTeacherFrm.class.getResource("/images/\u6027\u522B.png")));
+        label_2.setIcon(new ImageIcon(ManageTeacherFrm.class.getResource("/images/性别.png")));
         label_2.setFont(new Font("微软雅黑", Font.PLAIN, 14));
 
         ButtonGroup buttonGroup = new ButtonGroup();
@@ -111,21 +111,21 @@ public class ManageTeacherFrm extends JInternalFrame {
         buttonGroup.add(editTeacherSexFemalRadioButton);
 
         JLabel label_3 = new JLabel("\u6559\u5E08\u804C\u79F0\uFF1A");
-        label_3.setIcon(new ImageIcon(ManageTeacherFrm.class.getResource("/images/\u804C\u79F0\u8BC4\u5B9A.png")));
+        label_3.setIcon(new ImageIcon(ManageTeacherFrm.class.getResource("/images/职称评定.png")));
         label_3.setFont(new Font("微软雅黑", Font.PLAIN, 14));
 
         editTeacherTitleTextField = new JTextField();
         editTeacherTitleTextField.setColumns(10);
 
         JLabel label_4 = new JLabel("\u6559\u5E08\u5E74\u9F84\uFF1A");
-        label_4.setIcon(new ImageIcon(ManageTeacherFrm.class.getResource("/images/\u5E74\u9F84.png")));
+        label_4.setIcon(new ImageIcon(ManageTeacherFrm.class.getResource("/images/年龄.png")));
         label_4.setFont(new Font("微软雅黑", Font.PLAIN, 14));
 
         editTeacherAgeTextField = new JTextField();
         editTeacherAgeTextField.setColumns(10);
 
         JLabel label_5 = new JLabel("\u767B\u5F55\u5BC6\u7801\uFF1A");
-        label_5.setIcon(new ImageIcon(ManageTeacherFrm.class.getResource("/images/\u5BC6\u7801.png")));
+        label_5.setIcon(new ImageIcon(ManageTeacherFrm.class.getResource("/images/密码.png")));
         label_5.setFont(new Font("微软雅黑", Font.PLAIN, 14));
 
         editTeacherPasswordField = new JPasswordField();
@@ -136,7 +136,7 @@ public class ManageTeacherFrm extends JInternalFrame {
                 editTeacherAct(ae);
             }
         });
-        editTeacherSubmitButton.setIcon(new ImageIcon(ManageTeacherFrm.class.getResource("/images/\u786E\u8BA4.png")));
+        editTeacherSubmitButton.setIcon(new ImageIcon(ManageTeacherFrm.class.getResource("/images/确认.png")));
         editTeacherSubmitButton.setFont(new Font("微软雅黑", Font.PLAIN, 14));
 
         deleteTeacherButton = new JButton("\u5220\u9664\u4FE1\u606F");
@@ -145,7 +145,7 @@ public class ManageTeacherFrm extends JInternalFrame {
                 deleteTeacher(ae);
             }
         });
-        deleteTeacherButton.setIcon(new ImageIcon(ManageTeacherFrm.class.getResource("/images/\u5220\u9664.png")));
+        deleteTeacherButton.setIcon(new ImageIcon(ManageTeacherFrm.class.getResource("/images/删除.png")));
         deleteTeacherButton.setFont(new Font("微软雅黑", Font.PLAIN, 14));
         GroupLayout gl_panel = new GroupLayout(panel);
         gl_panel.setHorizontalGroup(

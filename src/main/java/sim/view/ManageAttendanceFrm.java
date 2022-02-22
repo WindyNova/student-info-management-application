@@ -42,7 +42,7 @@ public class ManageAttendanceFrm extends JInternalFrame {
         setBounds(100, 100, 784, 654);
 
         JLabel label = new JLabel("\u5B66\u751F\uFF1A");
-        label.setIcon(new ImageIcon(ManageAttendanceFrm.class.getResource("/images/\u5B66\u751F\u7BA1\u7406.png")));
+        label.setIcon(new ImageIcon(ManageAttendanceFrm.class.getResource("/images/学生管理.png")));
         label.setFont(new Font("微软雅黑", Font.PLAIN, 14));
 
         studentComboBox = new JComboBox();
@@ -53,7 +53,7 @@ public class ManageAttendanceFrm extends JInternalFrame {
         });
 
         JLabel label_1 = new JLabel("\u8BFE\u7A0B\uFF1A");
-        label_1.setIcon(new ImageIcon(ManageAttendanceFrm.class.getResource("/images/\u8BFE\u7A0B.png")));
+        label_1.setIcon(new ImageIcon(ManageAttendanceFrm.class.getResource("/images/课程.png")));
         label_1.setFont(new Font("微软雅黑", Font.PLAIN, 14));
 
         courseComboBox = new JComboBox();
@@ -69,7 +69,7 @@ public class ManageAttendanceFrm extends JInternalFrame {
                 addAttendanceAct(ae);
             }
         });
-        attendanceAddButton.setIcon(new ImageIcon(ManageAttendanceFrm.class.getResource("/images/\u786E\u8BA4.png")));
+        attendanceAddButton.setIcon(new ImageIcon(ManageAttendanceFrm.class.getResource("/images/确认.png")));
         attendanceAddButton.setFont(new Font("微软雅黑", Font.PLAIN, 14));
 
         JPanel panel = new JPanel();
@@ -116,7 +116,7 @@ public class ManageAttendanceFrm extends JInternalFrame {
                 cancelAttendanceAct(ae);
             }
         });
-        cancelButton.setIcon(new ImageIcon(ManageAttendanceFrm.class.getResource("/images/\u5220\u9664.png")));
+        cancelButton.setIcon(new ImageIcon(ManageAttendanceFrm.class.getResource("/images/删除.png")));
         cancelButton.setFont(new Font("微软雅黑", Font.PLAIN, 14));
         GroupLayout gl_panel = new GroupLayout(panel);
         gl_panel.setHorizontalGroup(

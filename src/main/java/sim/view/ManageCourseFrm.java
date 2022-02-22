@@ -39,14 +39,14 @@ public class ManageCourseFrm extends JInternalFrame {
         setClosable(true);
         setIconifiable(true);
         JLabel label = new JLabel("\u8BFE\u7A0B\u540D\u79F0\uFF1A");
-        label.setIcon(new ImageIcon(ManageCourseFrm.class.getResource("/images/\u8BFE\u7A0B.png")));
+        label.setIcon(new ImageIcon(ManageCourseFrm.class.getResource("/images/课程.png")));
         label.setFont(new Font("微软雅黑", Font.PLAIN, 14));
 
         searchCourseNameTextField = new JTextField();
         searchCourseNameTextField.setColumns(10);
 
         JLabel label_1 = new JLabel("\u6388\u8BFE\u8001\u5E08\uFF1A");
-        label_1.setIcon(new ImageIcon(ManageCourseFrm.class.getResource("/images/\u8001\u5E08.png")));
+        label_1.setIcon(new ImageIcon(ManageCourseFrm.class.getResource("/images/老师.png")));
         label_1.setFont(new Font("微软雅黑", Font.PLAIN, 14));
 
         searchTeacherComboBox = new JComboBox();
@@ -57,7 +57,7 @@ public class ManageCourseFrm extends JInternalFrame {
                 searchCourse(ae);
             }
         });
-        searchButton.setIcon(new ImageIcon(ManageCourseFrm.class.getResource("/images/\u641C\u7D22.png")));
+        searchButton.setIcon(new ImageIcon(ManageCourseFrm.class.getResource("/images/搜索.png")));
         searchButton.setFont(new Font("微软雅黑", Font.PLAIN, 14));
 
         JScrollPane scrollPane = new JScrollPane();
@@ -103,27 +103,27 @@ public class ManageCourseFrm extends JInternalFrame {
         );
 
         JLabel label_2 = new JLabel("\u8BFE\u7A0B\u540D\u79F0\uFF1A");
-        label_2.setIcon(new ImageIcon(ManageCourseFrm.class.getResource("/images/\u8BFE\u7A0B.png")));
+        label_2.setIcon(new ImageIcon(ManageCourseFrm.class.getResource("/images/课程.png")));
         label_2.setFont(new Font("微软雅黑", Font.PLAIN, 14));
 
         editCourseTextField = new JTextField();
         editCourseTextField.setColumns(10);
 
         JLabel label_3 = new JLabel("\u6388\u8BFE\u8001\u5E08\uFF1A");
-        label_3.setIcon(new ImageIcon(ManageCourseFrm.class.getResource("/images/\u8001\u5E08.png")));
+        label_3.setIcon(new ImageIcon(ManageCourseFrm.class.getResource("/images/老师.png")));
         label_3.setFont(new Font("微软雅黑", Font.PLAIN, 14));
 
         editCourseTeachComboBox = new JComboBox();
 
         JLabel label_4 = new JLabel("\u5B66\u751F\u4EBA\u6570\uFF1A");
-        label_4.setIcon(new ImageIcon(ManageCourseFrm.class.getResource("/images/\u4EBA\u6570.png")));
+        label_4.setIcon(new ImageIcon(ManageCourseFrm.class.getResource("/images/人数.png")));
         label_4.setFont(new Font("微软雅黑", Font.PLAIN, 14));
 
         editCourseStudentNumTextField = new JTextField();
         editCourseStudentNumTextField.setColumns(10);
 
         JLabel label_5 = new JLabel("\u8BFE\u7A0B\u4ECB\u7ECD\uFF1A");
-        label_5.setIcon(new ImageIcon(ManageCourseFrm.class.getResource("/images/\u4ECB\u7ECD.png")));
+        label_5.setIcon(new ImageIcon(ManageCourseFrm.class.getResource("/images/介绍.png")));
         label_5.setFont(new Font("微软雅黑", Font.PLAIN, 14));
 
         editCourseInfoTextArea = new JTextArea();
@@ -134,7 +134,7 @@ public class ManageCourseFrm extends JInternalFrame {
                 editCourseSubmit(ae);
             }
         });
-        submitEditButton.setIcon(new ImageIcon(ManageCourseFrm.class.getResource("/images/\u786E\u8BA4.png")));
+        submitEditButton.setIcon(new ImageIcon(ManageCourseFrm.class.getResource("/images/确认.png")));
         submitEditButton.setFont(new Font("微软雅黑", Font.PLAIN, 14));
 
         JButton deleteCourseButton = new JButton("\u5220\u9664\u8BFE\u7A0B");
@@ -143,7 +143,7 @@ public class ManageCourseFrm extends JInternalFrame {
                 deleteCourse(ae);
             }
         });
-        deleteCourseButton.setIcon(new ImageIcon(ManageCourseFrm.class.getResource("/images/\u5220\u9664.png")));
+        deleteCourseButton.setIcon(new ImageIcon(ManageCourseFrm.class.getResource("/images/删除.png")));
         deleteCourseButton.setFont(new Font("微软雅黑", Font.PLAIN, 14));
         GroupLayout gl_panel = new GroupLayout(panel);
         gl_panel.setHorizontalGroup(

@@ -33,14 +33,14 @@ public class AddStudentFrm extends JInternalFrame {
         setBounds(100, 100, 450, 300);
 
         JLabel label = new JLabel("\u5B66\u751F\u59D3\u540D\uFF1A");
-        label.setIcon(new ImageIcon(AddStudentFrm.class.getResource("/images/\u5B66\u751F\u7BA1\u7406.png")));
+        label.setIcon(new ImageIcon(AddStudentFrm.class.getResource("/images/学生管理.png")));
         label.setFont(new Font("微软雅黑", Font.PLAIN, 14));
 
         studentNameTextField = new JTextField();
         studentNameTextField.setColumns(10);
 
         JLabel label_1 = new JLabel("\u6240\u5C5E\u73ED\u7EA7\uFF1A");
-        label_1.setIcon(new ImageIcon(AddStudentFrm.class.getResource("/images/\u73ED\u7EA7\u540D\u79F0.png")));
+        label_1.setIcon(new ImageIcon(AddStudentFrm.class.getResource("/images/班级名称.png")));
         label_1.setFont(new Font("微软雅黑", Font.PLAIN, 14));
 
         studentClassComboBox = new JComboBox();
@@ -53,7 +53,7 @@ public class AddStudentFrm extends JInternalFrame {
         studentPasswordField = new JPasswordField();
 
         JLabel label_3 = new JLabel("\u5B66\u751F\u6027\u522B\uFF1A");
-        label_3.setIcon(new ImageIcon(AddStudentFrm.class.getResource("/images/\u6027\u522B.png")));
+        label_3.setIcon(new ImageIcon(AddStudentFrm.class.getResource("/images/性别.png")));
         label_3.setFont(new Font("微软雅黑", Font.PLAIN, 14));
 
         studentSexManRadioButton = new JRadioButton("\u7537");
@@ -74,7 +74,7 @@ public class AddStudentFrm extends JInternalFrame {
                 studentAddAct(ae);
             }
         });
-        submitButton.setIcon(new ImageIcon(AddStudentFrm.class.getResource("/images/\u786E\u8BA4.png")));
+        submitButton.setIcon(new ImageIcon(AddStudentFrm.class.getResource("/images/确认.png")));
         submitButton.setFont(new Font("微软雅黑", Font.PLAIN, 14));
 
         JButton resetButton = new JButton("\u91CD\u7F6E");
@@ -83,7 +83,7 @@ public class AddStudentFrm extends JInternalFrame {
                 resetValue(ae);
             }
         });
-        resetButton.setIcon(new ImageIcon(AddStudentFrm.class.getResource("/images/\u91CD\u7F6E.png")));
+        resetButton.setIcon(new ImageIcon(AddStudentFrm.class.getResource("/images/重置.png")));
         resetButton.setFont(new Font("微软雅黑", Font.PLAIN, 14));
         GroupLayout groupLayout = new GroupLayout(getContentPane());
         groupLayout.setHorizontalGroup(

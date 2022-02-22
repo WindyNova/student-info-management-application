@@ -37,7 +37,7 @@ public class ManageSelectedCourseFrm extends JInternalFrame {
         setBounds(100, 100, 669, 562);
 
         JLabel label = new JLabel("\u5B66\u751F\uFF1A");
-        label.setIcon(new ImageIcon(ManageSelectedCourseFrm.class.getResource("/images/\u5B66\u751F\u7BA1\u7406.png")));
+        label.setIcon(new ImageIcon(ManageSelectedCourseFrm.class.getResource("/images/学生管理.png")));
         label.setFont(new Font("微软雅黑", Font.PLAIN, 14));
 
         searchStudentComboBox = new JComboBox();
@@ -48,7 +48,7 @@ public class ManageSelectedCourseFrm extends JInternalFrame {
         });
 
         JLabel label_1 = new JLabel("\u8BFE\u7A0B\uFF1A");
-        label_1.setIcon(new ImageIcon(ManageSelectedCourseFrm.class.getResource("/images/\u65B0\u4EBA\u8BFE\u7A0B.png")));
+        label_1.setIcon(new ImageIcon(ManageSelectedCourseFrm.class.getResource("/images/新人课程.png")));
         label_1.setFont(new Font("微软雅黑", Font.PLAIN, 14));
 
         searchCourseComboBox = new JComboBox();
@@ -60,7 +60,7 @@ public class ManageSelectedCourseFrm extends JInternalFrame {
             }
         });
         confirmSelectedButton.setFont(new Font("微软雅黑", Font.PLAIN, 14));
-        confirmSelectedButton.setIcon(new ImageIcon(ManageSelectedCourseFrm.class.getResource("/images/\u786E\u8BA4.png")));
+        confirmSelectedButton.setIcon(new ImageIcon(ManageSelectedCourseFrm.class.getResource("/images/确认.png")));
 
         JScrollPane scrollPane = new JScrollPane();
 
@@ -141,13 +141,13 @@ public class ManageSelectedCourseFrm extends JInternalFrame {
         scrollPane.setViewportView(selectedCourseListTable);
 
         JLabel label_2 = new JLabel("\u5B66\u751F\uFF1A");
-        label_2.setIcon(new ImageIcon(ManageSelectedCourseFrm.class.getResource("/images/\u5B66\u751F\u7BA1\u7406.png")));
+        label_2.setIcon(new ImageIcon(ManageSelectedCourseFrm.class.getResource("/images/学生管理.png")));
         label_2.setFont(new Font("微软雅黑", Font.PLAIN, 14));
 
         editSelectedStudentComboBox = new JComboBox();
 
         JLabel label_3 = new JLabel("\u8BFE\u7A0B\uFF1A");
-        label_3.setIcon(new ImageIcon(ManageSelectedCourseFrm.class.getResource("/images/\u65B0\u4EBA\u8BFE\u7A0B.png")));
+        label_3.setIcon(new ImageIcon(ManageSelectedCourseFrm.class.getResource("/images/新人课程.png")));
         label_3.setFont(new Font("微软雅黑", Font.PLAIN, 14));
 
         editSelectedCourseComboBox = new JComboBox();
@@ -158,7 +158,7 @@ public class ManageSelectedCourseFrm extends JInternalFrame {
                 editSelectCourseAct(ae);
             }
         });
-        confirmEditButton.setIcon(new ImageIcon(ManageSelectedCourseFrm.class.getResource("/images/\u786E\u8BA4.png")));
+        confirmEditButton.setIcon(new ImageIcon(ManageSelectedCourseFrm.class.getResource("/images/确认.png")));
         confirmEditButton.setFont(new Font("微软雅黑", Font.PLAIN, 14));
 
         JButton deleteCourseButton = new JButton("\u9000\u9009\u8BFE\u7A0B");
@@ -168,7 +168,7 @@ public class ManageSelectedCourseFrm extends JInternalFrame {
             }
         });
         deleteCourseButton.setFont(new Font("微软雅黑", Font.PLAIN, 14));
-        deleteCourseButton.setIcon(new ImageIcon(ManageSelectedCourseFrm.class.getResource("/images/\u5220\u9664.png")));
+        deleteCourseButton.setIcon(new ImageIcon(ManageSelectedCourseFrm.class.getResource("/images/删除.png")));
         GroupLayout gl_panel = new GroupLayout(panel);
         gl_panel.setHorizontalGroup(
                 gl_panel.createParallelGroup(Alignment.LEADING)

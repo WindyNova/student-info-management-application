@@ -59,14 +59,14 @@ public class EditPasswordFrm extends JInternalFrame {
         oldPasswordTextField.setColumns(10);
 
         JLabel label_1 = new JLabel("\u65B0\u5BC6\u7801\uFF1A");
-        label_1.setIcon(new ImageIcon(EditPasswordFrm.class.getResource("/images/\u4FEE\u6539\u5BC6\u7801.png")));
+        label_1.setIcon(new ImageIcon(EditPasswordFrm.class.getResource("/images/修改密码.png")));
         label_1.setFont(new Font("微软雅黑", Font.PLAIN, 14));
 
         newPasswordTextField = new JPasswordField();
         newPasswordTextField.setColumns(10);
 
         JLabel label_2 = new JLabel("\u786E\u8BA4\u5BC6\u7801\uFF1A");
-        label_2.setIcon(new ImageIcon(EditPasswordFrm.class.getResource("/images/\u4FEE\u6539\u5BC6\u7801.png")));
+        label_2.setIcon(new ImageIcon(EditPasswordFrm.class.getResource("/images/修改密码.png")));
         label_2.setFont(new Font("微软雅黑", Font.PLAIN, 14));
 
         confirmPasswordTextField = new JPasswordField();
@@ -78,7 +78,7 @@ public class EditPasswordFrm extends JInternalFrame {
                 submitEdit(e);
             }
         });
-        submitButton.setIcon(new ImageIcon(EditPasswordFrm.class.getResource("/images/\u786E\u8BA4.png")));
+        submitButton.setIcon(new ImageIcon(EditPasswordFrm.class.getResource("/images/确认.png")));
         submitButton.setFont(new Font("微软雅黑", Font.PLAIN, 14));
 
         JButton resetButton = new JButton("\u91CD\u7F6E");
@@ -87,11 +87,11 @@ public class EditPasswordFrm extends JInternalFrame {
                 resetValue(ae);
             }
         });
-        resetButton.setIcon(new ImageIcon(EditPasswordFrm.class.getResource("/images/\u91CD\u7F6E.png")));
+        resetButton.setIcon(new ImageIcon(EditPasswordFrm.class.getResource("/images/重置.png")));
         resetButton.setFont(new Font("微软雅黑", Font.PLAIN, 14));
 
         JLabel label_3 = new JLabel("\u5F53\u524D\u7528\u6237\uFF1A");
-        label_3.setIcon(new ImageIcon(EditPasswordFrm.class.getResource("/images/\u7528\u6237\u540D.png")));
+        label_3.setIcon(new ImageIcon(EditPasswordFrm.class.getResource("/images/用户名.png")));
         label_3.setFont(new Font("微软雅黑", Font.PLAIN, 14));
 
         currentUserLabel = new JLabel("");

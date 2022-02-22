@@ -25,14 +25,14 @@ public class AddStudentClassFrm extends JInternalFrame {
         setBounds(100, 100, 450, 300);
 
         JLabel label = new JLabel("\u73ED\u7EA7\u540D\u79F0\uFF1A");
-        label.setIcon(new ImageIcon(AddStudentClassFrm.class.getResource("/images/\u73ED\u7EA7\u540D\u79F0.png")));
+        label.setIcon(new ImageIcon(AddStudentClassFrm.class.getResource("/images/班级名称.png")));
         label.setFont(new Font("微软雅黑", Font.PLAIN, 14));
 
         classNameTextField = new JTextField();
         classNameTextField.setColumns(10);
 
         JLabel label_1 = new JLabel("\u73ED\u7EA7\u4FE1\u606F\uFF1A");
-        label_1.setIcon(new ImageIcon(AddStudentClassFrm.class.getResource("/images/\u73ED\u7EA7\u4ECB\u7ECD.png")));
+        label_1.setIcon(new ImageIcon(AddStudentClassFrm.class.getResource("/images/班级介绍.png")));
         label_1.setFont(new Font("微软雅黑", Font.PLAIN, 14));
 
         classInfotextArea = new JTextArea();
@@ -43,7 +43,7 @@ public class AddStudentClassFrm extends JInternalFrame {
                 submitClass(ae);
             }
         });
-        submitButton.setIcon(new ImageIcon(AddStudentClassFrm.class.getResource("/images/\u786E\u8BA4.png")));
+        submitButton.setIcon(new ImageIcon(AddStudentClassFrm.class.getResource("/images/确认.png")));
         submitButton.setFont(new Font("微软雅黑", Font.PLAIN, 14));
 
         JButton restButton = new JButton("\u91CD\u7F6E");
@@ -52,7 +52,7 @@ public class AddStudentClassFrm extends JInternalFrame {
                 resetValue(e);
             }
         });
-        restButton.setIcon(new ImageIcon(AddStudentClassFrm.class.getResource("/images/\u91CD\u7F6E.png")));
+        restButton.setIcon(new ImageIcon(AddStudentClassFrm.class.getResource("/images/重置.png")));
         restButton.setFont(new Font("微软雅黑", Font.PLAIN, 14));
         GroupLayout groupLayout = new GroupLayout(getContentPane());
         groupLayout.setHorizontalGroup(

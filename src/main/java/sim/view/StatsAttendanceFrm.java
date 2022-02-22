@@ -47,7 +47,7 @@ public class StatsAttendanceFrm extends JInternalFrame {
         setBounds(100, 100, 701, 696);
 
         JLabel label = new JLabel("\u8BFE\u7A0B\uFF1A");
-        label.setIcon(new ImageIcon(StatsAttendanceFrm.class.getResource("/images/\u8BFE\u7A0B.png")));
+        label.setIcon(new ImageIcon(StatsAttendanceFrm.class.getResource("/images/课程.png")));
         label.setFont(new Font("微软雅黑", Font.PLAIN, 14));
 
         courseComboBox = new JComboBox();
@@ -58,7 +58,7 @@ public class StatsAttendanceFrm extends JInternalFrame {
         });
 
         JLabel label_1 = new JLabel("\u65E5\u671F\uFF1A");
-        label_1.setIcon(new ImageIcon(StatsAttendanceFrm.class.getResource("/images/\u65E5\u671F.png")));
+        label_1.setIcon(new ImageIcon(StatsAttendanceFrm.class.getResource("/images/日期.png")));
         label_1.setFont(new Font("微软雅黑", Font.PLAIN, 14));
 
         dateTextField = new JTextField();
@@ -70,7 +70,7 @@ public class StatsAttendanceFrm extends JInternalFrame {
                 searchAttendanceAct(ae);
             }
         });
-        searchButton.setIcon(new ImageIcon(StatsAttendanceFrm.class.getResource("/images/\u641C\u7D22.png")));
+        searchButton.setIcon(new ImageIcon(StatsAttendanceFrm.class.getResource("/images/搜索.png")));
         searchButton.setFont(new Font("微软雅黑", Font.PLAIN, 14));
 
         statsListPanel = new JPanel();
@@ -124,7 +124,7 @@ public class StatsAttendanceFrm extends JInternalFrame {
                 statsListPanel.add(statsListScrollPane);
             }
         });
-        button.setIcon(new ImageIcon(StatsAttendanceFrm.class.getResource("/images/\u5217\u8868.png")));
+        button.setIcon(new ImageIcon(StatsAttendanceFrm.class.getResource("/images/列表.png")));
 
         JButton button_1 = new JButton("\u67F1\u72B6\u56FE\u663E\u793A");
         button_1.addActionListener(new ActionListener() {
@@ -140,7 +140,7 @@ public class StatsAttendanceFrm extends JInternalFrame {
                 drawBar(getAttendanceNum(course, dateString), course.getSelected_num(), dateString);
             }
         });
-        button_1.setIcon(new ImageIcon(StatsAttendanceFrm.class.getResource("/images/\u67F1\u72B6\u56FE.png")));
+        button_1.setIcon(new ImageIcon(StatsAttendanceFrm.class.getResource("/images/柱状图.png")));
 
         JButton button_2 = new JButton("\u997C\u72B6\u56FE\u663E\u793A");
         button_2.addActionListener(new ActionListener() {
@@ -157,7 +157,7 @@ public class StatsAttendanceFrm extends JInternalFrame {
                 drawCircle(getAttendanceNum(course, dateString), course.getSelected_num(), dateString);
             }
         });
-        button_2.setIcon(new ImageIcon(StatsAttendanceFrm.class.getResource("/images/\u997C\u72B6\u56FE.png")));
+        button_2.setIcon(new ImageIcon(StatsAttendanceFrm.class.getResource("/images/饼状图.png")));
         GroupLayout gl_panel_1 = new GroupLayout(panel_1);
         gl_panel_1.setHorizontalGroup(
                 gl_panel_1.createParallelGroup(Alignment.LEADING)

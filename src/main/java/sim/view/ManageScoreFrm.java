@@ -37,13 +37,13 @@ public class ManageScoreFrm extends JInternalFrame {
         setBounds(100, 100, 791, 618);
 
         JLabel label = new JLabel("\u5B66\u751F\uFF1A");
-        label.setIcon(new ImageIcon(ManageScoreFrm.class.getResource("/images/\u5B66\u751F\u7BA1\u7406.png")));
+        label.setIcon(new ImageIcon(ManageScoreFrm.class.getResource("/images/学生管理.png")));
         label.setFont(new Font("微软雅黑", Font.PLAIN, 14));
 
         studentComboBox = new JComboBox();
 
         JLabel label_1 = new JLabel("\u8BFE\u7A0B");
-        label_1.setIcon(new ImageIcon(ManageScoreFrm.class.getResource("/images/\u8BFE\u7A0B.png")));
+        label_1.setIcon(new ImageIcon(ManageScoreFrm.class.getResource("/images/课程.png")));
         label_1.setFont(new Font("微软雅黑", Font.PLAIN, 14));
 
         courseComboBox = new JComboBox();
@@ -64,7 +64,7 @@ public class ManageScoreFrm extends JInternalFrame {
                 setTable(score);
             }
         });
-        searchButton.setIcon(new ImageIcon(ManageScoreFrm.class.getResource("/images/\u641C\u7D22.png")));
+        searchButton.setIcon(new ImageIcon(ManageScoreFrm.class.getResource("/images/搜索.png")));
         searchButton.setFont(new Font("微软雅黑", Font.PLAIN, 14));
 
         JScrollPane scrollPane = new JScrollPane();
@@ -112,7 +112,7 @@ public class ManageScoreFrm extends JInternalFrame {
         );
 
         JLabel label_2 = new JLabel("\u6210\u7EE9\uFF1A");
-        label_2.setIcon(new ImageIcon(ManageScoreFrm.class.getResource("/images/\u6210\u7EE9.png")));
+        label_2.setIcon(new ImageIcon(ManageScoreFrm.class.getResource("/images/成绩.png")));
         label_2.setFont(new Font("微软雅黑", Font.PLAIN, 14));
 
         editScoreTextField = new JTextField();
@@ -124,7 +124,7 @@ public class ManageScoreFrm extends JInternalFrame {
                 editSubmitAct(ae);
             }
         });
-        confirmEditButton.setIcon(new ImageIcon(ManageScoreFrm.class.getResource("/images/\u786E\u8BA4.png")));
+        confirmEditButton.setIcon(new ImageIcon(ManageScoreFrm.class.getResource("/images/确认.png")));
         confirmEditButton.setFont(new Font("微软雅黑", Font.PLAIN, 14));
 
         JButton deleteButton = new JButton("\u5220\u9664\u6210\u7EE9");
@@ -133,7 +133,7 @@ public class ManageScoreFrm extends JInternalFrame {
                 deleteAct(ae);
             }
         });
-        deleteButton.setIcon(new ImageIcon(ManageScoreFrm.class.getResource("/images/\u5220\u9664.png")));
+        deleteButton.setIcon(new ImageIcon(ManageScoreFrm.class.getResource("/images/删除.png")));
         deleteButton.setFont(new Font("微软雅黑", Font.PLAIN, 14));
         GroupLayout gl_panel = new GroupLayout(panel);
         gl_panel.setHorizontalGroup(

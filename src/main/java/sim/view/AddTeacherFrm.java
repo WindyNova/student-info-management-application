@@ -30,13 +30,13 @@ public class AddTeacherFrm extends JInternalFrame {
 
         JLabel label = new JLabel("\u6559\u5E08\u59D3\u540D\uFF1A");
         label.setFont(new Font("微软雅黑", Font.PLAIN, 14));
-        label.setIcon(new ImageIcon(AddTeacherFrm.class.getResource("/images/\u8001\u5E08.png")));
+        label.setIcon(new ImageIcon(AddTeacherFrm.class.getResource("/images/老师.png")));
 
         teacherNameTextField = new JTextField();
         teacherNameTextField.setColumns(10);
 
         JLabel label_1 = new JLabel("\u6559\u5E08\u6027\u522B\uFF1A");
-        label_1.setIcon(new ImageIcon(AddTeacherFrm.class.getResource("/images/\u6027\u522B.png")));
+        label_1.setIcon(new ImageIcon(AddTeacherFrm.class.getResource("/images/性别.png")));
         label_1.setFont(new Font("微软雅黑", Font.PLAIN, 14));
 
         ButtonGroup buttonGroup = new ButtonGroup();
@@ -50,14 +50,14 @@ public class AddTeacherFrm extends JInternalFrame {
         buttonGroup.add(teacherSexFemalRadioButton);
 
         JLabel label_2 = new JLabel("\u6559\u5E08\u804C\u79F0\uFF1A");
-        label_2.setIcon(new ImageIcon(AddTeacherFrm.class.getResource("/images/\u804C\u79F0\u8BC4\u5B9A.png")));
+        label_2.setIcon(new ImageIcon(AddTeacherFrm.class.getResource("/images/职称评定.png")));
         label_2.setFont(new Font("微软雅黑", Font.PLAIN, 14));
 
         teacherTitleTextField = new JTextField();
         teacherTitleTextField.setColumns(10);
 
         JLabel label_3 = new JLabel("\u6559\u5E08\u5E74\u9F84\uFF1A");
-        label_3.setIcon(new ImageIcon(AddTeacherFrm.class.getResource("/images/\u5E74\u9F84.png")));
+        label_3.setIcon(new ImageIcon(AddTeacherFrm.class.getResource("/images/年龄.png")));
         label_3.setFont(new Font("微软雅黑", Font.PLAIN, 14));
 
         teacherAgeTextField = new JTextField();
@@ -69,7 +69,7 @@ public class AddTeacherFrm extends JInternalFrame {
                 addTeacherAct(ae);
             }
         });
-        submitButton.setIcon(new ImageIcon(AddTeacherFrm.class.getResource("/images/\u786E\u8BA4.png")));
+        submitButton.setIcon(new ImageIcon(AddTeacherFrm.class.getResource("/images/确认.png")));
         submitButton.setFont(new Font("微软雅黑", Font.PLAIN, 14));
 
         JButton resetButton = new JButton("\u91CD\u7F6E\u8868\u5355");
@@ -78,11 +78,11 @@ public class AddTeacherFrm extends JInternalFrame {
                 resetValue(ae);
             }
         });
-        resetButton.setIcon(new ImageIcon(AddTeacherFrm.class.getResource("/images/\u91CD\u7F6E.png")));
+        resetButton.setIcon(new ImageIcon(AddTeacherFrm.class.getResource("/images/重置.png")));
         resetButton.setFont(new Font("微软雅黑", Font.PLAIN, 14));
 
         JLabel label_4 = new JLabel("\u767B\u5F55\u5BC6\u7801\uFF1A");
-        label_4.setIcon(new ImageIcon(AddTeacherFrm.class.getResource("/images/\u5BC6\u7801.png")));
+        label_4.setIcon(new ImageIcon(AddTeacherFrm.class.getResource("/images/密码.png")));
         label_4.setFont(new Font("微软雅黑", Font.PLAIN, 14));
 
         teacherPasswordField = new JPasswordField();

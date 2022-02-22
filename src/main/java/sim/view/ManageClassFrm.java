@@ -34,7 +34,7 @@ public class ManageClassFrm extends JInternalFrame {
         JScrollPane scrollPane = new JScrollPane();
 
         JLabel label = new JLabel("\u73ED\u7EA7\u540D\u79F0\uFF1A");
-        label.setIcon(new ImageIcon(ManageClassFrm.class.getResource("/images/\u73ED\u7EA7\u540D\u79F0.png")));
+        label.setIcon(new ImageIcon(ManageClassFrm.class.getResource("/images/班级名称.png")));
         label.setFont(new Font("微软雅黑", Font.PLAIN, 14));
 
         searchClassNameTextField = new JTextField();
@@ -48,18 +48,18 @@ public class ManageClassFrm extends JInternalFrame {
                 setTable(sc);
             }
         });
-        searchButton.setIcon(new ImageIcon(ManageClassFrm.class.getResource("/images/\u641C\u7D22.png")));
+        searchButton.setIcon(new ImageIcon(ManageClassFrm.class.getResource("/images/搜索.png")));
         searchButton.setFont(new Font("微软雅黑", Font.PLAIN, 14));
 
         JLabel label_1 = new JLabel("\u73ED\u7EA7\u540D\u79F0\uFF1A");
-        label_1.setIcon(new ImageIcon(ManageClassFrm.class.getResource("/images/\u73ED\u7EA7\u540D\u79F0.png")));
+        label_1.setIcon(new ImageIcon(ManageClassFrm.class.getResource("/images/班级名称.png")));
         label_1.setFont(new Font("微软雅黑", Font.PLAIN, 14));
 
         editClassNameTextField = new JTextField();
         editClassNameTextField.setColumns(10);
 
         JLabel label_2 = new JLabel("\u73ED\u7EA7\u4FE1\u606F\uFF1A");
-        label_2.setIcon(new ImageIcon(ManageClassFrm.class.getResource("/images/\u73ED\u7EA7\u4ECB\u7ECD.png")));
+        label_2.setIcon(new ImageIcon(ManageClassFrm.class.getResource("/images/班级介绍.png")));
         label_2.setFont(new Font("微软雅黑", Font.PLAIN, 14));
 
         editClassInfoTextArea = new JTextArea();
@@ -70,7 +70,7 @@ public class ManageClassFrm extends JInternalFrame {
                 submitEditAct(ae);
             }
         });
-        submitEditButton.setIcon(new ImageIcon(ManageClassFrm.class.getResource("/images/\u786E\u8BA4.png")));
+        submitEditButton.setIcon(new ImageIcon(ManageClassFrm.class.getResource("/images/确认.png")));
         submitEditButton.setFont(new Font("微软雅黑", Font.PLAIN, 14));
 
         JButton submitDeleteButton = new JButton("\u5220\u9664");
@@ -79,7 +79,7 @@ public class ManageClassFrm extends JInternalFrame {
                 deleteClassAct(ae);
             }
         });
-        submitDeleteButton.setIcon(new ImageIcon(ManageClassFrm.class.getResource("/images/\u5220\u9664.png")));
+        submitDeleteButton.setIcon(new ImageIcon(ManageClassFrm.class.getResource("/images/删除.png")));
         submitDeleteButton.setFont(new Font("微软雅黑", Font.PLAIN, 14));
         GroupLayout groupLayout = new GroupLayout(getContentPane());
         groupLayout.setHorizontalGroup(
