@@ -224,7 +224,7 @@ public class ManageScoreFrm extends JInternalFrame {
             } else {
                 JOptionPane.showMessageDialog(this, "删除失败！");
             }
-            scoreDao.closeDao();
+            scoreDao.closeCon();
         }
     }
 
@@ -245,7 +245,7 @@ public class ManageScoreFrm extends JInternalFrame {
         } else {
             JOptionPane.showMessageDialog(this, "更新失败！");
         }
-        scoreDao.closeDao();
+        scoreDao.closeCon();
     }
 
     protected void tableItemClick(MouseEvent me) {
@@ -265,7 +265,7 @@ public class ManageScoreFrm extends JInternalFrame {
         studentComboBox.removeAllItems();
         StudentDao studentDao = new StudentDao();
         studentList = studentDao.getStudentList(new Student());
-        studentDao.closeDao();
+        studentDao.closeCon();
         Course course = (Course) courseComboBox.getSelectedItem();
         List<Student> selectedCourseStudentList = getSelectedCourseStudentList(course);
         for (Student student : studentList) {
@@ -280,7 +280,7 @@ public class ManageScoreFrm extends JInternalFrame {
     private void setCourseCombox() {
         CourseDao courseDao = new CourseDao();
         courseList = courseDao.getCourseList(new Course());
-        courseDao.closeDao();
+        courseDao.closeCon();
         for (Course course : courseList) {
             if ("教师".equals(MainFrm.userType.getName())) {
                 Teacher teacher = (Teacher) MainFrm.userObject;
@@ -316,7 +316,7 @@ public class ManageScoreFrm extends JInternalFrame {
             v.add(s.getScore());
             dft.addRow(v);
         }
-        scoreDao.closeDao();
+        scoreDao.closeCon();
     }
 
     private Course getCourseById(int id) {

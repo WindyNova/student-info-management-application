@@ -285,7 +285,7 @@ public class ManageCourseFrm extends JInternalFrame {
         } else {
             JOptionPane.showMessageDialog(this, "修改失败！");
         }
-        courseDao.closeDao();
+        courseDao.closeCon();
         setCourseListTable(new Course());
 
     }
@@ -333,7 +333,7 @@ public class ManageCourseFrm extends JInternalFrame {
         } else {
             JOptionPane.showMessageDialog(this, "删除失败！");
         }
-        courseDao.closeDao();
+        courseDao.closeCon();
         setCourseListTable(new Course());
     }
 
@@ -352,13 +352,13 @@ public class ManageCourseFrm extends JInternalFrame {
             v.add(c.getInfo());
             dft.addRow(v);
         }
-        courseDao.closeDao();
+        courseDao.closeCon();
     }
 
     private void setTeacherCombox() {
         TeacherDao teacherDao = new TeacherDao();
         teacherList = teacherDao.getTeacherList(new Teacher());
-        teacherDao.closeDao();
+        teacherDao.closeCon();
         for (Teacher teacher : teacherList) {
             editCourseTeachComboBox.addItem(teacher);
             searchTeacherComboBox.addItem(teacher);

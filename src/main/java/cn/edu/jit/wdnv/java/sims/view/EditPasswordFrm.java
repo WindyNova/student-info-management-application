@@ -191,7 +191,7 @@ public class EditPasswordFrm extends JInternalFrame {
             adminTmp.setId(admin.getId());
             adminTmp.setPassword(oldPassword);
             JOptionPane.showMessageDialog(this, adminDao.editPassword(adminTmp, newPassword));
-            adminDao.closeDao();
+            adminDao.closeCon();
             return;
         }
         if ("学生".equals(MainFrm.userType.getName())) {
@@ -202,7 +202,7 @@ public class EditPasswordFrm extends JInternalFrame {
             studentTmp.setPassword(oldPassword);
             studentTmp.setId(student.getId());
             JOptionPane.showMessageDialog(this, studentDao.editPassword(studentTmp, newPassword));
-            studentDao.closeDao();
+            studentDao.closeCon();
             return;
         }
         if ("教师".equals(MainFrm.userType.getName())) {
@@ -213,7 +213,7 @@ public class EditPasswordFrm extends JInternalFrame {
             teacherTmp.setPassword(oldPassword);
             teacherTmp.setId(teacher.getId());
             JOptionPane.showMessageDialog(this, teacherDao.editPassword(teacherTmp, newPassword));
-            teacherDao.closeDao();
+            teacherDao.closeCon();
             return;
         }
 

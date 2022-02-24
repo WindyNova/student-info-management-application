@@ -213,6 +213,6 @@ public class AddStudentFrm extends JInternalFrame {
         for (StudentClass sc : classList) {
             studentClassComboBox.addItem(sc);
         }
-        classDao.closeDao();
+        classDao.closeCon();
     }
 }

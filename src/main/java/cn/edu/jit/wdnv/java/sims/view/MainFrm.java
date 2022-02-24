@@ -19,7 +19,7 @@ public class MainFrm extends JFrame {
     private final JMenu manageTeacherMenu;
     private final JMenuItem addTeacherMenuItem;
     private final JMenu courseMenu;
-    private final JMenuItem studentAttdentanceMenuItem;
+    private final JMenuItem studentAttendanceMenuItem;
     private final JMenuItem manageAttendanceMenuItem;
     private final JMenuItem statsAttendanceMenuItem;
     private final JMenuItem addScoreMenuItem;
@@ -186,17 +186,17 @@ public class MainFrm extends JFrame {
         menu_2.setIcon(new ImageIcon(MainFrm.class.getResource("")));
         menuBar.add(menu_2);
 
-        studentAttdentanceMenuItem = new JMenuItem("\u5B66\u751F\u7B7E\u5230");
-        studentAttdentanceMenuItem.addActionListener(new ActionListener() {
+        studentAttendanceMenuItem = new JMenuItem("\u5B66\u751F\u7B7E\u5230");
+        studentAttendanceMenuItem.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
                 AttendanceStudentFrm attendanceStudentFrm = new AttendanceStudentFrm();
                 attendanceStudentFrm.setVisible(true);
                 desktopPane.add(attendanceStudentFrm);
             }
         });
-        studentAttdentanceMenuItem.setIcon(new ImageIcon(MainFrm.class.getResource("")));
-        studentAttdentanceMenuItem.setEnabled(false);
-        menu_2.add(studentAttdentanceMenuItem);
+        studentAttendanceMenuItem.setIcon(new ImageIcon(MainFrm.class.getResource("")));
+        studentAttendanceMenuItem.setEnabled(false);
+        menu_2.add(studentAttendanceMenuItem);
 
         manageAttendanceMenuItem = new JMenuItem("\u7B7E\u5230\u7BA1\u7406");
         manageAttendanceMenuItem.addActionListener(new ActionListener() {
@@ -292,7 +292,7 @@ public class MainFrm extends JFrame {
         // TODO Auto-generated method stub
         AddStudentClassFrm sca = new AddStudentClassFrm();
         sca.setVisible(true);
-        desktopPane.add(sca);
+        desktopPane.add(new AddStudentClassFrm());
     }
 
     protected void editPassword(ActionEvent ae) {
@@ -304,12 +304,13 @@ public class MainFrm extends JFrame {
 
 
     private void setUserType() {
+
         if (userType.getName().equals("学生")) {
             addStudentMenuItem.setEnabled(false);
             manageClassMenu.setEnabled(false);
             manageTeacherMenu.setEnabled(false);
             courseMenu.setEnabled(false);
-            studentAttdentanceMenuItem.setEnabled(true);
+            studentAttendanceMenuItem.setEnabled(true);
             manageAttendanceMenuItem.setEnabled(false);
             statsAttendanceMenuItem.setEnabled(false);
             addScoreMenuItem.setEnabled(false);

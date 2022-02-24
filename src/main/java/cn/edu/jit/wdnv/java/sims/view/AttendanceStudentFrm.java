@@ -213,14 +213,14 @@ public class AttendanceStudentFrm extends JInternalFrame {
         } else {
             JOptionPane.showMessageDialog(this, "签到失败！");
         }
-        attendanceDao.closeDao();
+        attendanceDao.closeCon();
         initTable();
     }
 
     private void setCourseCombox() {
         CourseDao courseDao = new CourseDao();
         courseList = courseDao.getCourseList(new Course());
-        courseDao.closeDao();
+        courseDao.closeCon();
         Student student = (Student) MainFrm.userObject;
         SelectedCourse sc = new SelectedCourse();
         sc.setStudent_id(student.getId());
@@ -260,7 +260,7 @@ public class AttendanceStudentFrm extends JInternalFrame {
             v.add(a.getAttendance_date());
             dft.addRow(v);
         }
-        attendanceDao.closeDao();
+        attendanceDao.closeCon();
     }
 
 }

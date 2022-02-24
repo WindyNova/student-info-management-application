@@ -131,7 +131,7 @@ public class AddStudentClassFrm extends JInternalFrame {
         } else {
             JOptionPane.showMessageDialog(this, "班级添加失败！");
         }
-        classDao.closeDao();
+        classDao.closeCon();
         resetValue(ae);
     }
 

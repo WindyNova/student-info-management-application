@@ -266,7 +266,7 @@ public class StatsAttendanceFrm extends JInternalFrame {
     private void setCourseCombox() {
         CourseDao courseDao = new CourseDao();
         courseList = courseDao.getCourseList(new Course());
-        courseDao.closeDao();
+        courseDao.closeCon();
         for (Course course : courseList) {
             if ("教师".equals(MainFrm.userType.getName())) {
                 Teacher teacher = (Teacher) MainFrm.userObject;

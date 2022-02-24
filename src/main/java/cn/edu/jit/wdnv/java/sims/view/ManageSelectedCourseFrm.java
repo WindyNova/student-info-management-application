@@ -254,8 +254,8 @@ public class ManageSelectedCourseFrm extends JInternalFrame {
         } else {
             JOptionPane.showMessageDialog(this, "退课失败！");
         }
-        scDao.closeDao();
-        courseDao.closeDao();
+        scDao.closeCon();
+        courseDao.closeCon();
         initTable();
     }
 
@@ -299,8 +299,8 @@ public class ManageSelectedCourseFrm extends JInternalFrame {
                 JOptionPane.showMessageDialog(this, "修改成功，课程信息更新失败!");
             }
         }
-        courseDao.closeDao();
-        scDao.closeDao();
+        courseDao.closeCon();
+        scDao.closeCon();
         initTable();
     }
 
@@ -359,15 +359,15 @@ public class ManageSelectedCourseFrm extends JInternalFrame {
         } else {
             JOptionPane.showMessageDialog(this, "选课失败!");
         }
-        courseDao.closeDao();
-        scDao.closeDao();
+        courseDao.closeCon();
+        scDao.closeCon();
         initTable();
     }
 
     private void setStudentCombox() {
         StudentDao studentDao = new StudentDao();
         studentList = studentDao.getStudentList(new Student());
-        studentDao.closeDao();
+        studentDao.closeCon();
         for (Student student : studentList) {
             searchStudentComboBox.addItem(student);
             editSelectedStudentComboBox.addItem(student);
@@ -388,7 +388,7 @@ public class ManageSelectedCourseFrm extends JInternalFrame {
     private void setCourseCombox() {
         CourseDao courseDao = new CourseDao();
         courseList = courseDao.getCourseList(new Course());
-        courseDao.closeDao();
+        courseDao.closeCon();
         for (Course course : courseList) {
             searchCourseComboBox.addItem(course);
             editSelectedCourseComboBox.addItem(course);
@@ -407,7 +407,7 @@ public class ManageSelectedCourseFrm extends JInternalFrame {
             v.add(getCourseNameById(sc.getCourse_id()));
             dft.addRow(v);
         }
-        selectedCourseDao.closeDao();
+        selectedCourseDao.closeCon();
     }
 
     private void initTable() {

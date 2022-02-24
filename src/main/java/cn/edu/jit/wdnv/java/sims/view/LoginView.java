@@ -1,19 +1,20 @@
 package cn.edu.jit.wdnv.java.sims.view;
 
+import cn.edu.jit.wdnv.java.sims.dao.AdminDao;
+import cn.edu.jit.wdnv.java.sims.dao.LoginDao;
+import cn.edu.jit.wdnv.java.sims.dao.StudentDao;
+import cn.edu.jit.wdnv.java.sims.dao.TeacherDao;
 import cn.edu.jit.wdnv.java.sims.model.Admin;
 import cn.edu.jit.wdnv.java.sims.model.Student;
 import cn.edu.jit.wdnv.java.sims.model.Teacher;
 import cn.edu.jit.wdnv.java.sims.model.UserType;
-import cn.edu.jit.wdnv.java.sims.dao.AdminDao;
-import cn.edu.jit.wdnv.java.sims.dao.StudentDao;
-import cn.edu.jit.wdnv.java.sims.dao.TeacherDao;
 import cn.edu.jit.wdnv.java.sims.util.StringUtil;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class LoginView extends JFrame { //Swing Desingner Auto-Generated
+public class LoginView extends JFrame { //Swing Designer Auto-Generated
     private JPanel loginPanel;
     private JTextField usernameTextField;
     private JPasswordField passwordField;
@@ -32,7 +33,7 @@ public class LoginView extends JFrame { //Swing Desingner Auto-Generated
         add(loginPanel);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         validate();
-        usertypeComboBox.setModel(new DefaultComboBoxModel(new UserType[] {UserType.ADMIN, UserType.TEACHER, UserType.STUDENT}));
+        usertypeComboBox.setModel(new DefaultComboBoxModel(new UserType[]{UserType.ADMIN, UserType.TEACHER, UserType.STUDENT}));
 
         loginButton.addActionListener(new ActionListener() { //登录按钮监听器
             @Override
@@ -40,7 +41,7 @@ public class LoginView extends JFrame { //Swing Desingner Auto-Generated
                 loginAct();
             }
         });
-        resetButton.addActionListener(new ActionListener() {
+        resetButton.addActionListener(new ActionListener() { //复位按钮监听器
             @Override
             public void actionPerformed(ActionEvent e) {
                 resetAct();
@@ -49,7 +50,6 @@ public class LoginView extends JFrame { //Swing Desingner Auto-Generated
     }
 
     protected void loginAct() { //登录操作
-        // TODO Auto-generated method stub
         String userName = usernameTextField.getText();
         String password = String.valueOf(passwordField.getPassword());
         UserType selectedItem = (UserType) usertypeComboBox.getSelectedItem();
@@ -61,22 +61,24 @@ public class LoginView extends JFrame { //Swing Desingner Auto-Generated
             JOptionPane.showMessageDialog(this, "密码不能为空！");
             return;
         }
-        Admin admin = null;
-        if ("系统管理员".equals(selectedItem.getName())) {
-            AdminDao adminDao = new AdminDao();
-            Admin adminTmp = new Admin();
-            adminTmp.setName(userName);
-            adminTmp.setPassword(password);
-            admin = adminDao.login(adminTmp);
-            adminDao.closeDao();
-            if (admin == null) {
+
+        if (selectedItem.getName().equals("系统管理员")) {
+            Admin admin = new Admin();
+            LoginDao adminlogin = LoginDao.login(userName, password);
+
+            adminlogin.setCredentials(userName, password); //设置身份
+
+
+
+            if (adminlogin.equals(0)) {
                 JOptionPane.showMessageDialog(this, "用户名或密码错误！");
                 return;
             }
             JOptionPane.showMessageDialog(this, "欢迎【" + selectedItem.getName() + "】：" + admin.getName() + "登录本系统！");
             this.dispose();
             new MainFrm(selectedItem, admin).setVisible(true);
-        } else if ("教师".equals(selectedItem.getName())) {
+        }
+        if (selectedItem.getName().equals("教师")) {
             //教师登录
             Teacher teacher = null;
             TeacherDao teacherDao = new TeacherDao();
@@ -84,7 +86,7 @@ public class LoginView extends JFrame { //Swing Desingner Auto-Generated
             teacherTmp.setName(userName);
             teacherTmp.setPassword(password);
             teacher = teacherDao.login(teacherTmp);
-            teacherDao.closeDao();
+            teacherDao.closeCon();
             if (teacher == null) {
                 JOptionPane.showMessageDialog(this, "用户名或密码错误！");
                 return;
@@ -92,7 +94,8 @@ public class LoginView extends JFrame { //Swing Desingner Auto-Generated
             JOptionPane.showMessageDialog(this, "欢迎【" + selectedItem.getName() + "】：" + teacher.getName() + "登录本系统！");
             this.dispose();
             new MainFrm(selectedItem, teacher).setVisible(true);
-        } else {
+        }
+        if (selectedItem.getName().equals("学生")) {
             //学生登录
             Student student = null;
             StudentDao studentDao = new StudentDao();
@@ -100,19 +103,18 @@ public class LoginView extends JFrame { //Swing Desingner Auto-Generated
             studentTmp.setName(userName);
             studentTmp.setPassword(password);
             student = studentDao.login(studentTmp);
-            studentDao.closeDao();
+            studentDao.closeCon();
             if (student == null) {
                 JOptionPane.showMessageDialog(this, "用户名或密码错误！");
                 return;
             }
             JOptionPane.showMessageDialog(this, "欢迎【" + selectedItem.getName() + "】：" + student.getName() + "登录本系统！");
-             this.dispose();
+            this.dispose();
             new MainFrm(selectedItem, student).setVisible(true);
         }
     }
 
     protected void resetAct() {
-        // TODO Auto-generated method stub
         usernameTextField.setText("");
         passwordField.setText("");
         usertypeComboBox.setSelectedIndex(0);

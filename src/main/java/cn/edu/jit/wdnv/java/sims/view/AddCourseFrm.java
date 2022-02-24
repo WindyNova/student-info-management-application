@@ -188,14 +188,14 @@ public class AddCourseFrm extends JInternalFrame {
         } else {
             JOptionPane.showMessageDialog(this, "添加失败!");
         }
-        courseDao.closeDao();
+        courseDao.closeCon();
         resetValue(ae);
     }
 
     private void setTeacherCombox() {
         TeacherDao teacherDao = new TeacherDao();
         List<Teacher> teacherList = teacherDao.getTeacherList(new Teacher());
-        teacherDao.closeDao();
+        teacherDao.closeCon();
         for (Teacher teacher : teacherList) {
             teacherListComboBox.addItem(teacher);
         }

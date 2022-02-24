@@ -132,7 +132,7 @@ public class ViewScoreFrm extends JInternalFrame {
     private void setCourseCombox() {
         CourseDao courseDao = new CourseDao();
         courseList = courseDao.getCourseList(new Course());
-        courseDao.closeDao();
+        courseDao.closeCon();
         Student student = (Student) MainFrm.userObject;
         studentNameLabel.setText(student.getName());
         SelectedCourse sc = new SelectedCourse();
@@ -183,6 +183,6 @@ public class ViewScoreFrm extends JInternalFrame {
             v.add(s.getScore());
             dft.addRow(v);
         }
-        scoreDao.closeDao();
+        scoreDao.closeCon();
     }
 }

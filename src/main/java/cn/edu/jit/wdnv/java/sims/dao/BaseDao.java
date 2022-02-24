@@ -8,7 +8,7 @@ import java.sql.SQLException;
 public class BaseDao { //基础DAO类 用来extends
     public Connection con = dbConnect.getCon();
 
-    public void closeDao() {
+    public void closeCon() {
         try {
             con.close();
         } catch (SQLException e) {

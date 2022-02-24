@@ -214,7 +214,7 @@ public class ManageAttendanceFrm extends JInternalFrame {
         } else {
             JOptionPane.showMessageDialog(this, "签到失败！");
         }
-        attendanceDao.closeDao();
+        attendanceDao.closeCon();
         setTable();
     }
 
@@ -237,7 +237,7 @@ public class ManageAttendanceFrm extends JInternalFrame {
         studentComboBox.removeAllItems();
         StudentDao studentDao = new StudentDao();
         studentList = studentDao.getStudentList(new Student());
-        studentDao.closeDao();
+        studentDao.closeCon();
         Course course = (Course) courseComboBox.getSelectedItem();
         List<Student> selectedCourseStudentList = getSelectedCourseStudentList(course);
         for (Student student : studentList) {
@@ -258,7 +258,7 @@ public class ManageAttendanceFrm extends JInternalFrame {
     private void setCourseCombox() {
         CourseDao courseDao = new CourseDao();
         courseList = courseDao.getCourseList(new Course());
-        courseDao.closeDao();
+        courseDao.closeCon();
         for (Course course : courseList) {
             if ("教师".equals(MainFrm.userType.getName())) {
                 Teacher teacher = (Teacher) MainFrm.userObject;
@@ -289,7 +289,7 @@ public class ManageAttendanceFrm extends JInternalFrame {
             v.add(a.getAttendance_date());
             dft.addRow(v);
         }
-        attendanceDao.closeDao();
+        attendanceDao.closeCon();
     }
 
     private Course getCourseById(int id) {

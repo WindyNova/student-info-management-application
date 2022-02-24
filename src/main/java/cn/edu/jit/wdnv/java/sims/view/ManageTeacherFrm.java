@@ -304,7 +304,7 @@ public class ManageTeacherFrm extends JInternalFrame {
         } else {
             JOptionPane.showMessageDialog(this, "修改失败！");
         }
-        teacherDao.closeDao();
+        teacherDao.closeCon();
         setTable(new Teacher());
     }
 
@@ -331,7 +331,7 @@ public class ManageTeacherFrm extends JInternalFrame {
         } else {
             JOptionPane.showMessageDialog(this, "删除失败！");
         }
-        teacherDao.closeDao();
+        teacherDao.closeCon();
         setTable(new Teacher());
     }
 
@@ -355,7 +355,7 @@ public class ManageTeacherFrm extends JInternalFrame {
             v.add(t.getPassword());
             dft.addRow(v);
         }
-        teacherDao.closeDao();
+        teacherDao.closeCon();
     }
 
     protected void selectedTableRow(MouseEvent me) {

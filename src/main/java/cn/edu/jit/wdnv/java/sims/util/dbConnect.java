@@ -10,16 +10,7 @@ public class dbConnect {
     private static final String dbPASS = "12345678"; // 密码
     private static final String dbDRIVER = "com.mysql.cj.jdbc.Driver"; // 驱动名称
 
-   dbConnect() {
-        try {
-            dbConnect.getCon();
-            System.out.println("数据库连接成功！");
-        } catch (Exception e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-            System.out.println("数据库连接失败");
-        }
-    }
+    static Connection con;
 
     /**
      * 获取数据库连接
@@ -34,7 +25,6 @@ public class dbConnect {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        Connection con = null;
         try {
             con = DriverManager.getConnection(dbUrl, dbUserName, dbPASS);
         } catch (SQLException e) {
@@ -42,17 +32,5 @@ public class dbConnect {
             e.printStackTrace();
         }
         return con;
-    }
-
-    /**
-     * 关闭数据库连接
-     *
-     * @param con
-     * @throws Exception
-     */
-    public void closeCon(Connection con) throws Exception {
-        if (con != null) {
-            con.close();
-        }
     }
 }

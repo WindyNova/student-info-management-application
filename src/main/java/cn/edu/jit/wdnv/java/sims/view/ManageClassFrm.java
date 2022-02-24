@@ -209,7 +209,7 @@ public class ManageClassFrm extends JInternalFrame {
         } else {
             JOptionPane.showMessageDialog(this, "删除失败!");
         }
-        classDao.closeDao();
+        classDao.closeCon();
         setTable(new StudentClass());
     }
 
@@ -244,7 +244,7 @@ public class ManageClassFrm extends JInternalFrame {
         } else {
             JOptionPane.showMessageDialog(this, "更新失败!");
         }
-        classDao.closeDao();
+        classDao.closeCon();
         setTable(new StudentClass());
     }
 
@@ -267,6 +267,6 @@ public class ManageClassFrm extends JInternalFrame {
             v.add(sc.getInfo());
             dft.addRow(v);
         }
-        classDao.closeDao();
+        classDao.closeCon();
     }
 }

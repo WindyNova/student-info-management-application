@@ -277,7 +277,7 @@ public class ManageStudentFrm extends JInternalFrame {
         } else {
             JOptionPane.showMessageDialog(this, "更新失败！");
         }
-        studentDao.closeDao();
+        studentDao.closeCon();
         setTable(new Student());
     }
 
@@ -298,7 +298,7 @@ public class ManageStudentFrm extends JInternalFrame {
         } else {
             JOptionPane.showMessageDialog(this, "删除失败！");
         }
-        studentDao.closeDao();
+        studentDao.closeCon();
         setTable(new Student());
     }
 
@@ -348,7 +348,7 @@ public class ManageStudentFrm extends JInternalFrame {
             v.add(s.getPassword());
             dft.addRow(v);
         }
-        studentDao.closeDao();
+        studentDao.closeCon();
     }
 
     private void setStudentClassInfo() {
@@ -358,7 +358,7 @@ public class ManageStudentFrm extends JInternalFrame {
             searchStudentComboBox.addItem(sc);
             editStudentClassComboBox.addItem(sc);
         }
-        classDao.closeDao();
+        classDao.closeCon();
     }
 
     private String getClassNameById(int id) {

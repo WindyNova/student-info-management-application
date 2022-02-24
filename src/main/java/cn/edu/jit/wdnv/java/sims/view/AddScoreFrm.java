@@ -167,7 +167,7 @@ public class AddScoreFrm extends JInternalFrame {
         } else {
             JOptionPane.showMessageDialog(this, "成绩录入失败！");
         }
-        scoreDao.closeDao();
+        scoreDao.closeCon();
     }
 
     protected void courseChangeAct(ItemEvent ae) {
@@ -182,7 +182,7 @@ public class AddScoreFrm extends JInternalFrame {
     private void setCourseCombox() {
         CourseDao courseDao = new CourseDao();
         courseList = courseDao.getCourseList(new Course());
-        courseDao.closeDao();
+        courseDao.closeCon();
         for (Course course : courseList) {
             if ("教师".equals(MainFrm.userType.getName())) {
                 Teacher teacher = (Teacher) MainFrm.userObject;
@@ -201,7 +201,7 @@ public class AddScoreFrm extends JInternalFrame {
         studentComboBox.removeAllItems();
         StudentDao studentDao = new StudentDao();
         studentList = studentDao.getStudentList(new Student());
-        studentDao.closeDao();
+        studentDao.closeCon();
         Course course = (Course) courseComboBox.getSelectedItem();
         List<Student> selectedCourseStudentList = getSelectedCourseStudentList(course);
         for (Student student : studentList) {
