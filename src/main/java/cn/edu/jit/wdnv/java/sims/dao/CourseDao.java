@@ -1,133 +1,179 @@
 package cn.edu.jit.wdnv.java.sims.dao;
 
-import cn.edu.jit.wdnv.java.sims.model.Course;
-import cn.edu.jit.wdnv.java.sims.util.StringUtil;
-
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 
-/**
- * @author llq
- * 课程信息操作数据库
- */
-public class CourseDao extends BaseDao {
-    public boolean addCourse(Course course) {
-        String sql = "insert into s_course values(null,?,?,?,?,0)";
-        try {
-            java.sql.PreparedStatement preparedStatement = con.prepareStatement(sql);
-            preparedStatement.setString(1, course.getName());
-            preparedStatement.setInt(2, course.getTeacher_id());
-            preparedStatement.setInt(3, course.getMax_student_num());
-            preparedStatement.setString(4, course.getInfo());
-            if (preparedStatement.executeUpdate() > 0) return true;
-        } catch (SQLException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-        return false;
-    }
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 
-    public List<Course> getCourseList(Course course) {
-        List<Course> retList = new ArrayList<Course>();
-        StringBuffer sqlString = new StringBuffer("select * from s_course");
-        if (!StringUtil.isEmpty(course.getName())) {
-            sqlString.append(" and name like '%" + course.getName() + "%'");
-        }
-        if (course.getTeacher_id() != 0) {
-            sqlString.append(" and teacher_id =" + course.getTeacher_id());
-        }
-        try {
-            PreparedStatement preparedStatement = con.prepareStatement(sqlString.toString().replaceFirst("and", "where"));
-            ResultSet executeQuery = preparedStatement.executeQuery();
-            while (executeQuery.next()) {
-                Course c = new Course();
-                c.setId(executeQuery.getInt("id"));
-                c.setName(executeQuery.getString("name"));
-                c.setTeacher_id(executeQuery.getInt("teacher_id"));
-                c.setMax_student_num(executeQuery.getInt("max_student_num"));
-                c.setInfo(executeQuery.getString("info"));
-                c.setSelected_num(executeQuery.getInt("selected_num"));
-                retList.add(c);
-            }
-        } catch (SQLException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-        return retList;
-    }
+import cn.edu.jit.wdnv.java.sims.model.Course;
+import cn.edu.jit.wdnv.java.sims.model.Course_avg;
+import cn.edu.jit.wdnv.java.sims.model.Course_fail_rate;
+import cn.edu.jit.wdnv.java.sims.model.Course_ranking;
+import cn.edu.jit.wdnv.java.sims.utils.DBUtils;
 
-    public boolean delete(int id) {
-        String sql = "delete from s_course where id=?";
-        try {
-            PreparedStatement preparedStatement = con.prepareStatement(sql);
-            preparedStatement.setInt(1, id);
-            if (preparedStatement.executeUpdate() > 0) {
-                return true;
-            }
-        } catch (SQLException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-        return false;
-    }
-
-    public boolean update(Course course) {
-        String sql = "update s_course set name=?, teacher_id=?,max_student_num=?,info=? where id=?";
-        try {
-            PreparedStatement preparedStatement = con.prepareStatement(sql);
-            preparedStatement.setString(1, course.getName());
-            preparedStatement.setInt(2, course.getTeacher_id());
-            preparedStatement.setInt(3, course.getMax_student_num());
-            preparedStatement.setString(4, course.getInfo());
-            preparedStatement.setInt(5, course.getId());
-            if (preparedStatement.executeUpdate() > 0) {
-                return true;
-            }
-        } catch (SQLException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-        return false;
-    }
-
-    public boolean selectedEnable(int course_id) {
-        String sql = "select * from s_course where id=?";
-        try {
-            PreparedStatement prst = con.prepareStatement(sql);//把sql语句传给数据库操作对象
-            prst.setInt(1, course_id);
-            ResultSet executeQuery = prst.executeQuery();
-            if (executeQuery.next()) {
-                int max_student_num = executeQuery.getInt("max_student_num");
-                int selected_num = executeQuery.getInt("selected_num");
-                if (selected_num >= max_student_num) return false;
-            }
-        } catch (SQLException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-        return true;
-    }
-
-    public boolean updateSelectedNum(int course_id, int num) {
-        String sql = "update s_course set selected_num = selected_num + ? where id = ?";
-        if (num < 0) {
-            sql = "update s_course set selected_num = selected_num - ? where id = ?";
-        }
-        try {
-            PreparedStatement preparedStatement = con.prepareStatement(sql);
-            preparedStatement.setInt(1, 1);
-            preparedStatement.setInt(2, course_id);
-            if (preparedStatement.executeUpdate() > 0) {
-                return true;
-            }
-        } catch (SQLException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-
-        }
-        return false;
-    }
+public class CourseDao {
+	// 获取所有课程的信息，用ArrayList返回
+	public ArrayList<Course> query_all_course() {
+		Connection conn = DBUtils.getConnection();
+		String sql = "select * from course order by cno;";
+		ArrayList<Course> results = new ArrayList<Course>();
+		try {
+			PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				Course temp = new Course();
+				temp.setCno(rs.getString("Cno"));
+				temp.setCname(rs.getString("Cname"));
+				temp.setCteacher(rs.getString("Cteacher"));
+				temp.setCcredit(rs.getInt("Ccredit"));
+				results.add(temp);
+			}
+			// 关闭资源
+			rs.close();
+			ps.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBUtils.closeConnection(conn);
+		}
+		return results;
+	}
+	// 插入课程信息，返回一个int值表示状态,1：成功，0失败
+	public int insert_course(String Cno, String Cname, String Cteacher, double Ccredit) {
+		Connection conn = DBUtils.getConnection();
+		String sql = "insert into course values(?,?,?,?);";
+		int flag = 0;
+		try {
+			PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);
+			ps.setString(1, Cno);
+			ps.setString(2, Cname);
+			ps.setString(3, Cteacher);
+			ps.setDouble(4, Ccredit);
+			flag = ps.executeUpdate();
+			ps.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBUtils.closeConnection(conn);
+		}
+		return flag;
+	}
+	// 删除课程信息，返回一个int值表示状态,1：成功，0失败
+	public int delete_course(String Cno) {
+		Connection conn = DBUtils.getConnection();
+		String sql = "delete from course where Cno = ?;";
+		int flag = 0;
+		try {
+			PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);
+			ps.setString(1, Cno);
+			flag = ps.executeUpdate();
+			ps.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBUtils.closeConnection(conn);
+		}
+		return flag;
+	}
+	//修改课程信息，返回一个int值表示状态,1：成功，0失败
+	public int alter_course(String cno,String after_cno,String after_cname,String after_cteacher,double after_ccredit) {
+		Connection conn = DBUtils.getConnection();
+		String sql = "update course set cno = ?,cname = ?,cteacher = ?,ccredit = ? where cno = ?;";
+		int flag = 0;
+		try {
+			PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);
+			ps.setString(1, after_cno);
+			ps.setString(2, after_cname);
+			ps.setString(3, after_cteacher);
+			ps.setDouble(4, after_ccredit);
+			ps.setString(5, cno);
+			flag = ps.executeUpdate();
+			ps.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			DBUtils.closeConnection(conn);
+		}
+		return flag;
+	}
+	// 查询课程平均分信息，返回一个ArrayLst集合
+	public ArrayList<Course_avg> course_avg() {
+		Connection conn = DBUtils.getConnection();
+		String sql = "select sc.cno cno,cname,avg(grade) avg from course,sc where course.cno = sc.cno group by cno order by cno;";
+		ResultSet result = null;
+		ArrayList<Course_avg> course_avg = new ArrayList<Course_avg>();
+		try {
+			PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);
+			result = ps.executeQuery();
+			while(result.next()){
+				Course_avg temp = new Course_avg();
+				temp.setCno(result.getString("Cno"));
+				temp.setCname(result.getString("Cname"));
+				temp.setAvg(result.getDouble("avg"));
+				course_avg.add(temp);
+			}
+			ps.close();
+			result.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBUtils.closeConnection(conn);
+		}
+		return course_avg;
+	}
+	//查询课程不及格率，返回一个ArrayList集合
+	public ArrayList<Course_fail_rate> fail_rate(){
+		Connection conn = DBUtils.getConnection();
+		String sql = "select cno,(select cname from course where cno = x.cno) cname,cast(100.0*(select count(sno) from sc where grade < 60 and cno = x.cno)/(select count(sno) from sc where cno = x.cno) as decimal(18,2)) rate from sc x group by cno order by cno;";
+		ArrayList<Course_fail_rate> fail_rate = new ArrayList<Course_fail_rate>();
+		try {
+			PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			while(rs.next()){
+				Course_fail_rate temp = new Course_fail_rate();
+				temp.setCno(rs.getString("cno"));
+				temp.setCname(rs.getString("cname"));
+				temp.setFail_rate(rs.getDouble("rate"));
+				fail_rate.add(temp);
+			}
+			rs.close();
+			ps.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBUtils.closeConnection(conn);
+		}
+		return fail_rate;
+	}
+	//查询课程排名情况,返回一个ArrayList集合
+	public ArrayList<Course_ranking> course_ranking(String cno){
+		Connection conn = DBUtils.getConnection();
+		String sql = "select student.Sno Sno,Dname,Clname,Sname,Ssex,Sage,Grade from department,class,student,sc where student.sno = sc.sno and class.Clno = student.Clno and department.Dno = class.Dno and cno = '"+cno+"' order by grade desc;";
+		ArrayList<Course_ranking> course_ranking = new ArrayList<Course_ranking>();
+		try {
+			PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			while(rs.next()){
+				Course_ranking temp = new Course_ranking();
+				temp.setSno(rs.getString("Sno"));
+				temp.setDname(rs.getString("Dname"));
+				temp.setClname(rs.getString("Clname"));
+				temp.setSname(rs.getString("Sname"));
+				temp.setSsex(rs.getString("Ssex"));
+				temp.setSage(rs.getInt("Sage"));
+				temp.setGrade(rs.getDouble("Grade"));
+				course_ranking.add(temp);
+			}
+			rs.close();
+			ps.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBUtils.closeConnection(conn);
+		}
+		return course_ranking;
+	}
 }
+

@@ -1,0 +1,16 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="StudentInfoManagement:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <exploded>false</exploded>
+        <module>StudentInfoManagement</module>
+        <packaging>war</packaging>
+        <unpackNestedArchives>false</unpackNestedArchives>
+      </options>
+    </properties>
+    <root id="archive" name="sims.war">
+      <element id="artifact" artifact-name="StudentInfoManagement:war exploded" />
+    </root>
+  </artifact>
+</component>

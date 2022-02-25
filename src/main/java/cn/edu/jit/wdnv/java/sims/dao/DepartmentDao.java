@@ -4,28 +4,28 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import cn.edu.jit.wdnv.java.sims.model.Class;
-import cn.edu.jit.wdnv.java.sims.utils.DBUtils;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 
-public class ClassDao {
-	// 获取所有班级的信息，用ArrayList返回
-	public ArrayList<Class> query_all_class() {
+import cn.edu.jit.wdnv.java.sims.model.Department;
+import cn.edu.jit.wdnv.java.sims.utils.DBUtils;
+
+public class DepartmentDao {
+	//查询所有的系信息，查询返回一个含值的ArrayList,当为空值的说明表中无数据元组
+	public ArrayList<Department> query_all_department() {
 		Connection conn = DBUtils.getConnection();
-		String sql = "select * from class order by clno;";
-		ArrayList<Class> results = new ArrayList<Class>();
+		String sql = "select * from department order by dno;";
+		ArrayList<Department> results = new ArrayList<Department>();
+		
 		try {
 			PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);
 			ResultSet rs = ps.executeQuery();
-			while (rs.next()) {
-				Class temp = new Class();
-				temp.setClno(rs.getString("clno"));
-				temp.setClname(rs.getString("clname"));
-				temp.setDno(rs.getString("dno"));
+			while (rs.next()){
+				Department temp = new Department();
+				temp.setDno(rs.getString("Dno")); 
+				temp.setDname(rs.getString("Dname"));
 				results.add(temp);
 			}
-			// 关闭资源
 			rs.close();
 			ps.close();
 		} catch (SQLException e) {
@@ -35,58 +35,56 @@ public class ClassDao {
 		}
 		return results;
 	}
-	// 插入班级信息，返回一个int值表示状态,1：成功，0失败
-	public int insert_class(String clno, String clname, String dno) {
+	//插入院系信息，返回一个int值表示状态,1：成功，0失败
+	public int insert_department(String dno,String dname){
 		Connection conn = DBUtils.getConnection();
-		String sql = "insert into class values(?,?,?);";
+		String sql = "insert into department values(?,?);";
 		int flag = 0;
 		try {
 			PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);
-			ps.setString(1, clno);
-			ps.setString(2, clname);
+			ps.setString(1, dno);
+			ps.setString(2, dname);
+			flag = ps.executeUpdate();
+			ps.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			DBUtils.closeConnection(conn);
+		}
+		return flag;
+	}
+	//删除院系信息，返回一个int值表示状态,1：成功，0失败
+	public int delete_department(String dno) {
+		Connection conn = DBUtils.getConnection();
+		String sql = "delete from department where dno = ?;";
+		int flag = 0;
+		try {
+			PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);
+			ps.setString(1, dno);
+			flag = ps.executeUpdate();
+			ps.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			DBUtils.closeConnection(conn);
+		}
+		return flag;
+	}
+	//修改院系信息，返回一个int值表示状态,1：成功，0失败
+	public int alter_department(String dno,String after_dno,String after_dname) {
+		Connection conn = DBUtils.getConnection();
+		String sql = "update department set dno = ?,dname = ? where dno = ?;";
+		int flag = 0;
+		try {
+			PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);
+			ps.setString(1, after_dno);
+			ps.setString(2, after_dname);
 			ps.setString(3, dno);
 			flag = ps.executeUpdate();
 			ps.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
-		} finally {
-			DBUtils.closeConnection(conn);
-		}
-		return flag;
-	}
-	// 删除班级信息，返回一个int值表示状态,1：成功，0失败
-	public int delete_class(String clno) {
-		Connection conn = DBUtils.getConnection();
-		String sql = "delete from class where clno = ?;";
-		int flag = 0;
-		try {
-			PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);
-			ps.setString(1, clno);
-			flag = ps.executeUpdate();
-			ps.close();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			DBUtils.closeConnection(conn);
-		}
-		return flag;
-	}
-	// 修改班级信息，返回一个int值表示状态,1：成功，0失败
-	public int alter_class(String clno, String after_clno, String after_clname, String after_dno) {
-		Connection conn = DBUtils.getConnection();
-		String sql = "update class set clno = ?,clname = ?,dno = ? where clno = ?;";
-		int flag = 0;
-		try {
-			PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);
-			ps.setString(1, after_clno);
-			ps.setString(2, after_clname);
-			ps.setString(3, after_dno);
-			ps.setString(4, clno);
-			flag = ps.executeUpdate();
-			ps.close();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
+		}finally {
 			DBUtils.closeConnection(conn);
 		}
 		return flag;
