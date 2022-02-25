@@ -1,44 +1,45 @@
 package cn.edu.jit.wdnv.java.sims.utils;
 
 import java.sql.Connection;
-
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DBUtils {
-	
+
     /**
      * 获取数据库连接
+     *
      * @return Connection对象
      */
-    public static Connection getConnection(){
-    	String dbUserName = "sa";
-    	String dbUserPasswd = "hellojava";
-    	String dbURL = "jdbc:mysql://localhost:3306/studentinfomanagement?"
-    	            + "user="+dbUserName+"&password="+dbUserPasswd+"&useUnicode=true&characterEncoding=UTF8";
-    	Connection conn = null;
-    	try {
-    		Class.forName("com.mysql.jdbc.Driver");
-    		conn = (Connection) DriverManager.getConnection(dbURL,dbUserName,dbUserPasswd);
-    	} catch (ClassNotFoundException | SQLException e) {
-    		e.printStackTrace();
-    	} 
-    	return conn;
+    protected final static String dbUser = "user";
+    protected final static String dbPASSWD = "12345678";
+    protected final static String dbURL = "jdbc:mysql://r.sz1.nodes.wdksl.com:33068/stuinfo";
+    private static Connection con;
+
+    public static Connection getConnection() {
+
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            con = DriverManager.getConnection(dbURL, dbUser, dbPASSWD);
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        }
+        return con;
     }
-    
+
     /**
      * 关闭数据库连接
-     * @param conn Connection对象
+     *
+     * @param con Connection对象
      */
-    public static void closeConnection(Connection conn) {
-		//判断conn是否为空
-    	if(conn != null){
-    		try {
-				conn.close();//关闭数据库连接
-			} catch (SQLException e) {
-				// TODO: handle exception
-				e.printStackTrace();
-			}
-    	}
-	}
+    public static void closeCon(Connection con) {
+        //判断conn是否为空
+        if (con != null) {
+            try {
+                con.close();//关闭数据库连接
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 }

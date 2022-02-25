@@ -1,12 +1,13 @@
-<%@page import="model.User"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+
+<%@ page import="cn.edu.jit.wdnv.java.sims.model.User" %>
+<%@ page contentType="text/html; charset=UTF-8"
+		 pageEncoding="UTF-8"%>
 <!DOCTYPE HTML>
 <html lang="zh">
 <head>
 	<meta charset="UTF-8">
 	<title>管理员操作界面</title>
-	<link rel="stylesheet" type="text/css" href="css/user&admin.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
 	<link rel="icon" type="image/x-ico" href="images/stu.ico">
 </head>
 	
@@ -27,7 +28,7 @@
 					<li><%=user.getUsername() %></li>
 					<li><%=user.getLevel() %></li>
 					<li><a href="UserExitServlet">退出登录</a></li>
-					<li><a href="login.html">返回首页</a></li>
+					<li><a href="index.html">返回首页</a></li>
 				</ul>
 			</div>
 		</nav>
@@ -36,7 +37,7 @@
 	<main>
 		<%
 		}else{
-			response.sendRedirect("login.html");
+			response.sendRedirect("index.html");
 		}
 		%>
 		<div class="container">

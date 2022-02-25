@@ -1,6 +1,5 @@
-<%@page import="model.User"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@page import="cn.edu.jit.wdnv.java.sims.model.User"%>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="zh">
 <head>
@@ -36,7 +35,7 @@
 			%>
 			</div>
 			<div class="right">
-				<a class="relogin" href="login.html">重新登录></a>
+				<a class="relogin" href="index.html">重新登录></a>
 			</div>
 		</div>
 	</main>
