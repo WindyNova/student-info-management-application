@@ -3,14 +3,15 @@ package cn.edu.jit.wdnv.java.sims.servlet;
 import cn.edu.jit.wdnv.java.sims.dao.UserDao;
 import cn.edu.jit.wdnv.java.sims.model.User;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
 
 public class LoginServlet extends HttpServlet {
-
     private static final long serialVersionUID = 1L;
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -28,15 +29,24 @@ public class LoginServlet extends HttpServlet {
             if (level.equals("用户")) {
                 request.getSession().setAttribute("user", user);//将用户对象放到session中
                 //转发到user.jsp中
-                request.getRequestDispatcher("user.jsp").forward(request, response);
+                response.sendRedirect(request.getContextPath()+"/user.jsp");
+
+              //  request.getRequestDispatcher("user.jsp").forward(request, response);
             } else {
                 request.getSession().setAttribute("admin", user);//将管理员对象放到session中
                 //转发到admin.jsp中
-                request.getRequestDispatcher("admin.jsp").forward(request, response);
+              //  request.getRequestDispatcher("admin.jsp").forward(request, response);
+
+                response.sendRedirect(request.getContextPath()+"/admin.jsp");
             }
         } else {//失败
-            request.setAttribute("info", " 错误:用户名或密码错误！");
-            request.getRequestDispatcher("message.jsp").forward(request, response);
+            PrintWriter out=response.getWriter();
+            response.setContentType("text/html");
+            out.println("<script charset=\"gb2312\" type=\"text/javascript\">");
+            out.println("alert(' 错误:用户名或密码错误！');");
+            out.println("window.location.href = \"index.html\";");
+            out.println("</script>");
+
         }
     }
 

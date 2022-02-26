@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
 
 public class RegisterServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
@@ -36,8 +37,12 @@ public class RegisterServlet extends HttpServlet {
                 request.getRequestDispatcher("admin.jsp").forward(request, response);
             }
         } else {//失败
-            request.setAttribute("info", " 错误:已存在该用户,不能重复注册！");
-            request.getRequestDispatcher("message.jsp").forward(request, response);
+            PrintWriter out=response.getWriter();
+            response.setContentType("text/html");
+            out.println("<script charset=\"gb2312\" type=\"text/javascript\">");
+            out.println("alert('错误:用户已经存在，不能重复注册！');");
+            out.println("window.location.href = \"register.html\";");
+            out.println("</script>");
         }
     }
 

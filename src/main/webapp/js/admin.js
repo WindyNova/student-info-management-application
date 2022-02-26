@@ -197,7 +197,7 @@ function insert(object) {
         url = "/StudentManagement/AdminDao?action=insert_sc&sno=" + sno + "&cno=" + cno + "&grade=" + grade;
     }
     else {
-        url = "/StudentManagement/message.jsp";
+    alert("错误")
     }
     xmlhttp.open("GET", url, true);
     xmlhttp.send();
