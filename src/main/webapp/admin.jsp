@@ -9,6 +9,9 @@
 	<title>管理员操作界面</title>
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 	<link rel="icon" type="image/x-ico" href="images/stu.ico">
+	<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script src="js/main.js"></script>
+	<script src="js/admin.js"></script>
 </head>
 	
 <body>
@@ -95,7 +98,7 @@
 					<li>
 						<div class="link">学生成绩管理</div>
 						<ul class="submenu">
-							<li><a  onclick="query_all('sc')">查看全部学生成绩</a></li>
+							<li><a onclick="query_all('sc')">查看全部学生成绩</a></li>
 							<li><a onclick="show_insert_sc()">新增学生成绩记录</a></li>	
 							<li><a onclick="show_delete('sc')">删除学生成绩记录</a></li>					
 							<li><a onclick="show_alter('sc')">修改学生成绩记录</a></li>	
@@ -110,14 +113,8 @@
 			</div>
 		</div>
 	</main>
-	
-	<footer>
-		<div class="copyright">
-			&copy; Copyright. All rights reserved. Design by <a href="http://www.github.com/Soarkey/">Soarkey</a>
-		</div>
-	</footer>
 
-	<script src="js/jquery-3.1.1.min.js"></script>
-	<script src="js/admin.js"></script>
+
+
 </body>
 </html>

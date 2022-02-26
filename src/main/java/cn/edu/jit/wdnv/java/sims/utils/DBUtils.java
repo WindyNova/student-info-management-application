@@ -13,7 +13,7 @@ public class DBUtils {
      */
     protected final static String dbUser = "user";
     protected final static String dbPASSWD = "12345678";
-    protected final static String dbURL = "jdbc:mysql://r.sz1.nodes.wdksl.com:33068/stuinfo";
+    protected final static String dbURL = "jdbc:mysql://localhost:3306/stuinfo";
     private static Connection con;
 
     public static Connection getConnection() {

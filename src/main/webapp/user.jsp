@@ -8,7 +8,9 @@
 	<title>用户操作界面</title>
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 	<link rel="icon" type="image/x-ico" href="images/stu.ico">
-	
+	<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script src="js/user.js"></script>
+	<script src="js/main.js"></script>
 </head>
 	
 <body>
@@ -86,14 +88,8 @@
 			</div>
 		</div>
 	</main>
-	
-	<footer>
-		<div class="copyright">
-			&copy; Copyright. All rights reserved. Design by <a href="http://www.github.com/Soarkey/">Soarkey</a>
-		</div>
-	</footer>
 
-	<script src="js/jquery-3.1.1.min.js"></script>
-	<script src="js/user.js"></script>
+
+
 </body>
 </html>

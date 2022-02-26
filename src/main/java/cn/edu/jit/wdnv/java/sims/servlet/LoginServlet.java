@@ -42,7 +42,7 @@ public class LoginServlet extends HttpServlet {
         } else {//失败
             PrintWriter out=response.getWriter();
             response.setContentType("text/html");
-            out.println("<script charset=\"gb2312\" type=\"text/javascript\">");
+            out.println("<script type=\"text/javascript\">");
             out.println("alert(' 错误:用户名或密码错误！');");
             out.println("window.location.href = \"index.html\";");
             out.println("</script>");
