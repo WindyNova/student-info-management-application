@@ -1,10 +1,8 @@
 package cn.edu.jit.wdnv.java.sims.model;
 
-import java.io.Serializable;
 
-public class Department implements Serializable {
+public class Department {
 
-    private static final long serialVersionUID = 1L;
 
     private String Dno;//系编号
     private String Dname;//系名

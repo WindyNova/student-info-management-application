@@ -14,9 +14,9 @@ public class ClassDao {
     public ArrayList<Class> query_all_class() {
         Connection conn = DBUtils.getConnection();
         String sql = "select * from class order by clno;";
-        ArrayList<Class> results = new ArrayList<Class>();
+        ArrayList<Class> results = new ArrayList<>();
         try {
-            PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);
+            PreparedStatement ps = conn.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 Class temp = new Class();
@@ -42,7 +42,7 @@ public class ClassDao {
         String sql = "insert into class values(?,?,?);";
         int flag = 0;
         try {
-            PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);
+            PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, clno);
             ps.setString(2, clname);
             ps.setString(3, dno);
@@ -62,7 +62,7 @@ public class ClassDao {
         String sql = "delete from class where clno = ?;";
         int flag = 0;
         try {
-            PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);
+            PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, clno);
             flag = ps.executeUpdate();
             ps.close();
@@ -80,7 +80,7 @@ public class ClassDao {
         String sql = "update class set clno = ?,clname = ?,dno = ? where clno = ?;";
         int flag = 0;
         try {
-            PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);
+            PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, after_clno);
             ps.setString(2, after_clname);
             ps.setString(3, after_dno);

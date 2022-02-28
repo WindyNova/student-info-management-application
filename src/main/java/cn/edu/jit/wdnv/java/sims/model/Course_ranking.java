@@ -1,9 +1,6 @@
 package cn.edu.jit.wdnv.java.sims.model;
 
-import java.io.Serializable;
-
-public class Course_ranking implements Serializable {
-    private static final long serialVersionUID = 1L;
+public class Course_ranking {
 
     private String Sno;//学号
     private String Dname;//系名
@@ -68,10 +65,6 @@ public class Course_ranking implements Serializable {
 
     public void setGrade(Double grade) {
         this.grade = grade;
-    }
-
-    public static long getSerialversionuid() {
-        return serialVersionUID;
     }
 
 

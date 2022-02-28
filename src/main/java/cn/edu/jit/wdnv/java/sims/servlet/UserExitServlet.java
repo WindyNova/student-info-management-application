@@ -11,7 +11,7 @@ import java.io.IOException;
 public class UserExitServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         //获取Session
         HttpSession session = request.getSession();
         session.invalidate();
@@ -19,7 +19,7 @@ public class UserExitServlet extends HttpServlet {
         response.sendRedirect("index.html");
     }
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) {
 
     }
 

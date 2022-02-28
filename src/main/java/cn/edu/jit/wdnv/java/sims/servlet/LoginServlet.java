@@ -3,7 +3,6 @@ package cn.edu.jit.wdnv.java.sims.servlet;
 import cn.edu.jit.wdnv.java.sims.dao.UserDao;
 import cn.edu.jit.wdnv.java.sims.model.User;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -14,11 +13,11 @@ import java.io.PrintWriter;
 public class LoginServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         request.setCharacterEncoding("utf-8");
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-        String level = null;
+        String level;
         //实例化UserDao对象
         UserDao userDao = new UserDao();
 

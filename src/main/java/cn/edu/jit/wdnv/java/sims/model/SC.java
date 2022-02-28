@@ -1,10 +1,7 @@
 package cn.edu.jit.wdnv.java.sims.model;
 
-import java.io.Serializable;
+public class SC {
 
-public class SC implements Serializable {
-
-    private static final long serialVersionUID = 1L;
 
     private String Sno;//学号
     private String Sname;//姓名
@@ -44,10 +41,6 @@ public class SC implements Serializable {
 
     public void setSage(int i) {
         Sage = i;
-    }
-
-    public static long getSerialversionuid() {
-        return serialVersionUID;
     }
 
     public void setGrade(double grade) {

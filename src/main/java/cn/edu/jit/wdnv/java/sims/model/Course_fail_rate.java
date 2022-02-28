@@ -1,9 +1,7 @@
 package cn.edu.jit.wdnv.java.sims.model;
 
-import java.io.Serializable;
 
-public class Course_fail_rate implements Serializable {
-    private static final long serialVersionUID = 1L;
+public class Course_fail_rate{
 
     private String Cno;//课程号
     private String Cname;//课程名称

@@ -1,10 +1,8 @@
 package cn.edu.jit.wdnv.java.sims.model;
 
-import java.io.Serializable;
 
-public class Class implements Serializable {
+public class Class {
 
-    private static final long serialVersionUID = 1L;
 
     private String Clno;//班级编号
     private String Clname;//班级名称
@@ -32,10 +30,6 @@ public class Class implements Serializable {
 
     public void setDno(String dno) {
         Dno = dno;
-    }
-
-    public static long getSerialversionuid() {
-        return serialVersionUID;
     }
 
 

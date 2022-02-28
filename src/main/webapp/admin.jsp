@@ -8,7 +8,7 @@
 	<meta charset="UTF-8">
 	<title>管理员操作界面</title>
 	<link rel="stylesheet" type="text/css" href="css/main.css">
-	<link rel="icon" type="image/x-ico" href="images/stu.ico">
+	<link rel="icon" type="image/x-ico" href="GitHub/StudentInfoManagement/src/main/webapp/favicon.ico">
 	<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<script src="js/main.js"></script>
 	<script src="js/admin.js"></script>

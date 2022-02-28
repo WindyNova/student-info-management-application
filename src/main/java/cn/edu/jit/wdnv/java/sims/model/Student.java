@@ -1,10 +1,6 @@
 package cn.edu.jit.wdnv.java.sims.model;
 
-import java.io.Serializable;
-
-public class Student implements Serializable {
-
-    private static final long serialVersionUID = 1L;
+public class Student  {
 
     private String Sno;//学号
     private String Sname;//姓名
