@@ -32,7 +32,8 @@ public class RegisterServlet extends HttpServlet {
         } else {//失败
             PrintWriter out=response.getWriter();
             response.setContentType("text/html");
-            out.println("<script type=\"text/javascript\">");
+            response.setCharacterEncoding("gb2312");
+            out.println("<script charset=\"gb2312\" type=\"text/javascript\">");
             out.println("alert('错误:用户已经存在，不能重复注册！');");
             out.println("window.location.href = \"register.html\";");
             out.println("</script>");

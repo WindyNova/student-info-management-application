@@ -23,7 +23,7 @@
     <description/>
     <display-name>UserExitServlet</display-name>
     <servlet-name>UserExitServlet</servlet-name>
-    <servlet-class>cn.edu.jit.wdnv.java.sims.servlet.UserExitServlet</servlet-class>
+    <servlet-class>cn.edu.jit.wdnv.java.sims.servlet.UserLogoutServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>UserExitServlet</servlet-name>

@@ -3,7 +3,6 @@ package cn.edu.jit.wdnv.java.sims.servlet;
 import cn.edu.jit.wdnv.java.sims.dao.UserDao;
 import cn.edu.jit.wdnv.java.sims.model.User;
 
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -15,6 +14,7 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         request.setCharacterEncoding("utf-8");
+
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         String level;
@@ -39,9 +39,10 @@ public class LoginServlet extends HttpServlet {
                 response.sendRedirect(request.getContextPath()+"/admin.jsp");
             }
         } else {//失败
+            response.setCharacterEncoding("gb2312");
             PrintWriter out=response.getWriter();
             response.setContentType("text/html");
-            out.println("<script type=\"text/javascript\">");
+            out.println("<script charset=\"gb2312\" type=\"text/javascript\">");
             out.println("alert(' 错误:用户名或密码错误！');");
             out.println("window.location.href = \"index.html\";");
             out.println("</script>");
