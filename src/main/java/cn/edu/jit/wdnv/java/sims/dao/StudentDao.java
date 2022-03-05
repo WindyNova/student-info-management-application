@@ -3,7 +3,6 @@ package cn.edu.jit.wdnv.java.sims.dao;
 import cn.edu.jit.wdnv.java.sims.model.Student;
 import cn.edu.jit.wdnv.java.sims.utils.DBUtils;
 
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -12,11 +11,11 @@ import java.util.ArrayList;
 public class StudentDao {
     // 获取所有学生的信息，用ArrayList返回
     public ArrayList<Student> query_all_student() {
-        Connection conn = DBUtils.getConnection();
+
         String sql = "select * from student order by sno;";
         ArrayList<Student> results = new ArrayList<Student>();
         try {
-            PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);
+            PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 Student temp = new Student();
@@ -33,18 +32,18 @@ public class StudentDao {
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            DBUtils.closeCon(conn);
+            DBUtils.closeCon(con);
         }
         return results;
     }
 
     // 插入学生信息，返回一个int值表示状态,1：成功，0失败
     public int insert_student(String Sno, String Sname, String Ssex, int Sage, String Clno) {
-        Connection conn = DBUtils.getConnection();
+
         String sql = "insert into student values(?,?,?,?,?);";
         int flag = 0;
         try {
-            PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);
+            PreparedStatement ps = (PreparedStatement) con.prepareStatement(sql);
             ps.setString(1, Sno);
             ps.setString(2, Sname);
             ps.setString(3, Ssex);
@@ -55,36 +54,36 @@ public class StudentDao {
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            DBUtils.closeCon(conn);
+            DBUtils.closeCon(con);
         }
         return flag;
     }
 
     // 删除学生信息，返回一个int值表示状态,1：成功，0失败
     public int delete_student(String sno) {
-        Connection conn = DBUtils.getConnection();
+
         String sql = "delete from student where sno = ?;";
         int flag = 0;
         try {
-            PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);
+            PreparedStatement ps = (PreparedStatement) con.prepareStatement(sql);
             ps.setString(1, sno);
             flag = ps.executeUpdate();
             ps.close();
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            DBUtils.closeCon(conn);
+            DBUtils.closeCon(con);
         }
         return flag;
     }
 
     // 修改学生信息，返回一个int值表示状态,1：成功，0失败
     public int alter_class(String sno, String after_sno, String after_sname, String after_ssex, int after_sage, String after_clno) {
-        Connection conn = DBUtils.getConnection();
+
         String sql = "update student set sno = ?,sname = ?,ssex = ?,sage = ?,clno = ? where sno = ?;";
         int flag = 0;
         try {
-            PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);
+            PreparedStatement ps = (PreparedStatement) con.prepareStatement(sql);
             ps.setString(1, after_sno);
             ps.setString(2, after_sname);
             ps.setString(3, after_ssex);
@@ -96,7 +95,7 @@ public class StudentDao {
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            DBUtils.closeCon(conn);
+            DBUtils.closeCon(con);
         }
         return flag;
     }

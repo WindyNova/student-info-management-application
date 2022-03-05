@@ -3,7 +3,6 @@ package cn.edu.jit.wdnv.java.sims.dao;
 import cn.edu.jit.wdnv.java.sims.model.SC;
 import cn.edu.jit.wdnv.java.sims.utils.DBUtils;
 
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -14,14 +13,13 @@ public class SCDao {
 
     // 获取所有成绩记录的信息，用ArrayList返回
     public ArrayList<SC> query_all_sc() {
-        Connection conn = DBUtils.getConnection();
+
         String sql = "select student.sno sno,sname,ssex,sage,course.cno,cname,grade from sc,student,course where sc.sno = student.sno and course.cno = sc.cno order by sno;";
         ArrayList<SC> results = new ArrayList<SC>();
         try {
-            PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);
+            PreparedStatement ps = (PreparedStatement) con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                SC temp = new SC();
                 temp.setSno(rs.getString("sno"));
                 temp.setSname(rs.getString("sname"));
                 temp.setSsex(rs.getString("ssex"));
@@ -37,18 +35,18 @@ public class SCDao {
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            DBUtils.closeCon(conn);
+            DBUtils.closeCon(con);
         }
         return results;
     }
 
     // 插入成绩信息，返回一个int值表示状态,1：成功，0失败
     public int insert_sc(String Sno, String Cno, double Grade) {
-        Connection conn = DBUtils.getConnection();
+
         String sql = "insert into sc values(?,?,?);";
         int flag = 0;
         try {
-            PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);
+            PreparedStatement ps = (PreparedStatement) con.prepareStatement(sql);
             ps.setString(1, Sno);
             ps.setString(2, Cno);
             ps.setDouble(3, Grade);
@@ -57,18 +55,18 @@ public class SCDao {
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            DBUtils.closeCon(conn);
+            DBUtils.closeCon(con);
         }
         return flag;
     }
 
     // 删除成绩记录，返回一个int值表示状态,1：成功，0失败
     public int delete_sc(String Sno, String Cno) {
-        Connection conn = DBUtils.getConnection();
+
         String sql = "delete from sc where sno = ? and cno = ?;";
         int flag = 0;
         try {
-            PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);
+            PreparedStatement ps = (PreparedStatement) con.prepareStatement(sql);
             ps.setString(1, Sno);
             ps.setString(2, Cno);
             flag = ps.executeUpdate();
@@ -76,18 +74,18 @@ public class SCDao {
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            DBUtils.closeCon(conn);
+            DBUtils.closeCon(con);
         }
         return flag;
     }
 
     // 修改成绩信息，返回一个int值表示状态,1：成功，0失败
     public int alter_sc(String Sno, String Cno, double after_grade) {
-        Connection conn = DBUtils.getConnection();
+
         String sql = "update sc set grade = ? where sno = ? and cno = ?;";
         int flag = 0;
         try {
-            PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);
+            PreparedStatement ps = (PreparedStatement) con.prepareStatement(sql);
             ps.setDouble(1, after_grade);
             ps.setString(2, Sno);
             ps.setString(3, Cno);
@@ -96,7 +94,7 @@ public class SCDao {
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            DBUtils.closeCon(conn);
+            DBUtils.closeCon(con);
         }
         return flag;
     }

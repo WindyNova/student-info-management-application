@@ -20,9 +20,8 @@ public class RegisterServlet extends HttpServlet {
         request.setCharacterEncoding("utf-8");
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-        //实例化UserDao对象
-        UserDao userDao = new UserDao();
-        User user = userDao.register(username, password, "用户");
+
+        User user = new UserDao().register(username, password, "用户");         //实例化UserDao对象
         //判断是否注册成功
         if (user != null) {//成功
                 request.getSession().setAttribute("user", user);//将用户对象放到session中

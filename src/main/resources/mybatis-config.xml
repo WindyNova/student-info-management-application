@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+
+<!--mybatis里面的具体配置，控制链接数据库的操作-->
+<configuration>
+    <environments default="development">
+        <environment id="production">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql://172.17.0.1:3306/stuinfo?useSSL=false&amp;useUnicode=true&amp;characterEncoding=UTF-8"/>
+                <property name="username" value="user"/>
+                <property name="password" value="12345678"/>
+            </dataSource>
+        </environment>
+        <environment id="development">
+        <transactionManager type="JDBC"/>
+        <dataSource type="POOLED">
+            <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
+            <property name="url" value="jdbc:mysql://127.0.0.1:3306/stuinfo?useSSL=false&amp;useUnicode=true&amp;characterEncoding=UTF-8"/>
+            <property name="username" value="user"/>
+            <property name="password" value="12345678"/>
+        </dataSource>
+    </environment>
+    </environments>
+
+    <!-- 下面的mappers要一一包含对应实体类的Mapper，表示联系对应的视图类-->
+    <mappers>
+        <mapper resource="ClassMapper.xml"/>
+        <mapper resource="CourseMapper.xml"/>
+        <mapper resource="DepartmentMapper.xml"/>
+        <mapper resource="SCMapper.xml"/>
+        <mapper resource="StudentMapper.xml"/>
+        <mapper resource="UserMapper.xml"/>
+    </mappers>
+
+</configuration>

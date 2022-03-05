@@ -10,21 +10,18 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 public class LoginServlet extends HttpServlet {
-    private static final long serialVersionUID = 1L;
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         request.setCharacterEncoding("utf-8");
 
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-        String level;
-        //实例化UserDao对象
-        UserDao userDao = new UserDao();
 
-        User user = userDao.login(username, password);
+        User user = new UserDao().login(username, password);         //实例化UserDao对象
         //判断是否登录成功
         if (user != null) {//成功
-            level = user.getLevel();
+            String level = user.getLevel();
             if (level.equals("用户")) {
                 request.getSession().setAttribute("user", user);//将用户对象放到session中
                 //转发到user.jsp中

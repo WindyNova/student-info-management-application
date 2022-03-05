@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--绑定-->
+<mapper namespace="cn.edu.jit.wdnv.java.dao.CourseMapper">
+
+    <select id="queryAllCourse" resultType="cn.edu.jit.wdnv.java.model.Course">
+        select * from course order by cno;
+
+    </select>
+
+    <insert id="insertCourse" parameterType="cn.edu.jit.wdnv.java.model.Course">
+        insert into course values(#{Cno},#{Cname},#{Cteacher},#{Ccredit})
+    </insert>
+
+    <delete id="deleteCourse" parameterType="cn.edu.jit.wdnv.java.model.Course">
+        delete from course where Cno = #{Cno};
+    </delete>
+
+    <update id="alterCourse" parameterType="cn.edu.jit.wdnv.java.model.Course">
+        update course set cno = #{after_cno},cname = #{after_cname},cteacher = #{after_cteacher},ccredit = ? where cno = ?;
+    </update>
+
+
+</mapper>

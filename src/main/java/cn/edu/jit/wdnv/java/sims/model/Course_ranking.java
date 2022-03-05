@@ -11,6 +11,24 @@ public class Course_ranking {
     private Double grade;//成绩
 
 
+    public Course_ranking(String sno, String dname, String clname, String sname, String ssex, int sage, Double grade) {
+        Sno = sno;
+        Dname = dname;
+        Clname = clname;
+        Sname = sname;
+        Ssex = ssex;
+        Sage = sage;
+        this.grade = grade;
+    }
+
+    public String getSno() {
+        return Sno;
+    }
+
+    public void setSno(String sno) {
+        Sno = sno;
+    }
+
     public String getDname() {
         return Dname;
     }
@@ -25,6 +43,14 @@ public class Course_ranking {
 
     public void setClname(String clname) {
         Clname = clname;
+    }
+
+    public String getSname() {
+        return Sname;
+    }
+
+    public void setSname(String sname) {
+        Sname = sname;
     }
 
     public String getSsex() {
@@ -43,22 +69,6 @@ public class Course_ranking {
         Sage = sage;
     }
 
-    public String getSno() {
-        return Sno;
-    }
-
-    public void setSno(String sno) {
-        Sno = sno;
-    }
-
-    public String getSname() {
-        return Sname;
-    }
-
-    public void setSname(String sname) {
-        Sname = sname;
-    }
-
     public Double getGrade() {
         return grade;
     }
@@ -66,6 +76,4 @@ public class Course_ranking {
     public void setGrade(Double grade) {
         this.grade = grade;
     }
-
-
 }

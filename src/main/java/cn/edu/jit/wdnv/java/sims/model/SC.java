@@ -11,12 +11,23 @@ public class SC {
     private String Cname;//课程名称
     private double Grade;//成绩
 
-    public String getCname() {
-        return Cname;
+
+    public SC(String sno, String sname, String ssex, int sage, String cno, String cname, double grade) {
+        Sno = sno;
+        Sname = sname;
+        Ssex = ssex;
+        Sage = sage;
+        Cno = cno;
+        Cname = cname;
+        Grade = grade;
     }
 
-    public void setCname(String cname) {
-        Cname = cname;
+    public String getSno() {
+        return Sno;
+    }
+
+    public void setSno(String sno) {
+        Sno = sno;
     }
 
     public String getSname() {
@@ -39,20 +50,8 @@ public class SC {
         return Sage;
     }
 
-    public void setSage(int i) {
-        Sage = i;
-    }
-
-    public void setGrade(double grade) {
-        Grade = grade;
-    }
-
-    public String getSno() {
-        return Sno;
-    }
-
-    public void setSno(String sno) {
-        Sno = sno;
+    public void setSage(int sage) {
+        Sage = sage;
     }
 
     public String getCno() {
@@ -63,11 +62,19 @@ public class SC {
         Cno = cno;
     }
 
+    public String getCname() {
+        return Cname;
+    }
+
+    public void setCname(String cname) {
+        Cname = cname;
+    }
+
     public double getGrade() {
         return Grade;
     }
 
-    public void setGrade(int grade) {
+    public void setGrade(double grade) {
         Grade = grade;
     }
 }

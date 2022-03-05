@@ -6,7 +6,15 @@ public class Student  {
     private String Sname;//姓名
     private String Ssex;//性别
     private int Sage;//年龄
-    private String clno;//所在班级
+    private String Clno;//所在班级号
+
+    public Student(String sno, String sname, String ssex, int sage, String clno) {
+        Sno = sno;
+        Sname = sname;
+        Ssex = ssex;
+        Sage = sage;
+        Clno = clno;
+    }
 
     public String getSno() {
         return Sno;
@@ -41,11 +49,11 @@ public class Student  {
     }
 
     public String getClno() {
-        return clno;
+        return Clno;
     }
 
     public void setClno(String clno) {
-        this.clno = clno;
+        this.Clno = clno;
     }
 
 

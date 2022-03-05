@@ -1,46 +1,31 @@
 package cn.edu.jit.wdnv.java.sims.utils;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import org.apache.ibatis.io.Resources;
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+import java.io.IOException;
+import java.io.InputStream;
+
+//sqlSessionFactory --> sqlSession
+//MybatisUtils,封装SQLSession的创建和关闭
 
 public class DBUtils {
-
-    /**
-     * 获取数据库连接
-     *
-     * @return Connection对象
-     */
-    protected final static String dbUser = "user";
-    protected final static String dbPASSWD = "12345678";
-    protected final static String dbIP ="172.17.0.1";
-    protected final static String dbURL = "jdbc:mysql://"+dbIP+ ":3306/stuinfo";
-    private static Connection con;
-
-    public static Connection getConnection() {
-
+    public static SqlSessionFactory sqlSessionFactory;
+    static {
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            con = DriverManager.getConnection(dbURL, dbUser, dbPASSWD);
-        } catch (ClassNotFoundException | SQLException e) {
+            //使用Mybatis第一步：获取sqlSessionFactory对象
+            String resource = "mybatis-config.xml";
+            String environment = "development";
+            InputStream inputStream = Resources.getResourceAsStream(resource);
+            sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream, environment);
+        } catch (IOException e) {
             e.printStackTrace();
         }
-        return con;
     }
-
-    /**
-     * 关闭数据库连接
-     *
-     * @param con Connection对象
-     */
-    public static void closeCon(Connection con) {
-        //判断conn是否为空
-        if (con != null) {
-            try {
-                con.close();//关闭数据库连接
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
+    //既然有了 SqlSessionFactory，顾名思义，我们就可以从中获得 SqlSession 的实例了
+    // SqlSession 完全包含了面向数据库执行 SQL 命令所需的所有方法
+    public static SqlSession getSqlSession() {
+        return sqlSessionFactory.openSession();
     }
 }

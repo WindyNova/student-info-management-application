@@ -4,7 +4,6 @@ import cn.edu.jit.wdnv.java.sims.dao.*;
 import cn.edu.jit.wdnv.java.sims.model.Class;
 import cn.edu.jit.wdnv.java.sims.model.*;
 
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -13,12 +12,12 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 
 
-public class AdminDao extends HttpServlet {
-    private static final long serialVersionUID = 1L;
+public class AdminServlet extends HttpServlet {
+    int status;
 
-    //接收请求
+ //GET请求判断需要做的操作
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         request.setCharacterEncoding("utf-8");
         //存储操作描述
         String action = request.getParameter("action");
@@ -76,6 +75,7 @@ public class AdminDao extends HttpServlet {
             case "alter_student":
                 alter_student(request, response);
                 break;
+                
             //课程操作
             case "course_avg":
                 course_avg(response);
@@ -120,9 +120,8 @@ public class AdminDao extends HttpServlet {
     //查询所有用户
     protected void query_all_user(HttpServletResponse response) throws IOException {
         response.setContentType("text/html;charset=utf-8");
-        UserDao userDao = new UserDao();
 
-        ArrayList<User> results = userDao.query_all_user();
+        ArrayList<User> results = new UserDao().query_all_user();
         PrintWriter out = response.getWriter();
         //输出结果
         if (results != null) {
@@ -149,12 +148,13 @@ public class AdminDao extends HttpServlet {
         String password = request.getParameter("password");
         String level = request.getParameter("level");
 
-        int flag = new UserDao().insert_user(username, password, level);
+        status = new UserDao().insert_user(username, password, level);
         String info;
         PrintWriter out = response.getWriter();
-        if (flag == 1) {
+        if (status == 1) {
             info = "用户插入成功！";
         } else {
+            status = 0;
             info = "错误：用户插入失败！";
         }
         out.write("<div class='error'>");
@@ -169,12 +169,13 @@ public class AdminDao extends HttpServlet {
         response.setContentType("text/html;charset=utf-8");
         String username = request.getParameter("username");
 
-        int flag = new UserDao().delete_user(username);
+        status = new UserDao().delete_user(username);
         String info;
         PrintWriter out = response.getWriter();
-        if (flag == 1) {
+        if (status == 1) {
             info = "成功删除名为" + username + "用户！";
         } else {
+            status = 0;
             info = "错误：删除用户失败！";
         }
         out.write("<div class='error'>");
@@ -192,12 +193,13 @@ public class AdminDao extends HttpServlet {
         String after_password = request.getParameter("after_password");
         String after_level = request.getParameter("after_level");
 
-        int flag = new UserDao().alter_user(username, after_username, after_password, after_level);
+        status = new UserDao().alter_user(username, after_username, after_password, after_level);
         String info;
         PrintWriter out = response.getWriter();
-        if (flag == 1) {
+        if (status == 1) {
             info = "名为" + username + "用户信息修改成功！";
         } else {
+            status = 0;
             info = "错误：修改用户失败!";
         }
         out.write("<div class='error'>");
@@ -209,8 +211,7 @@ public class AdminDao extends HttpServlet {
 
     /*-------------------------------- 院系-----------------------------------*/
     // 查询所有院系
-    protected void query_all_department(HttpServletResponse response)
-            throws IOException {
+    protected void query_all_department(HttpServletResponse response) throws IOException {
         response.setContentType("text/html;charset=utf-8");
 
         ArrayList<Department> results = new DepartmentDao().query_all_department();
@@ -232,17 +233,17 @@ public class AdminDao extends HttpServlet {
     }
 
     // 插入院系
-    protected void insert_department(HttpServletRequest request, HttpServletResponse response)
-            throws IOException {
+    protected void insert_department(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setContentType("text/html;charset=utf-8");
         String dno = request.getParameter("dno");
         String dname = request.getParameter("dname");
-        int flag = new DepartmentDao().insert_department(dno, dname);
+        status = new DepartmentDao().insert_department(dno, dname);
         String info;
         PrintWriter out = response.getWriter();
-        if (flag == 1) {
+        if (status == 1) {
             info = "院系" + dname + "插入成功！";
         } else {
+            status = 0;
             info = "错误：院系插入失败！";
         }
         out.write("<div class='error'>");
@@ -253,16 +254,16 @@ public class AdminDao extends HttpServlet {
     }
 
     // 删除院系
-    protected void delete_department(HttpServletRequest request, HttpServletResponse response)
-            throws IOException {
+    protected void delete_department(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setContentType("text/html;charset=utf-8");
         String dno = request.getParameter("dno");
-        int flag = new DepartmentDao().delete_department(dno);
+        status = new DepartmentDao().delete_department(dno);
         String info;
         PrintWriter out = response.getWriter();
-        if (flag == 1) {
+        if (status == 1) {
             info = "成功删除" + dno + "号院系！";
         } else {
+            status = 0;
             info = "错误：删除院系失败！";
         }
         out.write("<div class='error'>");
@@ -273,18 +274,18 @@ public class AdminDao extends HttpServlet {
     }
 
     // 修改院系
-    protected void alter_department(HttpServletRequest request, HttpServletResponse response)
-            throws IOException {
+    protected void alter_department(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setContentType("text/html;charset=utf-8");
         String dno = request.getParameter("dno");
         String after_dno = request.getParameter("after_dno");
         String after_dname = request.getParameter("after_dname");
-        int flag = new DepartmentDao().alter_department(dno, after_dno, after_dname);
+        status = new DepartmentDao().alter_department(dno, after_dno, after_dname);
         String info;
         PrintWriter out = response.getWriter();
-        if (flag == 1) {
+        if (status == 1) {
             info = dno + "号系修改成功！";
         } else {
+            status = 0;
             info = "错误：修改院系失败!";
         }
         out.write("<div class='error'>");
@@ -296,8 +297,7 @@ public class AdminDao extends HttpServlet {
 
     /*-------------------------------- 班级-----------------------------------*/
     // 查询所有班级
-    protected void query_all_class(HttpServletResponse response)
-            throws IOException {
+    protected void query_all_class(HttpServletResponse response) throws IOException {
         response.setContentType("text/html;charset=utf-8");
         ArrayList<Class> results = new ClassDao().query_all_class();
         PrintWriter out = response.getWriter();
@@ -319,18 +319,18 @@ public class AdminDao extends HttpServlet {
     }
 
     // 插入班级
-    protected void insert_class(HttpServletRequest request, HttpServletResponse response)
-            throws IOException {
+    protected void insert_class(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setContentType("text/html;charset=utf-8");
         String clno = request.getParameter("clno");
         String clname = request.getParameter("clname");
         String dno = request.getParameter("dno");
-        int flag = new ClassDao().insert_class(clno, clname, dno);
+        status = new ClassDao().insert_class(clno, clname, dno);
         String info;
         PrintWriter out = response.getWriter();
-        if (flag == 1) {
+        if (status == 1) {
             info = "班级" + clname + "插入成功！";
         } else {
+            status = 0;
             info = "错误：班级插入失败！";
         }
         out.write("<div class='error'>");
@@ -341,16 +341,16 @@ public class AdminDao extends HttpServlet {
     }
 
     // 删除班级
-    protected void delete_class(HttpServletRequest request, HttpServletResponse response)
-            throws IOException {
+    protected void delete_class(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setContentType("text/html;charset=utf-8");
         String clno = request.getParameter("clno");
-        int flag = new ClassDao().delete_class(clno);
+        status = new ClassDao().delete_class(clno);
         String info;
         PrintWriter out = response.getWriter();
-        if (flag == 1) {
+        if (status == 1) {
             info = "成功删除" + clno + "班级！";
         } else {
+            status = 0;
             info = "错误：删除班级失败！";
         }
         out.write("<div class='error'>");
@@ -361,19 +361,19 @@ public class AdminDao extends HttpServlet {
     }
 
     // 修改班级
-    protected void alter_class(HttpServletRequest request, HttpServletResponse response)
-            throws IOException {
+    protected void alter_class(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setContentType("text/html;charset=utf-8");
         String clno = request.getParameter("clno");
         String after_clno = request.getParameter("after_clno");
         String after_clname = request.getParameter("after_clname");
         String after_dno = request.getParameter("after_dno");
-        int flag = new ClassDao().alter_class(clno, after_clno, after_clname, after_dno);
+        status = new ClassDao().alter_class(clno, after_clno, after_clname, after_dno);
         String info;
         PrintWriter out = response.getWriter();
-        if (flag == 1) {
+        if (status == 1) {
             info = "班级" + clno + "修改成功！";
         } else {
+            status = 0;
             info = "错误：修改班级失败!";
         }
         out.write("<div class='error'>");
@@ -385,8 +385,7 @@ public class AdminDao extends HttpServlet {
 
     /*-------------------------------- 学生-----------------------------------*/
     // 查询所有学生
-    protected void query_all_student(HttpServletResponse response)
-            throws IOException {
+    protected void query_all_student(HttpServletResponse response) throws IOException {
         response.setContentType("text/html;charset=utf-8");
         ArrayList<Student> results = new StudentDao().query_all_student();
         PrintWriter out = response.getWriter();
@@ -410,20 +409,20 @@ public class AdminDao extends HttpServlet {
     }
 
     // 插入学生
-    protected void insert_student(HttpServletRequest request, HttpServletResponse response)
-            throws IOException {
+    protected void insert_student(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setContentType("text/html;charset=utf-8");
         String sno = request.getParameter("sno");
         String sname = request.getParameter("sname");
         String ssex = request.getParameter("ssex");
         int sage = Integer.parseInt(request.getParameter("sage"));
         String clno = request.getParameter("clno");
-        int flag = new StudentDao().insert_student(sno, sname, ssex, sage, clno);
+        status = new StudentDao().insert_student(sno, sname, ssex, sage, clno);
         String info;
         PrintWriter out = response.getWriter();
-        if (flag == 1) {
+        if (status == 1) {
             info = "学生" + sname + "插入成功！";
         } else {
+            status = 0;
             info = "错误：学生插入失败！";
         }
         out.write("<div class='error'>");
@@ -434,16 +433,16 @@ public class AdminDao extends HttpServlet {
     }
 
     // 删除学生
-    protected void delete_student(HttpServletRequest request, HttpServletResponse response)
-            throws IOException {
+    protected void delete_student(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setContentType("text/html;charset=utf-8");
         String sno = request.getParameter("sno");
-        int flag = new StudentDao().delete_student(sno);
+        status = new StudentDao().delete_student(sno);
         String info;
         PrintWriter out = response.getWriter();
-        if (flag == 1) {
+        if (status == 1) {
             info = "成功删除" + sno + "号学生！";
         } else {
+            status = 0;
             info = "错误：删除学生失败！";
         }
         out.write("<div class='error'>");
@@ -454,8 +453,7 @@ public class AdminDao extends HttpServlet {
     }
 
     // 修改学生信息
-    protected void alter_student(HttpServletRequest request, HttpServletResponse response)
-            throws IOException {
+    protected void alter_student(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setContentType("text/html;charset=utf-8");
         String sno = request.getParameter("sno");
         String after_sno = request.getParameter("after_sno");
@@ -463,12 +461,13 @@ public class AdminDao extends HttpServlet {
         String after_ssex = request.getParameter("after_ssex");
         int after_sage = Integer.parseInt(request.getParameter("after_sage"));
         String after_clno = request.getParameter("after_clno");
-        int flag = new StudentDao().alter_class(sno, after_sno, after_sname, after_ssex, after_sage, after_clno);
+        status = new StudentDao().alter_class(sno, after_sno, after_sname, after_ssex, after_sage, after_clno);
         String info;
         PrintWriter out = response.getWriter();
-        if (flag == 1) {
+        if (status == 1) {
             info = "学生" + sno + "信息修改成功！";
         } else {
+            status = 0;
             info = "错误：修改学生信息失败!";
         }
         out.write("<div class='error'>");
@@ -481,7 +480,6 @@ public class AdminDao extends HttpServlet {
     /*-------------------------------- 课程 -----------------------------------*/
     //查询课程平均分
     protected void course_avg(HttpServletResponse response) throws IOException {
-
         response.setContentType("text/html;charset=utf-8");
         ArrayList<Course_avg> results = new CourseDao().course_avg();
         PrintWriter out = response.getWriter();
@@ -515,7 +513,7 @@ public class AdminDao extends HttpServlet {
                 out.write("<div>");
                 out.write("<span>" + i.getCno() + "</span>");
                 out.write("<span>" + i.getCname() + "</span>");
-                out.write("<span>" + i.getFail_rate() + "%</span>");
+                out.write("<span>" + i.getFailRate() + "%</span>");
                 out.write("</div>");
             }
             out.write("</div>");
@@ -583,12 +581,13 @@ public class AdminDao extends HttpServlet {
         String Cname = request.getParameter("cname");
         String Cteacher = request.getParameter("cteacher");
         int Ccredit = Integer.parseInt(request.getParameter("ccredit"));
-        int flag = new CourseDao().insert_course(Cno, Cname, Cteacher, Ccredit);
+        status = new CourseDao().insert_course(Cno, Cname, Cteacher, Ccredit);
         String info;
         PrintWriter out = response.getWriter();
-        if (flag == 1) {
+        if (status == 1) {
             info = "课程" + Cname + "插入成功！";
         } else {
+            status = 0;
             info = "错误：课程插入失败！";
         }
         out.write("<div class='error'>");
@@ -602,12 +601,13 @@ public class AdminDao extends HttpServlet {
     protected void delete_course(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setContentType("text/html;charset=utf-8");
         String cno = request.getParameter("cno");
-        int flag = new CourseDao().delete_course(cno);
+        status = new CourseDao().delete_course(cno);
         String info;
         PrintWriter out = response.getWriter();
-        if (flag == 1) {
+        if (status == 1) {
             info = "成功删除" + cno + "课程！";
         } else {
+            status = 0;
             info = "错误：删除课程失败！";
         }
         out.write("<div class='error'>");
@@ -618,8 +618,7 @@ public class AdminDao extends HttpServlet {
     }
 
     //修改课程信息
-    protected void alter_course(HttpServletRequest request, HttpServletResponse response)
-            throws IOException {
+    protected void alter_course(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setContentType("text/html;charset=utf-8");
 
         String cno = request.getParameter("cno");
@@ -627,12 +626,13 @@ public class AdminDao extends HttpServlet {
         String after_cname = request.getParameter("after_cname");
         String after_cteacher = request.getParameter("after_cteacher");
         double after_ccredit = Double.parseDouble(request.getParameter("after_ccredit"));
-        int flag = new CourseDao().alter_course(cno, after_cno, after_cname, after_cteacher, after_ccredit);
+        status = new CourseDao().alter_course(cno, after_cno, after_cname, after_cteacher, after_ccredit);
         String info;
         PrintWriter out = response.getWriter();
-        if (flag == 1) {
+        if (status == 1) {
             info = cno + "号课程修改成功！";
         } else {
+            status = 0;
             info = "错误：修改课程信息失败!";
         }
         out.write("<div class='error'>");
@@ -644,8 +644,7 @@ public class AdminDao extends HttpServlet {
 
     /*-------------------------------- 成绩-----------------------------------*/
     // 查询所有成绩表
-    protected void query_all_sc(HttpServletResponse response)
-            throws IOException {
+    protected void query_all_sc(HttpServletResponse response) throws IOException {
         response.setContentType("text/html;charset=utf-8");
         ArrayList<SC> results = new SCDao().query_all_sc();
         PrintWriter out = response.getWriter();
@@ -671,18 +670,18 @@ public class AdminDao extends HttpServlet {
     }
 
     // 插入一条成绩记录
-    protected void insert_sc(HttpServletRequest request, HttpServletResponse response)
-            throws IOException {
+    protected void insert_sc(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setContentType("text/html;charset=utf-8");
         String sno = request.getParameter("sno");
         String cno = request.getParameter("cno");
         double grade = Double.parseDouble(request.getParameter("grade"));
-        int flag = new SCDao().insert_sc(sno, cno, grade);
+        status = new SCDao().insert_sc(sno, cno, grade);
         String info;
         PrintWriter out = response.getWriter();
-        if (flag == 1) {
+        if (status == 1) {
             info = sno + "号学生" + cno + "号课程成绩" + grade + "插入成功！";
         } else {
+            status = 0;
             info = "错误：成绩信息插入失败！";
         }
         out.write("<div class='error'>");
@@ -693,17 +692,17 @@ public class AdminDao extends HttpServlet {
     }
 
     // 删除成绩记录
-    protected void delete_sc(HttpServletRequest request, HttpServletResponse response)
-            throws IOException {
+    protected void delete_sc(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setContentType("text/html;charset=utf-8");
         String sno = request.getParameter("sno");
         String cno = request.getParameter("cno");
-        int flag = new SCDao().delete_sc(sno, cno);
+        status = new SCDao().delete_sc(sno, cno);
         String info;
         PrintWriter out = response.getWriter();
-        if (flag == 1) {
+        if (status == 1) {
             info = "成功删除" + sno + "号学生" + cno + "号课程成绩！";
         } else {
+            status = 0;
             info = "错误：删除成绩信息失败！";
         }
         out.write("<div class='error'>");
@@ -714,18 +713,18 @@ public class AdminDao extends HttpServlet {
     }
 
     // 修改成绩信息
-    protected void alter_sc(HttpServletRequest request, HttpServletResponse response)
-            throws IOException {
+    protected void alter_sc(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setContentType("text/html;charset=utf-8");
         String sno = request.getParameter("sno");
         String cno = request.getParameter("cno");
         double after_grade = Double.parseDouble(request.getParameter("after_grade"));
-        int flag = new SCDao().alter_sc(sno, cno, after_grade);
+        status = new SCDao().alter_sc(sno, cno, after_grade);
         String info;
         PrintWriter out = response.getWriter();
-        if (flag == 1) {
+        if (status == 1) {
             info = sno + "号学生" + cno + "号课程成绩修改成功！";
         } else {
+            status = 0;
             info = "错误：修改学生成绩失败!";
         }
         out.write("<div class='error'>");

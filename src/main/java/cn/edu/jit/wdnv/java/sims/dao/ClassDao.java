@@ -3,21 +3,19 @@ package cn.edu.jit.wdnv.java.sims.dao;
 import cn.edu.jit.wdnv.java.sims.model.Class;
 import cn.edu.jit.wdnv.java.sims.utils.DBUtils;
 
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class ClassDao {
+    int status;
     // 获取所有班级的信息，用ArrayList返回
-    public ArrayList<Class> query_all_class() {
-        Connection conn = DBUtils.getConnection();
-        String sql = "select * from class order by clno;";
+    public List<Class> query_all_class() {
         ArrayList<Class> results = new ArrayList<>();
         try {
-            PreparedStatement ps = conn.prepareStatement(sql);
-            ResultSet rs = ps.executeQuery();
+ 
             while (rs.next()) {
                 Class temp = new Class();
                 temp.setClno(rs.getString("clno"));
@@ -25,74 +23,67 @@ public class ClassDao {
                 temp.setDno(rs.getString("dno"));
                 results.add(temp);
             }
-            // 关闭资源
-            rs.close();
-            ps.close();
+
         } catch (SQLException e) {
+            status = 0;
             e.printStackTrace();
-        } finally {
-            DBUtils.closeCon(conn);
         }
         return results;
     }
 
     // 插入班级信息，返回一个int值表示状态,1：成功，0失败
     public int insert_class(String clno, String clname, String dno) {
-        Connection conn = DBUtils.getConnection();
         String sql = "insert into class values(?,?,?);";
-        int flag = 0;
         try {
-            PreparedStatement ps = conn.prepareStatement(sql);
+            PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, clno);
             ps.setString(2, clname);
             ps.setString(3, dno);
-            flag = ps.executeUpdate();
+            status = ps.executeUpdate();
             ps.close();
+            con.close();
         } catch (SQLException e) {
+            status = 0;
             e.printStackTrace();
-        } finally {
-            DBUtils.closeCon(conn);
         }
-        return flag;
+        return status;
     }
 
     // 删除班级信息，返回一个int值表示状态,1：成功，0失败
     public int delete_class(String clno) {
-        Connection conn = DBUtils.getConnection();
         String sql = "delete from class where clno = ?;";
-        int flag = 0;
         try {
-            PreparedStatement ps = conn.prepareStatement(sql);
+            PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, clno);
-            flag = ps.executeUpdate();
+            status = ps.executeUpdate();
             ps.close();
         } catch (SQLException e) {
+            status = 0;
             e.printStackTrace();
         } finally {
-            DBUtils.closeCon(conn);
+            DBUtils.closeCon(con);
         }
-        return flag;
+        return status;
     }
 
     // 修改班级信息，返回一个int值表示状态,1：成功，0失败
     public int alter_class(String clno, String after_clno, String after_clname, String after_dno) {
-        Connection conn = DBUtils.getConnection();
         String sql = "update class set clno = ?,clname = ?,dno = ? where clno = ?;";
-        int flag = 0;
         try {
-            PreparedStatement ps = conn.prepareStatement(sql);
+            PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, after_clno);
             ps.setString(2, after_clname);
             ps.setString(3, after_dno);
             ps.setString(4, clno);
-            flag = ps.executeUpdate();
+            status = ps.executeUpdate();
             ps.close();
         } catch (SQLException e) {
+            status = 0;
             e.printStackTrace();
         } finally {
-            DBUtils.closeCon(conn);
+            DBUtils.closeCon(con);
         }
-        return flag;
+        return status;
     }
 
 }
