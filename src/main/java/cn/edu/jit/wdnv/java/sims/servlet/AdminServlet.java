@@ -13,7 +13,7 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 
 
-public class AdminDao extends HttpServlet {
+public class AdminServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     //接收请求

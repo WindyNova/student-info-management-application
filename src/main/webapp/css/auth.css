@@ -1,7 +1,10 @@
 /*Basic*/
-*{
+html{
 	padding: 0;
 	margin: 0;
+	width:100%;
+	height:100%;
+	overflow: hidden;
 	font-family: "PingFangSC-Regular","Microsoft Yahei",sans-serif;
 }
 
@@ -56,7 +59,7 @@ header nav ul li{
 
 main{
 	display: block;
-	position: absolute;
+
 	width: 100%;
 	height: 100%;
 	overflow: hidden;
@@ -64,10 +67,10 @@ main{
 }
 
 .container{
-	position: relative;
-	margin: 5em auto 0;
-	height: 80%;
-	width: 80%;
+	margin: 0px auto;
+	margin-top: calc((100vh - 60vh)/2);
+	height: 60vh;
+	width: 66vw;
 	box-shadow: 4px 4px 20px rgba(0,0,0,.5);
 	background-image: url("../images/login.png");
 	background-position: center center;
@@ -87,12 +90,12 @@ main{
 
 /*index.html*/
 .form{
-	position: absolute;
+	position: relative;
 	top: 0;
-	right: 0;
-	width: 36%;
+	float: right;
 	padding: 6em 5em;
 	font-weight: 300;
+	text-align: right;
 }
 
 .form h3{

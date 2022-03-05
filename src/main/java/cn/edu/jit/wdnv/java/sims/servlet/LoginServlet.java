@@ -19,9 +19,8 @@ public class LoginServlet extends HttpServlet {
         String password = request.getParameter("password");
         String level;
         //实例化UserDao对象
-        UserDao userDao = new UserDao();
 
-        User user = userDao.login(username, password);
+        User user = new UserDao().login(username, password);
         //判断是否登录成功
         if (user != null) {//成功
             level = user.getLevel();

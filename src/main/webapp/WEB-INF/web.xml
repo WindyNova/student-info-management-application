@@ -41,12 +41,12 @@
   </servlet-mapping>
   <servlet>
     <description/>
-    <display-name>AdminDao</display-name>
-    <servlet-name>AdminDao</servlet-name>
-    <servlet-class>cn.edu.jit.wdnv.java.sims.servlet.AdminDao</servlet-class>
+    <display-name>AdminServlet</display-name>
+    <servlet-name>AdminServlet</servlet-name>
+    <servlet-class>cn.edu.jit.wdnv.java.sims.servlet.AdminServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>AdminDao</servlet-name>
-    <url-pattern>/AdminDao</url-pattern>
+    <servlet-name>AdminServlet</servlet-name>
+    <url-pattern>/AdminServlet</url-pattern>
   </servlet-mapping>
 </web-app>
