@@ -8,6 +8,12 @@ public class Class {
     private String Clname;//班级名称
     private String Dno;//所属院系
 
+    public Class(String clno, String clname, String dno) {
+        Clno = clno;
+        Clname = clname;
+        Dno = dno;
+    }
+
     public String getClno() {
         return Clno;
     }

@@ -11,6 +11,16 @@ public class SC {
     private String Cname;//课程名称
     private double Grade;//成绩
 
+    public SC(String sno, String sname, String ssex, int sage, String cno, String cname, double grade) {
+        Sno = sno;
+        Sname = sname;
+        Ssex = ssex;
+        Sage = sage;
+        Cno = cno;
+        Cname = cname;
+        Grade = grade;
+    }
+
     public String getCname() {
         return Cname;
     }

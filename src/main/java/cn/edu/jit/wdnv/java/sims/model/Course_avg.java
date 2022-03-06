@@ -9,6 +9,12 @@ public class Course_avg {
     //private int Ccredit;//学分
     private double avg;//平均分
 
+    public Course_avg(String cno, String cname, double avg) {
+        Cno = cno;
+        Cname = cname;
+        this.avg = avg;
+    }
+
     public String getCno() {
         return Cno;
     }

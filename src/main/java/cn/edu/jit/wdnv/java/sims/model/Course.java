@@ -9,6 +9,13 @@ public class Course{
     private String Cteacher;//执教老师
     private int Ccredit;//学分
 
+    public Course(String cno, String cname, String cteacher, int ccredit) {
+        Cno = cno;
+        Cname = cname;
+        Cteacher = cteacher;
+        Ccredit = ccredit;
+    }
+
     public String getCno() {
         return Cno;
     }

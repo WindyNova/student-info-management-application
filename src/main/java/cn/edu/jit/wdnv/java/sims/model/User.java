@@ -6,6 +6,12 @@ public class User{
     private String password;//密码
     private String level;//权限级别
 
+    public User(String username, String password, String level) {
+        this.username = username;
+        this.password = password;
+        this.level = level;
+    }
+
     public String getUsername() {
         return username;
     }

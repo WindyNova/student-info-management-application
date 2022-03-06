@@ -1,6 +1,5 @@
 package cn.edu.jit.wdnv.java.sims.servlet;
 
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -9,7 +8,6 @@ import java.io.IOException;
 
 
 public class UserLogoutServlet extends HttpServlet {
-    private static final long serialVersionUID = 1L;
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         //获取Session
