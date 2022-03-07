@@ -6,7 +6,7 @@ public class Student  {
     private String Sname;//姓名
     private String Ssex;//性别
     private int Sage;//年龄
-    private String Clno;//所在班级号
+    private String Clno;//所在班级
 
     public Student(String sno, String sname, String ssex, int sage, String clno) {
         Sno = sno;
@@ -52,8 +52,10 @@ public class Student  {
         return Clno;
     }
 
+
+
     public void setClno(String clno) {
-        this.Clno = clno;
+        Clno = clno;
     }
 
 

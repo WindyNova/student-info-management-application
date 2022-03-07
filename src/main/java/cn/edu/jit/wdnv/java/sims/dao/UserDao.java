@@ -1,104 +1,76 @@
 package cn.edu.jit.wdnv.java.sims.dao;
 
 import cn.edu.jit.wdnv.java.sims.model.User;
-import cn.edu.jit.wdnv.java.sims.utils.DBUtils;
-import org.apache.ibatis.session.SqlSession;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+
+import java.sql.*;
 import java.util.ArrayList;
 
-import static cn.edu.jit.wdnv.java.sims.utils.DBUtils.getSqlSession;
-import static cn.edu.jit.wdnv.java.sims.utils.DBUtils.sqlSessionFactory;
-
-
-public class UserDao {
-
-    String mybatisSqlClass="cn.edu.jit.wdnv.java.dao.UserMapper";
+public class UserDao extends BaseDao{
     //判断用户在数据库中是否存在，存在返回true，不存在返回false
     public boolean isUserExist(String username) {
-try  {
-            User userMapper = getSqlSession().getMapper(User.class);
-
+        String sql = "select * from user where username = ?";
+        try (PreparedStatement ps = con.prepareStatement(sql)){
+            ps.setString(1, username);//给用户对象属性赋值
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                return true;  //数据库中存在此用户
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
         return false;
     }
 
     //用户登录，登录成功返回一个含值User对象,如果登录失败返回一个User空对象
     public User login(String username, String password) {
-
-        User user = null;
+        User user = null; //实例化一个user对象 需要返回user所以定义在这里
         String sql = "select * from user where username = ? and password = ?;";
 
-        try {
-            //获取PreparedStatement对象
-            PreparedStatement ps = con.prepareStatement(sql);
-            //对sql参数进行动态赋值
+        try (PreparedStatement ps = con.prepareStatement(sql)) {
             ps.setString(1, username);
             ps.setString(2, password);
             ResultSet rs = ps.executeQuery();//查询结果集
 
             //判断数据库中是否存在该用户
             if (rs.next()) {
-                //给用户对象赋值
-                user.setUsername(rs.getString("username"));
-                user.setPassword(rs.getString("password"));
-                user.setLevel(rs.getString("level"));
+                user = new User(rs.getString("username"),rs.getString("password"),rs.getString("level"));
+
             }
-            //释放资源
-            rs.close();
-            ps.close();
+
         } catch (Exception e) {
             e.printStackTrace();
-        } finally {
-            DBUtils.closeCon(con);
         }
         return user;
     }
 
     //用户注册，注册成功返回一个含值User对象，如果注册失败返回一个User空对象
     public User register(String username, String password, String level) {
-
         User user = null;
-
         try {
             //判断数据库中是否存在该用户
             if (!isUserExist(username)) {//不存在该用户，可以注册
-                user = new User();//实例化一个user对象
-                //给用户对象赋值
-                user.setUsername(username);
-                user.setPassword(password);
-                user.setLevel(level);
-                //将用户对象写入数据库
+                user = new User(username,password,"用户");//实例化一个user对象
                 Statement stmt = con.createStatement();
                 stmt.executeUpdate("insert into user values('" + username + "','" + password + "','" + level + "');");
                 stmt.close();//释放资源
             }
         } catch (Exception e) {
             e.printStackTrace();
-        } finally {
-            DBUtils.closeCon(con);
         }
         return user;
     }
 
     //获取用户的权限级别，若存在则返回级别(管理员，普通用户),若不存在返回空
     public String level(String username) {
-
         String sql = "select level from user where username = ?;";
         String level = null;
-        try {
-            PreparedStatement ps = con.prepareStatement(sql);
+        try( PreparedStatement ps = con.prepareStatement(sql)){
             ps.setString(1, username);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {//存在该用户
                 level = rs.getString("level");
             }
-            //关闭资源
-            rs.close();
-            ps.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -107,92 +79,71 @@ try  {
 
     //获取数据库中所有用户的信息，用ArrayList返回
     public ArrayList<User> query_all_user() {
-
         String sql = "select * from user order by username;";
-        ArrayList<User> results = new ArrayList<User>();
+        ArrayList<User> results = new ArrayList<>();
 
-        try {
-            PreparedStatement ps = con.prepareStatement(sql);
+        try(PreparedStatement ps = con.prepareStatement(sql)) {
+
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
-                User temp = new User();
-                temp.setUsername(rs.getString("username"));
-                temp.setPassword(rs.getString("password"));
-                temp.setLevel(rs.getString("level"));
-                results.add(temp);
+                User user = new User(rs.getString("username"),rs.getString("password"),rs.getString("level"));
+                results.add(user);
             }
-            //关闭资源
-            rs.close();
-            ps.close();
+
         } catch (SQLException e) {
             e.printStackTrace();
-        } finally {
-            DBUtils.closeCon(con);
         }
         return results;
     }
 
     //插入用户信息，返回一个int值表示状态,1：成功，0失败
     public int insert_user(String username, String password, String level) {
-
         String sql = "insert into user values(?,?,?);";
 
-        int flag = 0;
-        try {
-            PreparedStatement ps = con.prepareStatement(sql);
+      status =0;
+        try (PreparedStatement ps = con.prepareStatement(sql)){
+
 
             ps.setString(1, username);
             ps.setString(2, password);
             ps.setString(3, level);
-            flag = ps.executeUpdate();
-            ps.close();
+            status = ps.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
-        } finally {
-            DBUtils.closeCon(con);
         }
-        return flag;
+        return status;
     }
 
     //删除用户信息，返回一个int值表示状态,1：成功，0失败
     public int delete_user(String username) {
-
         String sql = "delete from user where username = ?;";
 
-        int flag = 0;
-        try {
-            PreparedStatement ps = con.prepareStatement(sql);
+        status = 0;
+        try ( PreparedStatement ps =  con.prepareStatement(sql)){
             ps.setString(1, username);
-            flag = ps.executeUpdate();
-            ps.close();
+           status = ps.executeUpdate();
+
         } catch (SQLException e) {
             e.printStackTrace();
-        } finally {
-            DBUtils.closeCon(con);
         }
-        return flag;
+        return status;
     }
 
     //修改用户信息，返回一个int值表示状态,1：成功，0失败
     public int alter_user(String username, String after_username, String after_password, String after_level) {
-
         String sql = "update user set username = ?,password = ?,level = ? where username = ?;";
 
-        int flag = 0;
-        try {
-            PreparedStatement ps = con.prepareStatement(sql);
+        status = 0;
+        try (PreparedStatement ps = con.prepareStatement(sql)){
             ps.setString(1, after_username);
             ps.setString(2, after_password);
             ps.setString(3, after_level);
             ps.setString(4, username);
-            flag = ps.executeUpdate();
-            ps.close();
+            status = ps.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
-        } finally {
-            DBUtils.closeCon(con);
         }
-        return flag;
+        return status;
     }
 }

@@ -17,6 +17,12 @@ public class Course_fail_rate{
         this.failRate = failRate;
     }
 
+    public Course_fail_rate(String cno, String cname, double fail_rate) {
+        Cno = cno;
+        Cname = cname;
+        this.fail_rate = fail_rate;
+    }
+
     public String getCno() {
         return Cno;
     }

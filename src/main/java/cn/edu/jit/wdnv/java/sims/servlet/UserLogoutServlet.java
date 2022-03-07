@@ -8,7 +8,6 @@ import java.io.IOException;
 
 
 public class UserLogoutServlet extends HttpServlet {
-
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         //获取Session

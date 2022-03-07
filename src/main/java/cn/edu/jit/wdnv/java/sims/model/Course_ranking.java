@@ -8,8 +8,17 @@ public class Course_ranking {
     private String Sname;//学生姓名
     private String Ssex;//学生性别
     private int Sage;//学生年龄
-    private Double grade;//成绩
+    private Double Grade;//成绩
 
+    public Course_ranking(String sno, String dname, String clname, String sname, String ssex, int sage, Double grade) {
+        Sno = sno;
+        Dname = dname;
+        Clname = clname;
+        Sname = sname;
+        Ssex = ssex;
+        Sage = sage;
+        Grade = grade;
+    }
 
     public Course_ranking(String sno, String dname, String clname, String sname, String ssex, int sage, Double grade) {
         Sno = sno;
@@ -70,10 +79,10 @@ public class Course_ranking {
     }
 
     public Double getGrade() {
-        return grade;
+        return Grade;
     }
 
     public void setGrade(Double grade) {
-        this.grade = grade;
+        Grade = grade;
     }
 }

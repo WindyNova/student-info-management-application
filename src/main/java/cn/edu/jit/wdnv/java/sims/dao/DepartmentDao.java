@@ -1,94 +1,76 @@
 package cn.edu.jit.wdnv.java.sims.dao;
 
 import cn.edu.jit.wdnv.java.sims.model.Department;
-import cn.edu.jit.wdnv.java.sims.utils.DBUtils;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class DepartmentDao {
+public class DepartmentDao extends BaseDao{
     //查询所有的系信息，查询返回一个含值的ArrayList,当为空值的说明表中无数据元组
     public ArrayList<Department> query_all_department() {
-
         String sql = "select * from department order by dno;";
-        ArrayList<Department> results = new ArrayList<Department>();
-
-        try {
-            PreparedStatement ps = (PreparedStatement) con.prepareStatement(sql);
+        ArrayList<Department> results = new ArrayList<>();
+        try (PreparedStatement ps =con.prepareStatement(sql)){
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                Department temp = new Department();
-                temp.setDno(rs.getString("Dno"));
-                temp.setDname(rs.getString("Dname"));
-                results.add(temp);
+                Department department = new Department(rs.getString("Dno"),rs.getString("Dname"));
+                results.add(department);
             }
-            rs.close();
-            ps.close();
         } catch (SQLException e) {
             e.printStackTrace();
-        } finally {
-            DBUtils.closeCon(con);
-        }
+        } 
         return results;
     }
 
-    //插入院系信息，返回一个int值表示状态,1：成功，0失败
+    //插入院系信息
     public int insert_department(String dno, String dname) {
-
+status=0;
         String sql = "insert into department values(?,?);";
-        int flag = 0;
-        try {
-            PreparedStatement ps = (PreparedStatement) con.prepareStatement(sql);
+        try (PreparedStatement ps = con.prepareStatement(sql)){
             ps.setString(1, dno);
             ps.setString(2, dname);
-            flag = ps.executeUpdate();
-            ps.close();
+            status = ps.executeUpdate();
         } catch (SQLException e) {
+            status =0;
             e.printStackTrace();
-        } finally {
-            DBUtils.closeCon(con);
-        }
-        return flag;
+        } 
+        return status;
     }
 
-    //删除院系信息，返回一个int值表示状态,1：成功，0失败
+    //删除院系信息
     public int delete_department(String dno) {
-
+        status =0;
         String sql = "delete from department where dno = ?;";
-        int flag = 0;
-        try {
-            PreparedStatement ps = (PreparedStatement) con.prepareStatement(sql);
+
+        try (PreparedStatement ps = con.prepareStatement(sql)){
             ps.setString(1, dno);
-            flag = ps.executeUpdate();
-            ps.close();
+            status = ps.executeUpdate();
+
         } catch (SQLException e) {
+            status=0;
             e.printStackTrace();
-        } finally {
-            DBUtils.closeCon(con);
-        }
-        return flag;
+        } 
+        return status;
     }
 
-    //修改院系信息，返回一个int值表示状态,1：成功，0失败
+    //修改院系信息
     public int alter_department(String dno, String after_dno, String after_dname) {
-
+status =0;
         String sql = "update department set dno = ?,dname = ? where dno = ?;";
-        int flag = 0;
-        try {
-            PreparedStatement ps = (PreparedStatement) con.prepareStatement(sql);
+
+        try (PreparedStatement ps = con.prepareStatement(sql)) {
+
             ps.setString(1, after_dno);
             ps.setString(2, after_dname);
             ps.setString(3, dno);
-            flag = ps.executeUpdate();
-            ps.close();
+            status = ps.executeUpdate();
         } catch (SQLException e) {
+            status=0;
             e.printStackTrace();
-        } finally {
-            DBUtils.closeCon(con);
-        }
-        return flag;
+        } 
+        return status;
     }
 
 }
