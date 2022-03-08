@@ -1,4 +1,4 @@
-xmlhttp = new XMLHttpRequest();    //创建http对象，使javascript可以进行http通信
+xmlhttp = new XMLHttpRequest();
 
 //折叠菜单效果
 $(function () {
