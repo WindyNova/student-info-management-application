@@ -77,7 +77,7 @@ public class CourseDao extends BaseDao{
 
     public ArrayList<Course_avg> course_avg() {
         status =0;
-        String sql = "select sc.cno,cno,cname,avg(grade) avg from course,sc where course.cno = sc.cno group by cno order by cno;";
+        String sql = "select sc.Cno,Cname,avg(Grade) avg from course,sc where course.Cno = sc.Cno group by cno order by Cno;";
         ArrayList<Course_avg> course_avg = new ArrayList<>();
         try ( PreparedStatement ps = con.prepareStatement(sql)){
             ResultSet rs = ps.executeQuery();
@@ -112,7 +112,7 @@ public class CourseDao extends BaseDao{
     //查询课程排名情况,返回一个ArrayList集合
     public ArrayList<Course_ranking> course_ranking(String cno) {
 
-        String sql = "select student.Sno,Sno,Dname,Clname,Sname,Ssex,Sage,Grade from department,class,student,sc where student.sno = sc.sno and class.Clno = student.Clno and department.Dno = class.Dno and cno = '" + cno + "' order by grade desc;";
+        String sql = "select student.Sno,Dname,Clname,Sname,Ssex,Sage,Grade from department,class,student,sc where student.sno = sc.sno and class.Clno = student.Clno and department.Dno = class.Dno and cno = '" + cno + "' order by grade desc;";
         ArrayList<Course_ranking> course_ranking = new ArrayList<>();
         try (PreparedStatement ps = con.prepareStatement(sql)){
             ResultSet rs = ps.executeQuery();

@@ -13,7 +13,7 @@ public class SCDao extends BaseDao {
     // 获取所有成绩记录的信息，用ArrayList返回
     public ArrayList<SC> query_all_sc() {
 
-        String sql = "select student.sno,sno,sname,ssex,sage,course.cno,cname,grade from sc,student,course where sc.sno = student.sno and course.cno = sc.cno order by sno;";
+        String sql = "select student.Sno,Sname,Ssex,Sage,course.Cno,Cname,Grade from sc,student,course where sc.Sno = student.Sno and course.Cno = sc.Cno order by Sno;";
         ArrayList<SC> results = new ArrayList<>();
         try(PreparedStatement ps =con.prepareStatement(sql)) {
             ResultSet rs = ps.executeQuery();
