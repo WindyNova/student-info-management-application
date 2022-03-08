@@ -1,30 +1,34 @@
 package cn.edu.jit.wdnv.java.sims.model;
 
-
+/**
+ * Table: department
+ */
 public class Department {
+    /**
+     * Column: Dno
+     * Type: CHAR(12)
+     */
+    private String dno;
 
-
-    private String Dno;//系编号
-    private String Dname;//系名
-
-    public Department(String dno, String dname) {
-        Dno = dno;
-        Dname = dname;
-    }
+    /**
+     * Column: Dname
+     * Type: CHAR(12)
+     */
+    private String dname;
 
     public String getDno() {
-        return Dno;
+        return dno;
     }
 
     public void setDno(String dno) {
-        Dno = dno;
+        this.dno = dno;
     }
 
     public String getDname() {
-        return Dname;
+        return dname;
     }
 
     public void setDname(String dname) {
-        Dname = dname;
+        this.dname = dname;
     }
 }

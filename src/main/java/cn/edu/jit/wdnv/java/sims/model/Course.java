@@ -1,50 +1,43 @@
 package cn.edu.jit.wdnv.java.sims.model;
 
+public class Course {
+    private String cno;
 
-public class Course{
+    private String cname;
 
+    private String cteacher;
 
-    private String Cno;//课程号
-    private String Cname;//课程名称
-    private String Cteacher;//执教老师
-    private int Ccredit;//学分
-
-    public Course(String cno, String cname, String cteacher, int ccredit) {
-        Cno = cno;
-        Cname = cname;
-        Cteacher = cteacher;
-        Ccredit = ccredit;
-    }
+    private Short ccredit;
 
     public String getCno() {
-        return Cno;
+        return cno;
     }
 
     public void setCno(String cno) {
-        Cno = cno;
+        this.cno = cno;
     }
 
     public String getCname() {
-        return Cname;
+        return cname;
     }
 
     public void setCname(String cname) {
-        Cname = cname;
+        this.cname = cname;
     }
 
     public String getCteacher() {
-        return Cteacher;
+        return cteacher;
     }
 
     public void setCteacher(String cteacher) {
-        Cteacher = cteacher;
+        this.cteacher = cteacher;
     }
 
-    public int getCcredit() {
-        return Ccredit;
+    public Short getCcredit() {
+        return ccredit;
     }
 
-    public void setCcredit(int ccredit) {
-        Ccredit = ccredit;
+    public void setCcredit(Short ccredit) {
+        this.ccredit = ccredit;
     }
 }

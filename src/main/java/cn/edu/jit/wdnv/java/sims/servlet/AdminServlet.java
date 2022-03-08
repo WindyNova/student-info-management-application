@@ -4,13 +4,13 @@ import cn.edu.jit.wdnv.java.sims.dao.*;
 import cn.edu.jit.wdnv.java.sims.model.Class;
 import cn.edu.jit.wdnv.java.sims.model.*;
 
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class AdminServlet extends HttpServlet {
@@ -298,7 +298,7 @@ public class AdminServlet extends HttpServlet {
     protected void query_all_class(HttpServletResponse response)
             throws IOException {
         response.setContentType("text/html;charset=utf-8");
-        ArrayList<Class> results = new ClassDao().query_all_class();
+        List<Class> results = new ClassDao().query_all_class();
         PrintWriter out = response.getWriter();
         // 输出结果
         if (results != null) {
@@ -514,7 +514,7 @@ public class AdminServlet extends HttpServlet {
                 out.write("<div>");
                 out.write("<span>" + i.getCno() + "</span>");
                 out.write("<span>" + i.getCname() + "</span>");
-                out.write("<span>" + i.getFail_rate() + "%</span>");
+                out.write("<span>" + i.getFailRate() + "%</span>");
                 out.write("</div>");
             }
             out.write("</div>");
@@ -555,7 +555,7 @@ public class AdminServlet extends HttpServlet {
     //查询所有课程
     protected void query_all_course(HttpServletResponse response) throws IOException {
         response.setContentType("text/html;charset=utf-8");
-        ArrayList<Course> results = new CourseDao().query_all_course();
+        List<Course> results = new CourseDao().query_all_course();
         PrintWriter out = response.getWriter();
         if (results != null) {
             //输出结果
@@ -581,7 +581,7 @@ public class AdminServlet extends HttpServlet {
         String Cno = request.getParameter("cno");
         String Cname = request.getParameter("cname");
         String Cteacher = request.getParameter("cteacher");
-        int Ccredit = Integer.parseInt(request.getParameter("ccredit"));
+        short Ccredit = Short.parseShort(request.getParameter("ccredit"));
         int status = new CourseDao().insert_course(Cno, Cname, Cteacher, Ccredit);
         String info;
         PrintWriter out = response.getWriter();
@@ -625,7 +625,7 @@ public class AdminServlet extends HttpServlet {
         String after_cno = request.getParameter("after_cno");
         String after_cname = request.getParameter("after_cname");
         String after_cteacher = request.getParameter("after_cteacher");
-        double after_ccredit = Double.parseDouble(request.getParameter("after_ccredit"));
+        Short after_ccredit = Short.parseShort(request.getParameter("after_ccredit"));
         int status = new CourseDao().alter_course(cno, after_cno, after_cname, after_cteacher, after_ccredit);
         String info;
         PrintWriter out = response.getWriter();

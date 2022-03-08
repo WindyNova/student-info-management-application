@@ -1,83 +1,48 @@
 package cn.edu.jit.wdnv.java.sims.model;
 
+/**
+ * Table: sc
+ */
 public class SC {
+    /**
+     * Column: Sno
+     * Type: CHAR(12)
+     */
+    private String sno;
 
+    /**
+     * Column: Cno
+     * Type: CHAR(12)
+     */
+    private String cno;
 
-    private String Sno;//学号
-    private String Sname;//姓名
-    private String Ssex;//性别
-    private int Sage;//年龄
-    private String Cno;//课程号
-    private String Cname;//课程名称
-    private double Grade;//成绩
-
-    public SC(String sno, String sname, String ssex, int sage, String cno, String cname, double grade) {
-        Sno = sno;
-        Sname = sname;
-        Ssex = ssex;
-        Sage = sage;
-        Cno = cno;
-        Cname = cname;
-        Grade = grade;
-    }
-
-    public String getCname() {
-        return Cname;
-    }
-
-    public void setCname(String cname) {
-        Cname = cname;
-    }
-
-    public String getSname() {
-        return Sname;
-    }
-
-    public void setSname(String sname) {
-        Sname = sname;
-    }
-
-    public String getSsex() {
-        return Ssex;
-    }
-
-    public void setSsex(String ssex) {
-        Ssex = ssex;
-    }
-
-    public int getSage() {
-        return Sage;
-    }
-
-    public void setSage(int i) {
-        Sage = i;
-    }
-
-    public void setGrade(double grade) {
-        Grade = grade;
-    }
+    /**
+     * Column: Grade
+     * Type: SMALLINT
+     */
+    private Short grade;
 
     public String getSno() {
-        return Sno;
+        return sno;
     }
 
     public void setSno(String sno) {
-        Sno = sno;
+        this.sno = sno;
     }
 
     public String getCno() {
-        return Cno;
+        return cno;
     }
 
     public void setCno(String cno) {
-        Cno = cno;
+        this.cno = cno;
     }
 
-    public double getGrade() {
-        return Grade;
+    public Short getGrade() {
+        return grade;
     }
 
-    public void setGrade(int grade) {
-        Grade = grade;
+    public void setGrade(Short grade) {
+        this.grade = grade;
     }
 }

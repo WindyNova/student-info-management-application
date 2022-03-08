@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="MybatisBuilder.project.settings">
+    <option name="connectionInfoList">
+      <list>
+        <ConnectionInfo>
+          <option name="database" value="stuinfo" />
+          <option name="description" value="" />
+          <option name="driverClass" value="" />
+          <option name="driverLibrary" value="" />
+          <option name="driverType" value="MySQL" />
+          <option name="host" value="127.0.0.1" />
+          <option name="id" value="110ff4168fc54d8d9a5fa024a74f5200" />
+          <option name="name" value="localhost" />
+          <option name="port" value="3306" />
+          <option name="url" value="" />
+          <option name="userName" value="user" />
+        </ConnectionInfo>
+      </list>
+    </option>
+    <option name="defaultParameters">
+      <DefaultParameters>
+        <option name="renameConfig">
+          <Config>
+            <option name="mapperTypePattern" value="" />
+            <option name="exampleTypePattern" value="" />
+            <option name="sqlFileNamePattern" value="" />
+          </Config>
+        </option>
+        <option name="selectWithLockConfig">
+          <SelectWithLockConfig>
+            <option name="byPrimaryKeyWithLockOverride" value="" />
+            <option name="byExampleWithLockOverride" value="" />
+          </SelectWithLockConfig>
+        </option>
+      </DefaultParameters>
+    </option>
+    <option name="historyMap">
+      <map>
+        <entry key="JAVA_CLIENT_PACKAGE">
+          <value>
+            <list>
+              <option value="cn.edu.jit.wdnv.java.sims.mapper" />
+              <option value="mapper" />
+            </list>
+          </value>
+        </entry>
+        <entry key="JAVA_MODEL_PACKAGE">
+          <value>
+            <list>
+              <option value="cn.edu.jit.wdnv.java.sims.model" />
+              <option value="model" />
+            </list>
+          </value>
+        </entry>
+        <entry key="SQL_MAP_PACKAGE">
+          <value>
+            <list>
+              <option value="sqlmap" />
+            </list>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="lastGeneratorParamWrapper">
+      <GeneratorParamWrapper>
+        <option name="databaseRemark" value="false" />
+        <option name="defaultTableConfigWrapper">
+          <TableConfigurationWrapper>
+            <option name="countByExampleStatementEnabled" value="false" />
+            <option name="deleteByExampleStatementEnabled" value="false" />
+            <option name="domainObjectRenamingRule">
+              <DomainObjectRenamingRule>
+                <option name="replaceString" value="" />
+                <option name="searchString" value="" />
+              </DomainObjectRenamingRule>
+            </option>
+            <option name="generatedKeyWrapper">
+              <GeneratedKeyWrapper>
+                <option name="type" value="" />
+              </GeneratedKeyWrapper>
+            </option>
+            <option name="selectByExampleStatementEnabled" value="false" />
+            <option name="updateByExampleStatementEnabled" value="false" />
+          </TableConfigurationWrapper>
+        </option>
+        <option name="javaClientConfig">
+          <JavaClientGeneratorConfiguration>
+            <option name="configurationType" value="XMLMAPPER" />
+            <option name="targetPackage" value="cn.edu.jit.wdnv.java.sims.mapper" />
+            <option name="targetProject" value="$PROJECT_DIR$/src/main/java" />
+          </JavaClientGeneratorConfiguration>
+        </option>
+        <option name="javaModelConfig">
+          <JavaModelGeneratorConfiguration>
+            <option name="targetPackage" value="cn.edu.jit.wdnv.java.sims.model" />
+            <option name="targetProject" value="$PROJECT_DIR$/src/main/java" />
+          </JavaModelGeneratorConfiguration>
+        </option>
+        <option name="selectedTables">
+          <list>
+            <TableInfo>
+              <option name="database" value="stuinfo" />
+              <option name="domainName" value="Course" />
+              <option name="tableComment" value="" />
+              <option name="tableName" value="course" />
+            </TableInfo>
+          </list>
+        </option>
+        <option name="sqlMapConfig">
+          <SqlMapGeneratorConfiguration>
+            <option name="targetPackage" value="sqlmap" />
+            <option name="targetProject" value="$PROJECT_DIR$/src/main/resources" />
+          </SqlMapGeneratorConfiguration>
+        </option>
+        <option name="targetRuntime" value="MyBatis3Simple" />
+        <option name="trimStrings" value="false" />
+      </GeneratorParamWrapper>
+    </option>
+    <option name="tableInfoMap">
+      <map>
+        <entry key="stuinfo#class">
+          <value>
+            <TableInfo>
+              <option name="database" value="stuinfo" />
+              <option name="domainName" value="Class" />
+              <option name="tableComment" value="" />
+              <option name="tableName" value="class" />
+            </TableInfo>
+          </value>
+        </entry>
+        <entry key="stuinfo#course">
+          <value>
+            <TableInfo>
+              <option name="database" value="stuinfo" />
+              <option name="domainName" value="Course" />
+              <option name="tableComment" value="" />
+              <option name="tableName" value="course" />
+            </TableInfo>
+          </value>
+        </entry>
+        <entry key="stuinfo#department">
+          <value>
+            <TableInfo>
+              <option name="database" value="stuinfo" />
+              <option name="domainName" value="Department" />
+              <option name="tableComment" value="" />
+              <option name="tableName" value="department" />
+            </TableInfo>
+          </value>
+        </entry>
+        <entry key="stuinfo#sc">
+          <value>
+            <TableInfo>
+              <option name="database" value="stuinfo" />
+              <option name="domainName" value="SC" />
+              <option name="keyColumn" value="" />
+              <option name="tableComment" value="" />
+              <option name="tableName" value="sc" />
+            </TableInfo>
+          </value>
+        </entry>
+        <entry key="stuinfo#student">
+          <value>
+            <TableInfo>
+              <option name="database" value="stuinfo" />
+              <option name="domainName" value="Student" />
+              <option name="tableComment" value="" />
+              <option name="tableName" value="student" />
+            </TableInfo>
+          </value>
+        </entry>
+        <entry key="stuinfo#user">
+          <value>
+            <TableInfo>
+              <option name="database" value="stuinfo" />
+              <option name="domainName" value="User" />
+              <option name="tableComment" value="" />
+              <option name="tableName" value="user" />
+            </TableInfo>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

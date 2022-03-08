@@ -20,16 +20,6 @@ public class Course_ranking {
         Grade = grade;
     }
 
-    public Course_ranking(String sno, String dname, String clname, String sname, String ssex, int sage, Double grade) {
-        Sno = sno;
-        Dname = dname;
-        Clname = clname;
-        Sname = sname;
-        Ssex = ssex;
-        Sage = sage;
-        this.grade = grade;
-    }
-
     public String getSno() {
         return Sno;
     }

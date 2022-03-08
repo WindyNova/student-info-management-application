@@ -1,16 +1,26 @@
 package cn.edu.jit.wdnv.java.sims.model;
 
+/**
+ * Table: user
+ */
 public class User {
+    /**
+     * Column: username
+     * Type: CHAR(12)
+     */
+    private String username;
 
-    private String username;//用户名
-    private String password;//密码
-    private String level;//权限级别
+    /**
+     * Column: password
+     * Type: CHAR(12)
+     */
+    private String password;
 
-    public User(String username, String password, String level) {
-        this.username = username;
-        this.password = password;
-        this.level = level;
-    }
+    /**
+     * Column: level
+     * Type: CHAR(6)
+     */
+    private String level;
 
     public String getUsername() {
         return username;
@@ -36,4 +46,3 @@ public class User {
         this.level = level;
     }
 }
-

@@ -1,62 +1,76 @@
 package cn.edu.jit.wdnv.java.sims.model;
 
-public class Student  {
+/**
+ * Table: student
+ */
+public class Student {
+    /**
+     * Column: Sno
+     * Type: CHAR(12)
+     */
+    private String sno;
 
-    private String Sno;//学号
-    private String Sname;//姓名
-    private String Ssex;//性别
-    private int Sage;//年龄
-    private String Clno;//所在班级
+    /**
+     * Column: Sname
+     * Type: CHAR(8)
+     */
+    private String sname;
 
-    public Student(String sno, String sname, String ssex, int sage, String clno) {
-        Sno = sno;
-        Sname = sname;
-        Ssex = ssex;
-        Sage = sage;
-        Clno = clno;
-    }
+    /**
+     * Column: Ssex
+     * Type: CHAR(2)
+     */
+    private String ssex;
+
+    /**
+     * Column: Sage
+     * Type: SMALLINT
+     */
+    private Short sage;
+
+    /**
+     * Column: Clno
+     * Type: CHAR(12)
+     */
+    private String clno;
 
     public String getSno() {
-        return Sno;
+        return sno;
     }
 
     public void setSno(String sno) {
-        Sno = sno;
+        this.sno = sno;
     }
 
     public String getSname() {
-        return Sname;
+        return sname;
     }
 
     public void setSname(String sname) {
-        Sname = sname;
+        this.sname = sname;
     }
 
     public String getSsex() {
-        return Ssex;
+        return ssex;
     }
 
     public void setSsex(String ssex) {
-        Ssex = ssex;
+        this.ssex = ssex;
     }
 
-    public int getSage() {
-        return Sage;
+    public Short getSage() {
+        return sage;
     }
 
-    public void setSage(int sage) {
-        Sage = sage;
+    public void setSage(Short sage) {
+        this.sage = sage;
     }
 
     public String getClno() {
-        return Clno;
+        return clno;
     }
-
-
 
     public void setClno(String clno) {
-        Clno = clno;
+        this.clno = clno;
     }
-
-
 }
