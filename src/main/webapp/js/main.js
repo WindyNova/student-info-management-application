@@ -39,7 +39,7 @@ function course_avg() {
             document.getElementById("result").innerHTML = xmlhttp.responseText;
         }
     }
-    const url = "AdminDao?action=course_avg";
+    const url = "AdminServlet?action=course_avg";
     xmlhttp.open("GET", url, true);
     xmlhttp.send();
 }
@@ -52,7 +52,7 @@ function fail_rate() {
             document.getElementById("result").innerHTML = xmlhttp.responseText;
         }
     }
-    const url = "AdminDao?action=fail_rate";
+    const url = "AdminServlet?action=fail_rate";
     xmlhttp.open("GET", url, true);
     xmlhttp.send();
 }
@@ -75,7 +75,7 @@ function course_ranking() {
         }
     }
     const Cno = document.getElementById("course_ranking_value").value;
-    const url = "AdminDao?action=course_ranking&cno=" + Cno;
+    const url = "AdminServlet?action=course_ranking&cno=" + Cno;
 
     xmlhttp.open("GET", url, true);
     xmlhttp.send();
@@ -91,6 +91,6 @@ function query_all(object) {
             document.getElementById("result").innerHTML = xmlhttp.responseText;
         }
     }
-    xmlhttp.open("GET", "AdminDao?action=query_all_" + object, true);
+    xmlhttp.open("GET", "AdminServlet?action=query_all_" + object, true);
     xmlhttp.send();
 }

@@ -18,20 +18,20 @@ function insert(object) {
             level = user[2].value.toString();
         else
             level = user[3].value.toString();
-        url = "AdminDao?action=insert_user&username=" + username + "&password=" + password + "&level=" + level;
+        url = "AdminServlet?action=insert_user&username=" + username + "&password=" + password + "&level=" + level;
     }
     else if (object === "department") {
         const department = document.getElementById("show_insert_department").getElementsByTagName("input");
         var dno = department[0].value.toString();
         const dname = department[1].value.toString();
-        url = "AdminDao?action=insert_department&dno=" + dno + "&dname=" + dname;
+        url = "AdminServlet?action=insert_department&dno=" + dno + "&dname=" + dname;
     }
     else if (object === "class") {
         const classes = document.getElementById("show_insert_class").getElementsByTagName("input");
         var clno = classes[0].value.toString();
         const clname = classes[1].value.toString();
         var dno = classes[2].value.toString();
-        url = "AdminDao?action=insert_class&clno=" + clno + "&clname=" + clname + "&dno=" + dno;
+        url = "AdminServlet?action=insert_class&clno=" + clno + "&clname=" + clname + "&dno=" + dno;
     }
     else if (object === "student") {
         const student = document.getElementById("show_insert_student").getElementsByTagName("input");
@@ -44,7 +44,7 @@ function insert(object) {
             ssex = student[3].value.toString();
         const sage = student[4].value;
         var clno = student[5].value.toString();
-        url = "AdminDao?action=insert_student&sno=" + sno + "&sname=" + sname + "&ssex=" + ssex + "&sage=" + sage + "&clno=" + clno;
+        url = "AdminServlet?action=insert_student&sno=" + sno + "&sname=" + sname + "&ssex=" + ssex + "&sage=" + sage + "&clno=" + clno;
     }
     else if (object === "course") {
         const course = document.getElementById("show_insert_course").getElementsByTagName("input");
@@ -52,14 +52,14 @@ function insert(object) {
         const cname = course[1].value.toString();
         const cteacher = course[2].value.toString();
         const ccredit = course[3].value;
-        url = "AdminDao?action=insert_course&cno=" + cno + "&cname=" + cname + "&cteacher=" + cteacher + "&ccredit=" + ccredit;
+        url = "AdminServlet?action=insert_course&cno=" + cno + "&cname=" + cname + "&cteacher=" + cteacher + "&ccredit=" + ccredit;
     }
     else if (object === "sc") {
         const sc = document.getElementById("show_insert_sc").getElementsByTagName("input");
         var sno = sc[0].value.toString();
         var cno = sc[1].value.toString();
         const grade = sc[2].value;
-        url = "AdminDao?action=insert_sc&sno=" + sno + "&cno=" + cno + "&grade=" + grade;
+        url = "AdminServlet?action=insert_sc&sno=" + sno + "&cno=" + cno + "&grade=" + grade;
     }
     else {
     alert("错误")
@@ -298,7 +298,7 @@ function delete_user() {
     }
     const user = document.getElementById("delete_user").getElementsByTagName("input");
     const username = user[0].value.toString();
-    const url = "AdminDao?action=delete_user&username=" + username;
+    const url = "AdminServlet?action=delete_user&username=" + username;
     xmlhttp.open("GET", url, true);
     xmlhttp.send();
 }
@@ -313,7 +313,7 @@ function delete_department() {
     }
     const all = document.getElementById("delete_department").getElementsByTagName("input");
     const dno = all[0].value.toString();
-    const url = "AdminDao?action=delete_department&dno=" + dno;
+    const url = "AdminServlet?action=delete_department&dno=" + dno;
     xmlhttp.open("GET", url, true);
     xmlhttp.send();
 }
@@ -328,7 +328,7 @@ function delete_class() {
     }
     const all = document.getElementById("delete_class").getElementsByTagName("input");
     const clno = all[0].value.toString();
-    const url = "AdminDao?action=delete_class&clno=" + clno;
+    const url = "AdminServlet?action=delete_class&clno=" + clno;
     xmlhttp.open("GET", url, true);
     xmlhttp.send();
 }
@@ -343,7 +343,7 @@ function delete_student() {
     }
     const all = document.getElementById("delete_student").getElementsByTagName("input");
     const sno = all[0].value.toString();
-    const url = "AdminDao?action=delete_student&sno=" + sno;
+    const url = "AdminServlet?action=delete_student&sno=" + sno;
     xmlhttp.open("GET", url, true);
     xmlhttp.send();
 }
@@ -358,7 +358,7 @@ function delete_course() {
     }
     const all = document.getElementById("delete_course").getElementsByTagName("input");
     const cno = all[0].value.toString();
-    const url = "AdminDao?action=delete_course&cno=" + cno;
+    const url = "AdminServlet?action=delete_course&cno=" + cno;
     xmlhttp.open("GET", url, true);
     xmlhttp.send();
 }
@@ -374,7 +374,7 @@ function delete_sc() {
     const all = document.getElementById("delete_sc").getElementsByTagName("input");
     const sno = all[0].value.toString();
     const cno = all[1].value.toString();
-    const url = "AdminDao?action=delete_sc&sno=" + sno + "&cno=" + cno;
+    const url = "AdminServlet?action=delete_sc&sno=" + sno + "&cno=" + cno;
     xmlhttp.open("GET", url, true);
     xmlhttp.send();
 }
@@ -399,7 +399,7 @@ function alter_user() {
         after_level = user[3].value.toString();
     else
         after_level = user[4].value.toString();
-    const url = "AdminDao?action=alter_user&username=" + username + "&after_username=" + after_username + "&after_password=" + after_password + "&after_level=" + after_level;
+    const url = "AdminServlet?action=alter_user&username=" + username + "&after_username=" + after_username + "&after_password=" + after_password + "&after_level=" + after_level;
     xmlhttp.open("GET", url, true);
     xmlhttp.send();
 }
@@ -416,7 +416,7 @@ function alter_department() {
     const dno = all[0].value.toString();
     const after_dno = all[1].value.toString();
     const after_dname = all[2].value.toString();
-    const url = "AdminDao?action=alter_department&dno=" + dno + "&after_dno=" + after_dno + "&after_dname" + after_dname;
+    const url = "AdminServlet?action=alter_department&dno=" + dno + "&after_dno=" + after_dno + "&after_dname" + after_dname;
     xmlhttp.open("GET", url, true);
     xmlhttp.send();
 }
@@ -434,7 +434,7 @@ function alter_class() {
     const after_clno = all[1].value.toString();
     const after_clname = all[2].value.toString();
     const after_dno = all[3].value.toString();
-    const url = "AdminDao?action=alter_class&clno=" + clno + "&after_clno=" + after_clno + "&after_clname=" + after_clname + "&after_dno=" + after_dno;
+    const url = "AdminServlet?action=alter_class&clno=" + clno + "&after_clno=" + after_clno + "&after_clname=" + after_clname + "&after_dno=" + after_dno;
     xmlhttp.open("GET", url, true);
     xmlhttp.send();
 }
@@ -458,7 +458,7 @@ function alter_student() {
         after_ssex = all[4].value.toString();
     const after_sage = all[5].value;
     const after_clno = all[6].value.toString();
-    const url = "AdminDao?action=alter_student&sno=" + sno + "&after_sno=" + after_sno + "&after_sname=" + after_sname + "&after_ssex=" + after_ssex + "&after_sage=" + after_sage + "&after_clno=" + after_clno;
+    const url = "AdminServlet?action=alter_student&sno=" + sno + "&after_sno=" + after_sno + "&after_sname=" + after_sname + "&after_ssex=" + after_ssex + "&after_sage=" + after_sage + "&after_clno=" + after_clno;
     xmlhttp.open("GET", url, true);
     xmlhttp.send();
 }
@@ -477,7 +477,7 @@ function alter_course() {
     const after_cname = all[2].value.toString();
     const after_cteacher = all[3].value.toString();
     const after_ccredit = all[4].value;
-    const url = "AdminDao?action=alter_course&cno=" + cno + "&after_cno=" + after_cno + "&after_cname=" + after_cname + "&after_cteacher=" + after_cteacher + "&after_ccredit=" + after_ccredit;
+    const url = "AdminServlet?action=alter_course&cno=" + cno + "&after_cno=" + after_cno + "&after_cname=" + after_cname + "&after_cteacher=" + after_cteacher + "&after_ccredit=" + after_ccredit;
     xmlhttp.open("GET", url, true);
     xmlhttp.send();
 }
@@ -494,7 +494,7 @@ function alter_sc() {
     const sno = all[0].value.toString();
     const cno = all[1].value.toString();
     const after_grade = all[2].value;
-    const url = "AdminDao?action=alter_sc&sno=" + sno + "&cno=" + cno + "&after_grade=" + after_grade;
+    const url = "AdminServlet?action=alter_sc&sno=" + sno + "&cno=" + cno + "&after_grade=" + after_grade;
     xmlhttp.open("GET", url, true);
     xmlhttp.send();
 }
