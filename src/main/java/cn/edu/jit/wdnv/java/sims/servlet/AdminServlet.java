@@ -3,6 +3,8 @@ package cn.edu.jit.wdnv.java.sims.servlet;
 import cn.edu.jit.wdnv.java.sims.dao.*;
 import cn.edu.jit.wdnv.java.sims.model.Class;
 import cn.edu.jit.wdnv.java.sims.model.*;
+import cn.edu.jit.wdnv.java.sims.utils.Encryptor;
+import sun.security.provider.MD5;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -148,7 +150,7 @@ public class AdminServlet extends HttpServlet {
         String password = request.getParameter("password");
         String level = request.getParameter("level");
 
-        int status = new UserDao().insert_user(username, password, level);
+        int status = new UserDao().insert_user(username, Encryptor.MD5Encrypt(password), level);
         String info;
         PrintWriter out = response.getWriter();
         if (status == 1) {
@@ -191,7 +193,7 @@ public class AdminServlet extends HttpServlet {
         String after_password = request.getParameter("after_password");
         String after_level = request.getParameter("after_level");
 
-        int status = new UserDao().alter_user(username, after_username, after_password, after_level);
+        int status = new UserDao().alter_user(username, after_username, Encryptor.MD5Encrypt(after_password), after_level);
         String info;
         PrintWriter out = response.getWriter();
         if (status == 1) {

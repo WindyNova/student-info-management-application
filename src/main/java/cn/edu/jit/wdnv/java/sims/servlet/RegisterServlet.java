@@ -2,6 +2,8 @@ package cn.edu.jit.wdnv.java.sims.servlet;
 
 import cn.edu.jit.wdnv.java.sims.dao.UserDao;
 import cn.edu.jit.wdnv.java.sims.model.User;
+import cn.edu.jit.wdnv.java.sims.utils.Encryptor;
+import sun.security.provider.MD5;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -21,7 +23,7 @@ public class RegisterServlet extends HttpServlet {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         //实例化UserDao对象
-        User user = new UserDao().register(username, password, "用户");
+        User user = new UserDao().register(username, Encryptor.MD5Encrypt(password), "用户");
         //判断是否注册成功
         if (user != null) {//成功
                 request.getSession().setAttribute("user", user);//将用户对象放到session中
