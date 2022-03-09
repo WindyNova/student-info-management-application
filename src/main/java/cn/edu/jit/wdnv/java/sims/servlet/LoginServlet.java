@@ -9,8 +9,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 
 public class LoginServlet extends HttpServlet implements Encryptor {
     @Override

@@ -3,7 +3,6 @@ package cn.edu.jit.wdnv.java.sims.servlet;
 import cn.edu.jit.wdnv.java.sims.dao.UserDao;
 import cn.edu.jit.wdnv.java.sims.model.User;
 import cn.edu.jit.wdnv.java.sims.utils.Encryptor;
-import sun.security.provider.MD5;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -17,6 +16,7 @@ public class RegisterServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) {
 
     }
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("utf-8");
@@ -26,12 +26,12 @@ public class RegisterServlet extends HttpServlet {
         User user = new UserDao().register(username, Encryptor.MD5Encrypt(password), "用户");
         //判断是否注册成功
         if (user != null) {//成功
-                request.getSession().setAttribute("user", user);//将用户对象放到session中
-                //转发到user.jsp中
-                request.getRequestDispatcher("user.jsp").forward(request, response);
+            request.getSession().setAttribute("user", user);//将用户对象放到session中
+            //转发到user.jsp中
+            request.getRequestDispatcher("user.jsp").forward(request, response);
 
         } else {//失败
-            PrintWriter out=response.getWriter();
+            PrintWriter out = response.getWriter();
             response.setContentType("text/html");
             response.setCharacterEncoding("gb2312");
             out.println("<script charset=\"gb2312\" type=\"text/javascript\">");

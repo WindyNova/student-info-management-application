@@ -2,15 +2,17 @@ package cn.edu.jit.wdnv.java.sims.dao;
 
 import cn.edu.jit.wdnv.java.sims.model.User;
 
-
-import java.sql.*;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 
-public class UserDao extends BaseDao{
+public class UserDao extends BaseDao {
     //判断用户在数据库中是否存在，存在返回true，不存在返回false
     public boolean isUserExist(String username) {
-        String sql = "select * from user where username = ?";
-        try (PreparedStatement ps = con.prepareStatement(sql)){
+        sql = "select * from user where username = ?";
+        try (PreparedStatement ps = con.prepareStatement(sql)) {
             ps.setString(1, username);//给用户对象属性赋值
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
@@ -25,7 +27,7 @@ public class UserDao extends BaseDao{
     //用户登录，登录成功返回一个含值User对象,如果登录失败返回一个User空对象
     public User login(String username, String password) {
         User user = null; //实例化一个user对象 需要返回user所以定义在这里
-        String sql = "select * from user where username = ? and password = ?;";
+        sql = "select * from user where username = ? and password = ?;";
 
         try (PreparedStatement ps = con.prepareStatement(sql)) {
             ps.setString(1, username);
@@ -34,7 +36,7 @@ public class UserDao extends BaseDao{
 
             //判断数据库中是否存在该用户
             if (rs.next()) {
-                user = new User(rs.getString("username"),rs.getString("password"),rs.getString("level"));
+                user = new User(rs.getString("username"), rs.getString("password"), rs.getString("level"));
 
             }
 
@@ -50,7 +52,7 @@ public class UserDao extends BaseDao{
         try {
             //判断数据库中是否存在该用户
             if (!isUserExist(username)) {//不存在该用户，可以注册
-                user = new User(username,password,"用户");//实例化一个user对象
+                user = new User(username, password, "用户");//实例化一个user对象
                 Statement stmt = con.createStatement();
                 stmt.executeUpdate("insert into user values('" + username + "','" + password + "','" + level + "');");
                 stmt.close();//释放资源
@@ -63,9 +65,9 @@ public class UserDao extends BaseDao{
 
     //获取用户的权限级别，若存在则返回级别(管理员，普通用户),若不存在返回空
     public String level(String username) {
-        String sql = "select level from user where username = ?;";
+        sql = "select level from user where username = ?;";
         String level = null;
-        try( PreparedStatement ps = con.prepareStatement(sql)){
+        try (PreparedStatement ps = con.prepareStatement(sql)) {
             ps.setString(1, username);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {//存在该用户
@@ -79,15 +81,15 @@ public class UserDao extends BaseDao{
 
     //获取数据库中所有用户的信息，用ArrayList返回
     public ArrayList<User> query_all_user() {
-        String sql = "select * from user order by username;";
+        sql = "select * from user order by username;";
         ArrayList<User> results = new ArrayList<>();
 
-        try(PreparedStatement ps = con.prepareStatement(sql)) {
+        try (PreparedStatement ps = con.prepareStatement(sql)) {
 
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
-                User user = new User(rs.getString("username"),rs.getString("password"),rs.getString("level"));
+                User user = new User(rs.getString("username"), rs.getString("password"), rs.getString("level"));
                 results.add(user);
             }
 
@@ -99,12 +101,9 @@ public class UserDao extends BaseDao{
 
     //插入用户信息，返回一个int值表示状态,1：成功，0失败
     public int insert_user(String username, String password, String level) {
-        String sql = "insert into user values(?,?,?);";
-
-      status =0;
-        try (PreparedStatement ps = con.prepareStatement(sql)){
-
-
+        sql = "insert into user values(?,?,?);";
+        status = 0;
+        try (PreparedStatement ps = con.prepareStatement(sql)) {
             ps.setString(1, username);
             ps.setString(2, password);
             ps.setString(3, level);
@@ -117,12 +116,12 @@ public class UserDao extends BaseDao{
 
     //删除用户信息，返回一个int值表示状态,1：成功，0失败
     public int delete_user(String username) {
-        String sql = "delete from user where username = ?;";
+        sql = "delete from user where username = ?;";
 
         status = 0;
-        try ( PreparedStatement ps =  con.prepareStatement(sql)){
+        try (PreparedStatement ps = con.prepareStatement(sql)) {
             ps.setString(1, username);
-           status = ps.executeUpdate();
+            status = ps.executeUpdate();
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -132,10 +131,10 @@ public class UserDao extends BaseDao{
 
     //修改用户信息，返回一个int值表示状态,1：成功，0失败
     public int alter_user(String username, String after_username, String after_password, String after_level) {
-        String sql = "update user set username = ?,password = ?,level = ? where username = ?;";
+        sql = "update user set username = ?,password = ?,level = ? where username = ?;";
 
         status = 0;
-        try (PreparedStatement ps = con.prepareStatement(sql)){
+        try (PreparedStatement ps = con.prepareStatement(sql)) {
             ps.setString(1, after_username);
             ps.setString(2, after_password);
             ps.setString(3, after_level);
