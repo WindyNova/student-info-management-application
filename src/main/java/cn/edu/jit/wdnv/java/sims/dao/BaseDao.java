@@ -8,7 +8,7 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import java.io.IOException;
 import java.io.InputStream;
 
-public abstract class BaseDao {
+public abstract class BaseDao{
     static int status = 0;
     static SqlSessionFactory sqlSessionFactory;
     static {

@@ -4,13 +4,13 @@ use stuinfo;
 
 #院系表
 create table department(
-Dno char(12),
+Dno int,
 Dname char(12),
 constraint primary key PK_department (Dno)
 );
 #班级表
 create table class(
-Clno char(12),
+Clno int,
 Clname char(12),
 Dno char(12),
 constraint primary key PK_class (Clno),
@@ -18,27 +18,27 @@ constraint foreign key FK_class_department (Dno) references department(Dno)
 );
 #学生表
 create table student(
-Sno char(12),
+Sno int,
 Sname char(8),
 Ssex char(2) check(Ssex in ('男','女')),
-Sage smallint check(Sage > 0),
-Clno char(12),
+Sage tinyint check(Sage > 0),
+Clno int,
 constraint primary key PK_student (Sno),
 constraint foreign key FK_student_class (Clno) references class(Clno)
 );
 #课程表
 create table course(
-Cno char(12),
+Cno int,
 Cname char(12),
 Cteacher char(8),
-Ccredit smallint check(Ccredit > 0),
+Ccredit tinyint check(Ccredit > 0),
 constraint primary key PK_course (Cno)
 );
 #选课表
 create table sc(
-Sno char(12),
-Cno char(12),
-Grade smallint check(Grade < 100 and Grade > 0),
+Sno int,
+Cno int,
+Grade tinyint check(Grade < 100 and Grade > 0),
 constraint foreign key FK_sc_student (Sno) references student(Sno),
 constraint foreign key FK_sc_course (Cno) references course(Cno),
 constraint primary key PK_sc (Sno,Cno)

@@ -1,6 +1,6 @@
 package cn.edu.jit.wdnv.java.sims.mapper;
 
-import cn.edu.jit.wdnv.java.sims.model.Course;
+import cn.edu.jit.wdnv.java.sims.beans.Course;
 import java.util.List;
 
 public interface CourseMapper {

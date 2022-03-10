@@ -1,32 +1,31 @@
 package cn.edu.jit.wdnv.java.sims.mapper;
 
-import cn.edu.jit.wdnv.java.sims.beans.Class;
-import java.math.BigDecimal;
+import cn.edu.jit.wdnv.java.sims.beans.Department;
 import java.util.List;
 
-public interface ClassMapper {
+public interface DepartmentMapper {
     /**
      * @mbg.generated generated automatically, do not modify!
      */
-    int deleteByPrimaryKey(BigDecimal clno);
+    int deleteByPrimaryKey(String dno);
 
     /**
      * @mbg.generated generated automatically, do not modify!
      */
-    int insert(Class row);
+    int insert(Department row);
 
     /**
      * @mbg.generated generated automatically, do not modify!
      */
-    Class selectByPrimaryKey(BigDecimal clno);
+    Department selectByPrimaryKey(String dno);
 
     /**
      * @mbg.generated generated automatically, do not modify!
      */
-    List<Class> selectAll();
+    List<Department> selectAll();
 
     /**
      * @mbg.generated generated automatically, do not modify!
      */
-    int updateByPrimaryKey(Class row);
+    int updateByPrimaryKey(Department row);
 }

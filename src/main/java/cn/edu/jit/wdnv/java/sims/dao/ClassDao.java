@@ -1,7 +1,7 @@
 package cn.edu.jit.wdnv.java.sims.dao;
 
 import cn.edu.jit.wdnv.java.sims.mapper.ClassMapper;
-import cn.edu.jit.wdnv.java.sims.model.Class;
+import cn.edu.jit.wdnv.java.sims.beans.Class;
 
 
 import java.util.ArrayList;
@@ -21,7 +21,7 @@ public class ClassDao extends BaseDao{
     }
 
 
-    public int insert_class(String clno, String clname, String dno) { // 插入班级信息
+    public int insert_class(Integer clno, String clname, Integer dno) { // 插入班级信息
         status=0;
         try {
             Class Class=new Class();
@@ -47,7 +47,7 @@ public class ClassDao extends BaseDao{
     }
 
 
-    public int alter_class(String clno, String after_clno, String after_clname, String after_dno) {   // 修改班级信息
+    public int alter_class(String clno, Integer after_clno, String after_clname, Integer after_dno) {   // 修改班级信息
         status =0;
         try {
             Class Class=new Class();

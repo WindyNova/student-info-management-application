@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.jit.wdnv.java.sims.mapper.UserMapper">
+  <resultMap id="BaseResultMap" type="cn.edu.jit.wdnv.java.sims.beans.User">
+    <!-- @mbg.generated: generated automatically, do not modify! -->
+    <id column="username" jdbcType="CHAR" property="username" />
+    <result column="password" jdbcType="CHAR" property="password" />
+    <result column="level" jdbcType="CHAR" property="level" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    <!-- @mbg.generated: generated automatically, do not modify! -->
+    delete from user
+    where username = #{username,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="cn.edu.jit.wdnv.java.sims.beans.User">
+    <!-- @mbg.generated: generated automatically, do not modify! -->
+    insert into user (username, `password`, `level`
+      )
+    values (#{username,jdbcType=CHAR}, #{password,jdbcType=CHAR}, #{level,jdbcType=CHAR}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="cn.edu.jit.wdnv.java.sims.beans.User">
+    <!-- @mbg.generated: generated automatically, do not modify! -->
+    update user
+    set `password` = #{password,jdbcType=CHAR},
+      `level` = #{level,jdbcType=CHAR}
+    where username = #{username,jdbcType=CHAR}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    <!-- @mbg.generated: generated automatically, do not modify! -->
+    select username, `password`, `level`
+    from user
+    where username = #{username,jdbcType=CHAR}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    <!-- @mbg.generated: generated automatically, do not modify! -->
+    select username, `password`, `level`
+    from user
+  </select>
+</mapper>

@@ -1,5 +1,5 @@
 
-<%@ page import="cn.edu.jit.wdnv.java.sims.model.User" %>
+<%@ page import="cn.edu.jit.wdnv.java.sims.beans.User" %>
 <%@ page contentType="text/html; charset=UTF-8"
 		 pageEncoding="UTF-8"%>
 <!DOCTYPE HTML>

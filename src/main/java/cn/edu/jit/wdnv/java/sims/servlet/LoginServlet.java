@@ -1,7 +1,7 @@
 package cn.edu.jit.wdnv.java.sims.servlet;
 
 import cn.edu.jit.wdnv.java.sims.dao.UserDao;
-import cn.edu.jit.wdnv.java.sims.model.User;
+import cn.edu.jit.wdnv.java.sims.beans.User;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;

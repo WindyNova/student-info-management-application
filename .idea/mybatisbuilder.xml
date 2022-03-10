@@ -48,6 +48,7 @@
         <entry key="JAVA_MODEL_PACKAGE">
           <value>
             <list>
+              <option value="cn.edu.jit.wdnv.java.sims.beans" />
               <option value="cn.edu.jit.wdnv.java.sims.model" />
               <option value="model" />
             </list>
@@ -93,17 +94,22 @@
         </option>
         <option name="javaModelConfig">
           <JavaModelGeneratorConfiguration>
-            <option name="targetPackage" value="cn.edu.jit.wdnv.java.sims.model" />
+            <option name="targetPackage" value="cn.edu.jit.wdnv.java.sims.beans" />
             <option name="targetProject" value="$PROJECT_DIR$/src/main/java" />
           </JavaModelGeneratorConfiguration>
+        </option>
+        <option name="selectedPlugins">
+          <map>
+            <entry key="com.chuntung.plugin.mybatis.builder.generator.plugins.LombokPlugin" />
+          </map>
         </option>
         <option name="selectedTables">
           <list>
             <TableInfo>
               <option name="database" value="stuinfo" />
-              <option name="domainName" value="Course" />
+              <option name="domainName" value="Class" />
               <option name="tableComment" value="" />
-              <option name="tableName" value="course" />
+              <option name="tableName" value="class" />
             </TableInfo>
           </list>
         </option>

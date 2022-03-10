@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.jit.wdnv.java.sims.mapper.StudentMapper">
+  <resultMap id="BaseResultMap" type="cn.edu.jit.wdnv.java.sims.beans.Student">
+    <!-- @mbg.generated: generated automatically, do not modify! -->
+    <id column="Sno" jdbcType="CHAR" property="sno" />
+    <result column="Sname" jdbcType="CHAR" property="sname" />
+    <result column="Ssex" jdbcType="CHAR" property="ssex" />
+    <result column="Sage" jdbcType="SMALLINT" property="sage" />
+    <result column="Clno" jdbcType="CHAR" property="clno" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    <!-- @mbg.generated: generated automatically, do not modify! -->
+    delete from student
+    where Sno = #{sno,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="cn.edu.jit.wdnv.java.sims.beans.Student">
+    <!-- @mbg.generated: generated automatically, do not modify! -->
+    insert into student (Sno, Sname, Ssex, Sage, 
+      Clno)
+    values (#{sno,jdbcType=CHAR}, #{sname,jdbcType=CHAR}, #{ssex,jdbcType=CHAR}, #{sage,jdbcType=SMALLINT}, 
+      #{clno,jdbcType=CHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="cn.edu.jit.wdnv.java.sims.beans.Student">
+    <!-- @mbg.generated: generated automatically, do not modify! -->
+    update student
+    set Sname = #{sname,jdbcType=CHAR},
+      Ssex = #{ssex,jdbcType=CHAR},
+      Sage = #{sage,jdbcType=SMALLINT},
+      Clno = #{clno,jdbcType=CHAR}
+    where Sno = #{sno,jdbcType=CHAR}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    <!-- @mbg.generated: generated automatically, do not modify! -->
+    select Sno, Sname, Ssex, Sage, Clno
+    from student
+    where Sno = #{sno,jdbcType=CHAR}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    <!-- @mbg.generated: generated automatically, do not modify! -->
+    select Sno, Sname, Ssex, Sage, Clno
+    from student
+  </select>
+</mapper>

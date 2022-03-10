@@ -1,8 +1,8 @@
 package cn.edu.jit.wdnv.java.sims.servlet;
 
 import cn.edu.jit.wdnv.java.sims.dao.*;
-import cn.edu.jit.wdnv.java.sims.model.Class;
-import cn.edu.jit.wdnv.java.sims.model.*;
+import cn.edu.jit.wdnv.java.sims.beans.Class;
+import cn.edu.jit.wdnv.java.sims.beans.*;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -321,9 +321,9 @@ public class AdminServlet extends HttpServlet {
     protected void insert_class(HttpServletRequest request, HttpServletResponse response)
             throws IOException {
         response.setContentType("text/html;charset=utf-8");
-        String clno = request.getParameter("clno");
+        Integer clno = Integer.valueOf(request.getParameter("clno"));
         String clname = request.getParameter("clname");
-        String dno = request.getParameter("dno");
+        Integer dno = Integer.valueOf(request.getParameter("dno"));
         int status = new ClassDao().insert_class(clno, clname, dno);
         String info;
         PrintWriter out = response.getWriter();
@@ -364,9 +364,9 @@ public class AdminServlet extends HttpServlet {
             throws IOException {
         response.setContentType("text/html;charset=utf-8");
         String clno = request.getParameter("clno");
-        String after_clno = request.getParameter("after_clno");
+        Integer after_clno = Integer.valueOf(request.getParameter("after_clno"));
         String after_clname = request.getParameter("after_clname");
-        String after_dno = request.getParameter("after_dno");
+        Integer after_dno = Integer.valueOf(request.getParameter("after_dno"));
         int status = new ClassDao().alter_class(clno, after_clno, after_clname, after_dno);
         String info;
         PrintWriter out = response.getWriter();

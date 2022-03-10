@@ -1,6 +1,6 @@
 package cn.edu.jit.wdnv.java.sims.dao;
 
-import cn.edu.jit.wdnv.java.sims.model.User;
+import cn.edu.jit.wdnv.java.sims.beans.User;
 
 
 import java.sql.*;

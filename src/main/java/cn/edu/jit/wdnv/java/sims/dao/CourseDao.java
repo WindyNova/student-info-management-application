@@ -1,12 +1,10 @@
 package cn.edu.jit.wdnv.java.sims.dao;
 
-import cn.edu.jit.wdnv.java.sims.mapper.ClassMapper;
 import cn.edu.jit.wdnv.java.sims.mapper.CourseMapper;
-import cn.edu.jit.wdnv.java.sims.model.Class;
-import cn.edu.jit.wdnv.java.sims.model.Course;
-import cn.edu.jit.wdnv.java.sims.model.Course_avg;
-import cn.edu.jit.wdnv.java.sims.model.Course_fail_rate;
-import cn.edu.jit.wdnv.java.sims.model.Course_ranking;
+import cn.edu.jit.wdnv.java.sims.beans.Course;
+import cn.edu.jit.wdnv.java.sims.beans.Course_avg;
+import cn.edu.jit.wdnv.java.sims.beans.Course_fail_rate;
+import cn.edu.jit.wdnv.java.sims.beans.Course_ranking;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

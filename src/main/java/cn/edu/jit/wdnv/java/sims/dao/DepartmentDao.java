@@ -1,6 +1,6 @@
 package cn.edu.jit.wdnv.java.sims.dao;
 
-import cn.edu.jit.wdnv.java.sims.model.Department;
+import cn.edu.jit.wdnv.java.sims.beans.Department;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

@@ -1,35 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.edu.jit.wdnv.java.sims.mapper.ClassMapper">
-  <resultMap id="BaseResultMap" type="cn.edu.jit.wdnv.java.sims.model.Class">
+  <resultMap id="BaseResultMap" type="cn.edu.jit.wdnv.java.sims.beans.Class">
     <!-- @mbg.generated: generated automatically, do not modify! -->
-    <id column="Clno" jdbcType="CHAR" property="clno" />
-    <result column="Clname" jdbcType="CHAR" property="clname" />
-    <result column="Dno" jdbcType="CHAR" property="dno" />
+    <id column="Clno" jdbcType="DECIMAL" property="clno" />
+    <result column="Clname" jdbcType="VARCHAR" property="clname" />
+    <result column="Dno" jdbcType="DECIMAL" property="dno" />
   </resultMap>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+  <delete id="deleteByPrimaryKey" parameterType="java.math.BigDecimal">
     <!-- @mbg.generated: generated automatically, do not modify! -->
     delete from class
-    where Clno = #{clno,jdbcType=CHAR}
+    where Clno = #{clno,jdbcType=DECIMAL}
   </delete>
-  <insert id="insert" parameterType="cn.edu.jit.wdnv.java.sims.model.Class">
+  <insert id="insert" parameterType="cn.edu.jit.wdnv.java.sims.beans.Class">
     <!-- @mbg.generated: generated automatically, do not modify! -->
-    insert into class (Clno, Clname, Dno)
-    values (#{clno,jdbcType=CHAR}, #{clname,jdbcType=CHAR}, #{dno,jdbcType=CHAR})
+    insert into class (Clno, Clname, Dno
+      )
+    values (#{clno,jdbcType=DECIMAL}, #{clname,jdbcType=VARCHAR}, #{dno,jdbcType=DECIMAL}
+      )
   </insert>
-  <update id="updateByPrimaryKey" parameterType="cn.edu.jit.wdnv.java.sims.model.Class">
+  <update id="updateByPrimaryKey" parameterType="cn.edu.jit.wdnv.java.sims.beans.Class">
     <!-- @mbg.generated: generated automatically, do not modify! -->
     update class
-    set Clno =  #{clno,jdbcType=CHAR},
-        Clname = #{clname,jdbcType=CHAR},
-      Dno = #{dno,jdbcType=CHAR}
-    where Clno = #{clno,jdbcType=CHAR}
+    set Clname = #{clname,jdbcType=VARCHAR},
+      Dno = #{dno,jdbcType=DECIMAL}
+    where Clno = #{clno,jdbcType=DECIMAL}
   </update>
-  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.math.BigDecimal" resultMap="BaseResultMap">
     <!-- @mbg.generated: generated automatically, do not modify! -->
     select Clno, Clname, Dno
     from class
-    where Clno = #{clno,jdbcType=CHAR}
+    where Clno = #{clno,jdbcType=DECIMAL}
   </select>
   <select id="selectAll" resultMap="BaseResultMap">
     <!-- @mbg.generated: generated automatically, do not modify! -->
