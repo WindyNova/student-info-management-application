@@ -4,40 +4,41 @@ use stuinfo;
 
 #院系表
 create table department(
-Dno int,
-Dname char(12),
+Dno decimal,
+Dname varchar(12),
 constraint primary key PK_department (Dno)
 );
 #班级表
+
 create table class(
-Clno int,
-Clname char(12),
-Dno char(12),
+Clno decimal,
+Clname varchar(24),
+Dno decimal,
 constraint primary key PK_class (Clno),
 constraint foreign key FK_class_department (Dno) references department(Dno)
 );
 #学生表
 create table student(
-Sno int,
-Sname char(8),
+Sno decimal,
+Sname varchar(24),
 Ssex char(2) check(Ssex in ('男','女')),
 Sage tinyint check(Sage > 0),
-Clno int,
+Clno decimal,
 constraint primary key PK_student (Sno),
 constraint foreign key FK_student_class (Clno) references class(Clno)
 );
 #课程表
 create table course(
-Cno int,
-Cname char(12),
-Cteacher char(8),
+Cno decimal,
+Cname varchar(24),
+Cteacher varchar(24),
 Ccredit tinyint check(Ccredit > 0),
 constraint primary key PK_course (Cno)
 );
 #选课表
 create table sc(
-Sno int,
-Cno int,
+Sno decimal,
+Cno decimal,
 Grade tinyint check(Grade < 100 and Grade > 0),
 constraint foreign key FK_sc_student (Sno) references student(Sno),
 constraint foreign key FK_sc_course (Cno) references course(Cno),
@@ -45,8 +46,8 @@ constraint primary key PK_sc (Sno,Cno)
 );
 #用户表
 create table user(
-username char(12),
-password char(12) not null,
+username varchar(12) not null,
+password char(32) not null,
 level char(6) check(level in ('用户','管理员')),
 constraint primary key PK_user (username)
 );
@@ -111,14 +112,16 @@ insert into sc
 values('2015010314','3',95);
 
 insert into user
-values('admin','666','管理员');
+values('admin','e0b27c451c728867a567e8c1bb4e53','管理员');
+
 insert into user
-values('user','123','用户');
+values('user','2cb962ac59075b964b07152d234b70','用户'); 
+##123
 
 #查询示例
 
 ##查询所有课程平均分
-#select sc.cno cno,cname,avg(grade) avg 
+#select sc.cno cno,cname,avg(grade) avg
 #from course,sc 
 #where course.cno = sc.cno 
 #group by cno 

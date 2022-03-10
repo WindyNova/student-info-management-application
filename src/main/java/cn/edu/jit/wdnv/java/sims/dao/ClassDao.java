@@ -7,7 +7,7 @@ import cn.edu.jit.wdnv.java.sims.beans.Class;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ClassDao extends BaseDao{
+public class ClassDao extends BaseDao {
 
     public List<Class> query_all_class() {
         List<Class> results = new ArrayList<>();
