@@ -18,6 +18,9 @@
               <scope>test</scope>
         </dependency>
 
+
+
+
         <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
         <dependency>
             <groupId>mysql</groupId>
@@ -32,6 +35,45 @@
             <version>4.0.1</version>
             <scope>provided</scope>
         </dependency>
+
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>4.0.1</version>
+            <scope>provided</scope>
+        </dependency>
+
+
+        <dependency>
+            <groupId>com.microsoft.sqlserver</groupId>
+            <artifactId>sqljdbc4</artifactId>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/sqljdbc4.jar</systemPath>
+            <version>4.0</version>
+        </dependency>
+
+
+<!-- 添加tomcat支持 -->
+<!-- <dependency>
+<groupId>org.springframework.boot</groupId>
+<artifactId>spring-boot-starter-tomcat</artifactId>
+<scope>provided</scope>
+</dependency> -->
+
+<!-- jsp的支持 -->
+<!-- <dependency>
+<groupId>org.apache.tomcat.embed</groupId>
+<artifactId>tomcat-embed-jasper</artifactId>
+<scope>provided</scope>
+</dependency> -->
+
+<!-- <dependency>
+<groupId>org.eclipse.jdt.core.compiler</groupId>
+<artifactId>ecj</artifactId>
+<version>4.6.1</version>
+</dependency> -->
+
+
 
     </dependencies>
     <properties>
@@ -72,6 +114,35 @@
                     <artifactId>maven-deploy-plugin</artifactId>
                     <version>2.8.2</version>
                 </plugin>
+                
+                <plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
+                <version>2.2</version>
+                <configuration>
+                    <uriEncoding>UTF-8</uriEncoding>
+                </configuration>
+                </plugin>
+
+<plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-jar-plugin</artifactId>
+    <configuration>
+        <source>1.1</source>
+        <target>1.1</target>
+        <archive>
+            <manifest>
+                <mainClass>com.cetc.di.hellocetc.App</mainClass>
+                <addClasspath>true</addClasspath>
+            <classpathPrefix>lib/</classpathPrefix>
+            </manifest>
+
+        </archive>
+        <classesDirectory>
+        </classesDirectory>
+    </configuration>
+</plugin>
+
             </plugins>
         </pluginManagement>
     </build>

@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class UserDao extends BaseDao{
     //判断用户在数据库中是否存在，存在返回true，不存在返回false
     public boolean isUserExist(String username) {
-        String sql = "select * from user where username = ?";
+        String sql = "select * from [user] where username = ?";
         try (PreparedStatement ps = con.prepareStatement(sql)){
             ps.setString(1, username);//给用户对象属性赋值
             ResultSet rs = ps.executeQuery();
@@ -25,7 +25,7 @@ public class UserDao extends BaseDao{
     //用户登录，登录成功返回一个含值User对象,如果登录失败返回一个User空对象
     public User login(String username, String password) {
         User user = null; //实例化一个user对象 需要返回user所以定义在这里
-        String sql = "select * from user where username = ? and password = ?;";
+        String sql = "select * from [user] where username = ? and password = ?;";
 
         try (PreparedStatement ps = con.prepareStatement(sql)) {
             ps.setString(1, username);
@@ -52,7 +52,7 @@ public class UserDao extends BaseDao{
             if (!isUserExist(username)) {//不存在该用户，可以注册
                 user = new User(username,password,"用户");//实例化一个user对象
                 Statement stmt = con.createStatement();
-                stmt.executeUpdate("insert into user values('" + username + "','" + password + "','" + level + "');");
+                stmt.executeUpdate("insert into [user] values('" + username + "','" + password + "','" + level + "');");
                 stmt.close();//释放资源
             }
         } catch (Exception e) {
@@ -63,7 +63,7 @@ public class UserDao extends BaseDao{
 
     //获取用户的权限级别，若存在则返回级别(管理员，普通用户),若不存在返回空
     public String level(String username) {
-        String sql = "select level from user where username = ?;";
+        String sql = "select level from [user] where username = ?;";
         String level = null;
         try( PreparedStatement ps = con.prepareStatement(sql)){
             ps.setString(1, username);
@@ -79,7 +79,7 @@ public class UserDao extends BaseDao{
 
     //获取数据库中所有用户的信息，用ArrayList返回
     public ArrayList<User> query_all_user() {
-        String sql = "select * from user order by username;";
+        String sql = "select * from [user] order by username;";
         ArrayList<User> results = new ArrayList<>();
 
         try(PreparedStatement ps = con.prepareStatement(sql)) {
@@ -99,7 +99,7 @@ public class UserDao extends BaseDao{
 
     //插入用户信息，返回一个int值表示状态,1：成功，0失败
     public int insert_user(String username, String password, String level) {
-        String sql = "insert into user values(?,?,?);";
+        String sql = "insert into [user] values(?,?,?);";
 
       status =0;
         try (PreparedStatement ps = con.prepareStatement(sql)){
@@ -117,7 +117,7 @@ public class UserDao extends BaseDao{
 
     //删除用户信息，返回一个int值表示状态,1：成功，0失败
     public int delete_user(String username) {
-        String sql = "delete from user where username = ?;";
+        String sql = "delete from [user] where username = ?;";
 
         status = 0;
         try ( PreparedStatement ps =  con.prepareStatement(sql)){
@@ -132,7 +132,7 @@ public class UserDao extends BaseDao{
 
     //修改用户信息，返回一个int值表示状态,1：成功，0失败
     public int alter_user(String username, String after_username, String after_password, String after_level) {
-        String sql = "update user set username = ?,password = ?,level = ? where username = ?;";
+        String sql = "update [user] set username = ?,password = ?,level = ? where username = ?;";
 
         status = 0;
         try (PreparedStatement ps = con.prepareStatement(sql)){
