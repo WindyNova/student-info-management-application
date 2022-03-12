@@ -8,7 +8,6 @@ public class DBConnect {
 
     /**
      * 获取数据库连接
-     *
      */
 	
 	private final static String driverName="com.microsoft.sqlserver.jdbc.SQLServerDriver";
@@ -18,7 +17,7 @@ public class DBConnect {
     private final static String dbURL = "jdbc:sqlserver://localhost:1433;DatabaseName=stuinfo";
     protected static Connection con;
 
-   static {
+    static {
 
         try {
             Class.forName(driverName);

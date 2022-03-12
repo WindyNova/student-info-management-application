@@ -68,8 +68,8 @@ main{
 
 .container{
 	margin: 0px auto;
-	margin-top: calc((100vh - 60vh)/2);
-	height: 60vh;
+	margin-top: calc((100vh - 77vh)/2);
+	height: 77vh;
 	width: 66vw;
 	box-shadow: 4px 4px 20px rgba(0,0,0,.5);
 	background-image: url("../images/login.png");
@@ -93,7 +93,7 @@ main{
 	position: relative;
 	top: 0;
 	float: right;
-	padding: 6em 5em;
+	padding: 2em 3em;
 	font-weight: 300;
 	text-align: right;
 }

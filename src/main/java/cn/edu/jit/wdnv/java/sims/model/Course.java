@@ -1,51 +1,17 @@
 package cn.edu.jit.wdnv.java.sims.model;
 
 
-public class Course{
+import lombok.AllArgsConstructor;
+import lombok.Data;
 
+@Data
+@AllArgsConstructor
+public class Course {
 
-    private String Cno;//课程号
+    private Integer Cno;//课程号
     private String Cname;//课程名称
     private String Cteacher;//执教老师
-    private int Ccredit;//学分
+    private byte Ccredit;//学分
 
-    public Course(String cno, String cname, String cteacher, int ccredit) {
-        Cno = cno;
-        Cname = cname;
-        Cteacher = cteacher;
-        Ccredit = ccredit;
-    }
-
-    public String getCno() {
-        return Cno;
-    }
-
-    public void setCno(String cno) {
-        Cno = cno;
-    }
-
-    public String getCname() {
-        return Cname;
-    }
-
-    public void setCname(String cname) {
-        Cname = cname;
-    }
-
-    public String getCteacher() {
-        return Cteacher;
-    }
-
-    public void setCteacher(String cteacher) {
-        Cteacher = cteacher;
-    }
-
-    public int getCcredit() {
-        return Ccredit;
-    }
-
-    public void setCcredit(int ccredit) {
-        Ccredit = ccredit;
-    }
 
 }

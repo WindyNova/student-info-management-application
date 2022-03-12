@@ -3,8 +3,8 @@ package cn.edu.jit.wdnv.java.sims.servlet;
 import cn.edu.jit.wdnv.java.sims.dao.*;
 import cn.edu.jit.wdnv.java.sims.model.Class;
 import cn.edu.jit.wdnv.java.sims.model.*;
+import cn.edu.jit.wdnv.java.sims.utils.Encryptor;
 
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -148,7 +148,7 @@ public class AdminServlet extends HttpServlet {
         String password = request.getParameter("password");
         String level = request.getParameter("level");
 
-        int status = new UserDao().insert_user(username, password, level);
+        int status = new UserDao().insert_user(username, Encryptor.MD5Encrypt(password), level);
         String info;
         PrintWriter out = response.getWriter();
         if (status == 1) {
@@ -191,7 +191,7 @@ public class AdminServlet extends HttpServlet {
         String after_password = request.getParameter("after_password");
         String after_level = request.getParameter("after_level");
 
-        int status = new UserDao().alter_user(username, after_username, after_password, after_level);
+        int status = new UserDao().alter_user(username, after_username, Encryptor.MD5Encrypt(after_password), after_level);
         String info;
         PrintWriter out = response.getWriter();
         if (status == 1) {
@@ -234,7 +234,7 @@ public class AdminServlet extends HttpServlet {
     protected void insert_department(HttpServletRequest request, HttpServletResponse response)
             throws IOException {
         response.setContentType("text/html;charset=utf-8");
-        String dno = request.getParameter("dno");
+        Integer dno = Integer.valueOf(request.getParameter("dno"));
         String dname = request.getParameter("dname");
         int status = new DepartmentDao().insert_department(dno, dname);
         String info;
@@ -255,7 +255,7 @@ public class AdminServlet extends HttpServlet {
     protected void delete_department(HttpServletRequest request, HttpServletResponse response)
             throws IOException {
         response.setContentType("text/html;charset=utf-8");
-        String dno = request.getParameter("dno");
+        Integer dno = Integer.valueOf(request.getParameter("dno"));
         int status = new DepartmentDao().delete_department(dno);
         String info;
         PrintWriter out = response.getWriter();
@@ -275,8 +275,8 @@ public class AdminServlet extends HttpServlet {
     protected void alter_department(HttpServletRequest request, HttpServletResponse response)
             throws IOException {
         response.setContentType("text/html;charset=utf-8");
-        String dno = request.getParameter("dno");
-        String after_dno = request.getParameter("after_dno");
+        Integer dno = Integer.valueOf(request.getParameter("dno"));
+        Integer after_dno = Integer.valueOf(request.getParameter("after_dno"));
         String after_dname = request.getParameter("after_dname");
         int status = new DepartmentDao().alter_department(dno, after_dno, after_dname);
         String info;
@@ -321,9 +321,9 @@ public class AdminServlet extends HttpServlet {
     protected void insert_class(HttpServletRequest request, HttpServletResponse response)
             throws IOException {
         response.setContentType("text/html;charset=utf-8");
-        String clno = request.getParameter("clno");
+        Integer clno = Integer.valueOf(request.getParameter("clno"));
         String clname = request.getParameter("clname");
-        String dno = request.getParameter("dno");
+        Integer dno = Integer.valueOf(request.getParameter("dno"));
         int status = new ClassDao().insert_class(clno, clname, dno);
         String info;
         PrintWriter out = response.getWriter();
@@ -343,7 +343,7 @@ public class AdminServlet extends HttpServlet {
     protected void delete_class(HttpServletRequest request, HttpServletResponse response)
             throws IOException {
         response.setContentType("text/html;charset=utf-8");
-        String clno = request.getParameter("clno");
+        Integer clno = Integer.valueOf(request.getParameter("clno"));
         int status = new ClassDao().delete_class(clno);
         String info;
         PrintWriter out = response.getWriter();
@@ -363,10 +363,10 @@ public class AdminServlet extends HttpServlet {
     protected void alter_class(HttpServletRequest request, HttpServletResponse response)
             throws IOException {
         response.setContentType("text/html;charset=utf-8");
-        String clno = request.getParameter("clno");
-        String after_clno = request.getParameter("after_clno");
+        Integer clno = Integer.valueOf(request.getParameter("clno"));
+        Integer after_clno = Integer.valueOf(request.getParameter("after_clno"));
         String after_clname = request.getParameter("after_clname");
-        String after_dno = request.getParameter("after_dno");
+        Integer after_dno = Integer.valueOf(request.getParameter("after_dno"));
         int status = new ClassDao().alter_class(clno, after_clno, after_clname, after_dno);
         String info;
         PrintWriter out = response.getWriter();
@@ -412,11 +412,11 @@ public class AdminServlet extends HttpServlet {
     protected void insert_student(HttpServletRequest request, HttpServletResponse response)
             throws IOException {
         response.setContentType("text/html;charset=utf-8");
-        String sno = request.getParameter("sno");
+        Integer sno = Integer.valueOf(request.getParameter("sno"));
         String sname = request.getParameter("sname");
         String ssex = request.getParameter("ssex");
-        int sage = Integer.parseInt(request.getParameter("sage"));
-        String clno = request.getParameter("clno");
+        byte sage = Byte.parseByte(request.getParameter("sage"));
+        Integer clno = Integer.valueOf(request.getParameter("clno"));
         int status = new StudentDao().insert_student(sno, sname, ssex, sage, clno);
         String info;
         PrintWriter out = response.getWriter();
@@ -436,7 +436,7 @@ public class AdminServlet extends HttpServlet {
     protected void delete_student(HttpServletRequest request, HttpServletResponse response)
             throws IOException {
         response.setContentType("text/html;charset=utf-8");
-        String sno = request.getParameter("sno");
+        Integer sno = Integer.valueOf(request.getParameter("sno"));
         int status = new StudentDao().delete_student(sno);
         String info;
         PrintWriter out = response.getWriter();
@@ -456,12 +456,12 @@ public class AdminServlet extends HttpServlet {
     protected void alter_student(HttpServletRequest request, HttpServletResponse response)
             throws IOException {
         response.setContentType("text/html;charset=utf-8");
-        String sno = request.getParameter("sno");
-        String after_sno = request.getParameter("after_sno");
+        Integer sno = Integer.valueOf(request.getParameter("sno"));
+        Integer after_sno = Integer.valueOf(request.getParameter("after_sno"));
         String after_sname = request.getParameter("after_sname");
         String after_ssex = request.getParameter("after_ssex");
-        int after_sage = Integer.parseInt(request.getParameter("after_sage"));
-        String after_clno = request.getParameter("after_clno");
+        byte after_sage = Byte.parseByte(request.getParameter("after_sage"));
+        Integer after_clno = Integer.valueOf(request.getParameter("after_clno"));
         int status = new StudentDao().alter_class(sno, after_sno, after_sname, after_ssex, after_sage, after_clno);
         String info;
         PrintWriter out = response.getWriter();
@@ -487,11 +487,13 @@ public class AdminServlet extends HttpServlet {
         if (results != null) {
             //输出结果
             out.write("<div class='all'>");
-            out.write("<div><span>课程号</span><span>课程名称</span><span>平均分</span></div>");
+            out.write("<div><span>课程号</span><span>课程名称</span><span>执教老师</span><span>学分</span><span>平均分</span></div>");
             for (Course_avg i : results) {
                 out.write("<div>");
                 out.write("<span>" + i.getCno() + "</span>");
                 out.write("<span>" + i.getCname() + "</span>");
+                out.write("<span>" + i.getCteacher() + "</span>");
+                out.write("<span>" + i.getCcredit() + "</span>");
                 out.write("<span>" + i.getAvg() + "</span>");
                 out.write("</div>");
             }
@@ -509,11 +511,13 @@ public class AdminServlet extends HttpServlet {
         // 输出结果
         if (results != null) {
             out.write("<div class='all'>");
-            out.write("<div><span>课程号</span><span>课程名称</span><span>不及格率</span></div>");
+            out.write("<div><span>课程号</span><span>课程名称</span><span>执教老师</span><span>学分</span><span>平均分</span></div>");
             for (Course_fail_rate i : results) {
                 out.write("<div>");
                 out.write("<span>" + i.getCno() + "</span>");
                 out.write("<span>" + i.getCname() + "</span>");
+                out.write("<span>" + i.getCteacher() + "</span>");
+                out.write("<span>" + i.getCcredit() + "</span>");
                 out.write("<span>" + i.getFail_rate() + "%</span>");
                 out.write("</div>");
             }
@@ -526,7 +530,7 @@ public class AdminServlet extends HttpServlet {
     // 查询课程排名
     protected void course_ranking(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setContentType("text/html;charset=utf-8");
-        String Cno = request.getParameter("cno");
+        Integer Cno = Integer.valueOf(request.getParameter("cno"));
         ArrayList<Course_ranking> results = new CourseDao().course_ranking(Cno);
         PrintWriter out = response.getWriter();
         // 输出结果
@@ -578,10 +582,10 @@ public class AdminServlet extends HttpServlet {
     //插入课程
     protected void insert_course(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setContentType("text/html;charset=utf-8");
-        String Cno = request.getParameter("cno");
+        Integer Cno = Integer.valueOf(request.getParameter("cno"));
         String Cname = request.getParameter("cname");
         String Cteacher = request.getParameter("cteacher");
-        int Ccredit = Integer.parseInt(request.getParameter("ccredit"));
+        byte Ccredit = Byte.parseByte(request.getParameter("ccredit"));
         int status = new CourseDao().insert_course(Cno, Cname, Cteacher, Ccredit);
         String info;
         PrintWriter out = response.getWriter();
@@ -600,7 +604,7 @@ public class AdminServlet extends HttpServlet {
     //删除课程
     protected void delete_course(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setContentType("text/html;charset=utf-8");
-        String cno = request.getParameter("cno");
+        Integer cno = Integer.valueOf(request.getParameter("cno"));
         int status = new CourseDao().delete_course(cno);
         String info;
         PrintWriter out = response.getWriter();
@@ -621,11 +625,11 @@ public class AdminServlet extends HttpServlet {
             throws IOException {
         response.setContentType("text/html;charset=utf-8");
 
-        String cno = request.getParameter("cno");
-        String after_cno = request.getParameter("after_cno");
+        Integer cno = Integer.valueOf(request.getParameter("cno"));
+        Integer after_cno = Integer.valueOf(request.getParameter("after_cno"));
         String after_cname = request.getParameter("after_cname");
         String after_cteacher = request.getParameter("after_cteacher");
-        double after_ccredit = Double.parseDouble(request.getParameter("after_ccredit"));
+        byte after_ccredit = Byte.parseByte(request.getParameter("after_ccredit"));
         int status = new CourseDao().alter_course(cno, after_cno, after_cname, after_cteacher, after_ccredit);
         String info;
         PrintWriter out = response.getWriter();
@@ -673,9 +677,9 @@ public class AdminServlet extends HttpServlet {
     protected void insert_sc(HttpServletRequest request, HttpServletResponse response)
             throws IOException {
         response.setContentType("text/html;charset=utf-8");
-        String sno = request.getParameter("sno");
-        String cno = request.getParameter("cno");
-        double grade = Double.parseDouble(request.getParameter("grade"));
+        Integer sno = Integer.valueOf(request.getParameter("sno"));
+        Integer cno = Integer.valueOf(request.getParameter("cno"));
+        float grade = Float.parseFloat(request.getParameter("grade"));
         int status = new SCDao().insert_sc(sno, cno, grade);
         String info;
         PrintWriter out = response.getWriter();
@@ -695,8 +699,8 @@ public class AdminServlet extends HttpServlet {
     protected void delete_sc(HttpServletRequest request, HttpServletResponse response)
             throws IOException {
         response.setContentType("text/html;charset=utf-8");
-        String sno = request.getParameter("sno");
-        String cno = request.getParameter("cno");
+        Integer sno = Integer.valueOf(request.getParameter("sno"));
+        Integer cno = Integer.valueOf(request.getParameter("cno"));
         int status = new SCDao().delete_sc(sno, cno);
         String info;
         PrintWriter out = response.getWriter();
@@ -716,9 +720,9 @@ public class AdminServlet extends HttpServlet {
     protected void alter_sc(HttpServletRequest request, HttpServletResponse response)
             throws IOException {
         response.setContentType("text/html;charset=utf-8");
-        String sno = request.getParameter("sno");
-        String cno = request.getParameter("cno");
-        double after_grade = Double.parseDouble(request.getParameter("after_grade"));
+        Integer sno = Integer.valueOf(request.getParameter("sno"));
+        Integer cno = Integer.valueOf(request.getParameter("cno"));
+        float after_grade = Float.parseFloat(request.getParameter("after_grade"));
         int status = new SCDao().alter_sc(sno, cno, after_grade);
         String info;
         PrintWriter out = response.getWriter();

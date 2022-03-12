@@ -10,15 +10,15 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class CourseDao extends BaseDao{
+public class CourseDao extends BaseDao {
 
     public ArrayList<Course> query_all_course() { // 获取所有课程的信息，用ArrayList返回
-        String sql = "select * from course order by cno;";
+        sql = "select * from course order by cno;";
         ArrayList<Course> results = new ArrayList<>();
-        try (PreparedStatement ps = con.prepareStatement(sql)){
+        try (PreparedStatement ps = con.prepareStatement(sql)) {
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                Course course = new Course(rs.getString("Cno"),rs.getString("Cname"),rs.getString("Cteacher"),rs.getInt("Ccredit"));
+                Course course = new Course(rs.getInt("Cno"), rs.getString("Cname"), rs.getString("Cteacher"), rs.getByte("Ccredit"));
                 results.add(course);
             }
         } catch (SQLException e) {
@@ -27,102 +27,102 @@ public class CourseDao extends BaseDao{
         return results;
     }
 
-    public int insert_course(String Cno, String Cname, String Cteacher, double Ccredit) { // 插入课程信息
-       status = 0;
-        String sql = "insert into course values(?,?,?,?);";
-        try (PreparedStatement ps = con.prepareStatement(sql)){
-            ps.setString(1, Cno);
+    public int insert_course(Integer Cno, String Cname, String Cteacher, float Ccredit) { // 插入课程信息
+        status = 0;
+        sql = "insert into course values(?,?,?,?);";
+        try (PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setInt(1, Cno);
             ps.setString(2, Cname);
             ps.setString(3, Cteacher);
-            ps.setDouble(4, Ccredit);
-            status = ps.executeUpdate();
-        } catch (SQLException e) {
-            status = 0 ;
-            e.printStackTrace();
-        } 
-        return status;
-    }
-
-    public int delete_course(String Cno) {
-        status =0 ;
-        String sql = "delete from course where Cno = ?;";
-        try (PreparedStatement ps = con.prepareStatement(sql)){
-            ps.setString(1, Cno);
-            status = ps.executeUpdate();
-        } catch (SQLException e) {
-            status =0 ;
-            e.printStackTrace();
-        } 
-        return status;
-    } // 删除课程信息
-
-    //修改课程信息
-    public int alter_course(String cno, String after_cno, String after_cname, String after_cteacher, double after_ccredit) {
-        status =0 ;
-        String sql = "update course set cno = ?,cname = ?,cteacher = ?,ccredit = ? where cno = ?;";
-        try (PreparedStatement ps = con.prepareStatement(sql)){
-            ps.setString(1, after_cno);
-            ps.setString(2, after_cname);
-            ps.setString(3, after_cteacher);
-            ps.setDouble(4, after_ccredit);
-            ps.setString(5, cno);
+            ps.setFloat(4, Ccredit);
             status = ps.executeUpdate();
         } catch (SQLException e) {
             status = 0;
             e.printStackTrace();
-        } 
+        }
+        return status;
+    }
+
+    public int delete_course(Integer Cno) {
+        status = 0;
+        sql = "delete from course where Cno = ?;";
+        try (PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setInt(1, Cno);
+            status = ps.executeUpdate();
+        } catch (SQLException e) {
+            status = 0;
+            e.printStackTrace();
+        }
+        return status;
+    } // 删除课程信息
+
+    //修改课程信息
+    public int alter_course(Integer cno, Integer after_cno, String after_cname, String after_cteacher, float after_ccredit) {
+        status = 0;
+        sql = "update course set cno = ?,cname = ?,cteacher = ?,ccredit = ? where cno = ?;";
+        try (PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setInt(1, after_cno);
+            ps.setString(2, after_cname);
+            ps.setString(3, after_cteacher);
+            ps.setFloat(4, after_ccredit);
+            ps.setInt(5, cno);
+            status = ps.executeUpdate();
+        } catch (SQLException e) {
+            status = 0;
+            e.printStackTrace();
+        }
         return status;
     }
 
 
     public ArrayList<Course_avg> course_avg() {
-        status =0;
-        String sql = "select sc.Cno,Cname,avg(Grade) avg from course,sc where course.Cno = sc.Cno group by cno order by Cno;";
+        status = 0;
+        sql = "select sc.Cno,Cname,course.Cteacher,course.Ccredit,avg(Grade) avg from course,sc where course.Cno = sc.Cno group by cno order by cno;";
         ArrayList<Course_avg> course_avg = new ArrayList<>();
-        try ( PreparedStatement ps = con.prepareStatement(sql)){
+        try (PreparedStatement ps = con.prepareStatement(sql)) {
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                Course_avg courseAvg = new Course_avg(rs.getString("Cno"),rs.getString("Cname"),rs.getDouble("avg"));
+                Course_avg courseAvg = new Course_avg(rs.getInt("Cno"), rs.getString("Cname"), rs.getString("Cteacher"), rs.getByte("Ccredit"), rs.getFloat("avg"));
                 course_avg.add(courseAvg);
             }
         } catch (SQLException e) {
-            status=0;
+            status = 0;
             e.printStackTrace();
-        } 
+        }
         return course_avg;
     }// 查询课程平均分信息 返回一个ArrayLst集合
 
     public ArrayList<Course_fail_rate> fail_rate() { //查询课程不及格率
-        status=0;
-        String sql = "select cno,(select cname from course where cno = x.cno) cname,cast(100.0*(select count(sno) from sc where grade < 60 and cno = x.cno)/(select count(sno) from sc where cno = x.cno) as decimal(18,2)) rate from sc x group by cno order by cno;";
+        status = 0;
+        sql = "select cno,(select cname from course where cno = x.cno) cname,(select cteacher from course where cno = x.cno)cteacher ,(select ccredit from course where cno = x.cno)ccredit,cast(100.0*(select count(sno) from sc where grade < 60 and cno = x.cno)/(select count(sno) from sc where cno = x.cno) as decimal(18,2)) rate from sc x group by cno order by cno;";
         ArrayList<Course_fail_rate> fail_rate = new ArrayList<>();
-        try (PreparedStatement ps = con.prepareStatement(sql)){
+        try (PreparedStatement ps = con.prepareStatement(sql)) {
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                Course_fail_rate courseFailRate = new Course_fail_rate(rs.getString("cno"),rs.getString("cname"),rs.getDouble("rate"));
+                Course_fail_rate courseFailRate = new Course_fail_rate(rs.getInt("cno"), rs.getString("cname"), rs.getString("Cteacher"), rs.getByte("Ccredit"), rs.getFloat("rate"));
                 fail_rate.add(courseFailRate);
             }
 
         } catch (SQLException e) {
             e.printStackTrace();
-        } 
+        }
         return fail_rate;
     }
 
     //查询课程排名情况,返回一个ArrayList集合
-    public ArrayList<Course_ranking> course_ranking(String cno) {
+    public ArrayList<Course_ranking> course_ranking(Integer cno) {
 
-        String sql = "select student.Sno,Dname,Clname,Sname,Ssex,Sage,Grade from department,class,student,sc where student.sno = sc.sno and class.Clno = student.Clno and department.Dno = class.Dno and cno = '" + cno + "' order by grade desc;";
+        sql = "select student.Sno,Dname,Clname,Sname,Ssex,Sage,Grade from department,class,student,sc where student.sno = sc.sno and class.Clno = student.Clno and department.Dno = class.Dno and cno = '" + cno + "' order by grade desc;";
         ArrayList<Course_ranking> course_ranking = new ArrayList<>();
-        try (PreparedStatement ps = con.prepareStatement(sql)){
+        try (PreparedStatement ps = con.prepareStatement(sql)) {
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                Course_ranking courseRanking = new Course_ranking(rs.getString("Sno"),rs.getString("Dname"),rs.getString("Clname"),rs.getString("Sname"),rs.getString("Ssex"),rs.getInt("Sage"),rs.getDouble("Grade"));
+                Course_ranking courseRanking = new Course_ranking(rs.getInt("Sno"), rs.getString("Dname"), rs.getString("Clname"), rs.getString("Sname"), rs.getString("Ssex"), rs.getByte("Sage"), rs.getFloat("Grade"));
                 course_ranking.add(courseRanking);
             }
         } catch (SQLException e) {
             e.printStackTrace();
-        } 
+        }
         return course_ranking;
     }
 }
