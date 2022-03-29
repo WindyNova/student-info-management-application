@@ -1,7 +1,7 @@
-# StudentInfoManagement
+# StudentInfoManagement Application
 
 一个学生信息管理系统
 
-HTML + CSS + BOOTSTRAP + jQuery + AJAX
+Spring Web + Thymeleaf + Mybatis
 
-Tomcat 9 + JSP Servlet
+HTML + CSS + BOOTSTRAP + jQuery + AJAX

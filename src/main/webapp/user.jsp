@@ -1,4 +1,4 @@
-<%@page import="cn.edu.jit.wdnv.java.sims.beans.User"%>
+<%@page import="com.windynova.java.sima.entity.User"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE HTML>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.edu.jit.wdnv.java.sims.mapper.ClassMapper">
-  <resultMap id="BaseResultMap" type="cn.edu.jit.wdnv.java.sims.beans.Class">
+<mapper namespace="com.windynova.java.sima.mapper.ClassMapper">
+  <resultMap id="BaseResultMap" type="com.windynova.java.sima.entity.Class">
     <!-- @mbg.generated: generated automatically, do not modify! -->
     <id column="Clno" jdbcType="DECIMAL" property="clno" />
     <result column="Clname" jdbcType="VARCHAR" property="clname" />
@@ -12,14 +12,14 @@
     delete from class
     where Clno = #{clno,jdbcType=DECIMAL}
   </delete>
-  <insert id="insert" parameterType="cn.edu.jit.wdnv.java.sims.beans.Class">
+  <insert id="insert" parameterType="com.windynova.java.sima.entity.Class">
     <!-- @mbg.generated: generated automatically, do not modify! -->
     insert into class (Clno, Clname, Dno
       )
     values (#{clno,jdbcType=DECIMAL}, #{clname,jdbcType=VARCHAR}, #{dno,jdbcType=DECIMAL}
       )
   </insert>
-  <update id="updateByPrimaryKey" parameterType="cn.edu.jit.wdnv.java.sims.beans.Class">
+  <update id="updateByPrimaryKey" parameterType="com.windynova.java.sima.entity.Class">
     <!-- @mbg.generated: generated automatically, do not modify! -->
     update class
     set Clname = #{clname,jdbcType=VARCHAR},

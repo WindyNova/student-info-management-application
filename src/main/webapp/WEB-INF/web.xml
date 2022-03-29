@@ -13,7 +13,7 @@
     <description/>
     <display-name>LoginServlet</display-name>
     <servlet-name>LoginServlet</servlet-name>
-    <servlet-class>cn.edu.jit.wdnv.java.sims.servlet.LoginServlet</servlet-class>
+    <servlet-class>com.windynova.java.sima.controller.AuthController</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>LoginServlet</servlet-name>
@@ -23,7 +23,7 @@
     <description/>
     <display-name>UserExitServlet</display-name>
     <servlet-name>UserExitServlet</servlet-name>
-    <servlet-class>cn.edu.jit.wdnv.java.sims.servlet.UserLogoutServlet</servlet-class>
+    <servlet-class>com.windynova.java.sima.controller.UserLogoutServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>UserExitServlet</servlet-name>
@@ -33,7 +33,7 @@
     <description/>
     <display-name>RegisterServlet</display-name>
     <servlet-name>RegisterServlet</servlet-name>
-    <servlet-class>cn.edu.jit.wdnv.java.sims.servlet.RegisterServlet</servlet-class>
+    <servlet-class>com.windynova.java.sima.controller.RegisterServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>RegisterServlet</servlet-name>
@@ -43,7 +43,7 @@
     <description/>
     <display-name>AdminServlet</display-name>
     <servlet-name>AdminServlet</servlet-name>
-    <servlet-class>cn.edu.jit.wdnv.java.sims.servlet.AdminServlet</servlet-class>
+    <servlet-class>com.windynova.java.sima.controller.AdminController</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>AdminServlet</servlet-name>

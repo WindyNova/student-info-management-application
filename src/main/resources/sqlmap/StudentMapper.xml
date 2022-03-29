@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.edu.jit.wdnv.java.sims.mapper.StudentMapper">
-  <resultMap id="BaseResultMap" type="cn.edu.jit.wdnv.java.sims.beans.Student">
+<mapper namespace="com.windynova.java.sima.mapper.StudentMapper">
+  <resultMap id="BaseResultMap" type="com.windynova.java.sima.entity.Student">
     <!-- @mbg.generated: generated automatically, do not modify! -->
     <id column="Sno" jdbcType="CHAR" property="sno" />
     <result column="Sname" jdbcType="CHAR" property="sname" />
@@ -14,14 +14,14 @@
     delete from student
     where Sno = #{sno,jdbcType=CHAR}
   </delete>
-  <insert id="insert" parameterType="cn.edu.jit.wdnv.java.sims.beans.Student">
+  <insert id="insert" parameterType="com.windynova.java.sima.entity.Student">
     <!-- @mbg.generated: generated automatically, do not modify! -->
     insert into student (Sno, Sname, Ssex, Sage, 
       Clno)
     values (#{sno,jdbcType=CHAR}, #{sname,jdbcType=CHAR}, #{ssex,jdbcType=CHAR}, #{sage,jdbcType=SMALLINT}, 
       #{clno,jdbcType=CHAR})
   </insert>
-  <update id="updateByPrimaryKey" parameterType="cn.edu.jit.wdnv.java.sims.beans.Student">
+  <update id="updateByPrimaryKey" parameterType="com.windynova.java.sima.entity.Student">
     <!-- @mbg.generated: generated automatically, do not modify! -->
     update student
     set Sname = #{sname,jdbcType=CHAR},

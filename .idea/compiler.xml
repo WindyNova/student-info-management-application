@@ -11,8 +11,13 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="StudentInfoManagement" target="8" />
+      <module name="StudentInfoManagement" target="1.8" />
       <module name="wrapper" target="1.5" />
     </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="StudentInfoManagement" options="-parameters" />
+    </option>
   </component>
 </project>
